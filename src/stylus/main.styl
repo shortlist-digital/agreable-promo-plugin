@@ -1,0 +1,337 @@
+@import 'nib'
+// @import 'stylus/variables'
+
+.widget-quiz
+  user-select none
+
+/* Module/Block: Quiz */
+.quiz
+  background transparent
+
+.quiz ul
+  overflow hidden
+
+.quiz__question-container
+  position relative
+
+/* Module/Block: Question */
+.question
+  margin-bottom 30px
+  overflow hidden
+
+.question__number
+  margin-bottom 1rem
+
+.question__label
+  float left
+  margin-bottom 0
+  line-height 1.3rem
+
+/* Module/Block: Question Image */
+.question-image
+  margin 30px auto;
+  max-width 220px
+  display block
+
+@media (min-width: 401px)
+  .question-image
+    max-width 300px
+
+/* Module/Block: Answers */
+.answers
+  clear both
+  margin-bottom 60px
+  box-sizing border-box
+
+.answers li
+  width: 48%;
+  margin-right: 4%;
+  margin-bottom: 30px;
+  float: left;
+  position: relative;
+  list-style none
+
+.answers li:nth-child(even)
+  margin-right 0
+
+/* Module/Block: Answer */
+.answer
+  min-height: 90px;
+  display: block;
+  cursor: pointer;
+  text-transform: uppercase;
+  border-radius: 1.5rem;
+  display: table;
+  background-color rgba(255,153,0,0.5)
+  width 100%
+  height 100%
+
+.answer:hover
+  background-color black
+  color white
+
+.answer-text
+  display table-cell
+  text-align center
+  pointer-events none
+  vertical-align middle
+  padding 10px
+
+.answer.selected
+  background-color black
+  color white
+  box-sizing border-box
+
+.answer .answer-image
+  width 90%
+  margin 5%
+
+/* Module/Block: Quiz Complete Panel */
+.quiz-complete-panel
+  border-top 1px solid #dcdcdc
+  padding-top 30px
+  margin-bottom -3px
+
+.quiz-complete-panel h1
+  margin-bottom 10px
+
+/* Module/Block: Quiz Complete Panel Progress */
+.cp-progress
+  position: static;
+
+.cp-progress.is-static
+  position: static;
+
+@media (min-width: 768px)
+  .cp-progress
+    display: block;
+    position: fixed;
+    background: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    bottom: 0px;
+    width: 100%;
+    transform: translateZ(0);
+
+@media (min-width: 1024px)
+  .cp-progress
+    width: auto;
+    max-width: 650px;
+
+.cp-progress ul
+  margin-bottom: 0;
+  margin-right: 1px;
+
+.cp-progress li
+  cursor: pointer;
+  float: left;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  padding-left: 0;
+  font-family: 'Graphik Web','Arial Black','Arial Bold',Arial,Helvetica,sans-serif;
+  font-size: 14px;
+  margin-right: 2px;
+  margin-bottom: 3px;
+  perspective: 1000;
+  list-style none
+
+.cp-progress li:last-child
+  margin-right: 0;
+
+.cp-progress li .front
+.cp-progress li .back
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  padding-top: 0px;
+  font-family: arial;
+
+/* Module/Block: Score Panel */
+.score-panel
+  display: block;
+  color: white;
+  margin-top: 14px;
+  user-select: initial;
+
+.score-panel__message
+  margin-bottom: 17px;
+  color black
+
+.score-panel__summary
+  color gray
+
+.score-panel__message
+.score-panel__summary
+  opacity 0
+  transition: opacity 1s;
+
+.score-panel__message.is-revealed
+.score-panel__summary.is-revealed
+  opacity 1
+
+.score-panel__summary
+  margin-bottom 18px
+  position static
+  display block
+
+// Formally .outcome-image
+.score-panel__image
+  display: none;
+  max-width: 300px;
+  margin-bottom: 22px;
+  margin-top: 14px;
+  margin-left: auto;
+  margin-right: auto;
+
+@media (min-width: 500px)
+  .outcome-image
+    float: right;
+    margin-bottom: 30px;
+    margin-top: 6px;
+    margin-left: 10px;
+    margin-right: 0;
+
+/* Module/Block: Flipper */
+.flipper
+  transition: 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+
+.flipper__circle
+  width: 30px;
+  height: 30px;
+  overflow: hidden;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 15px;
+  padding-top: 0px;
+  font-family: arial;
+
+.flipper__circle--front
+  z-index: 2;
+  transform: rotateY(180deg);
+  background-color: black;
+  color: white;
+
+.flipper__circle--back
+  transform: rotateY(0deg);
+  background-color: #dcdcdc;
+  color: black;
+
+li.answered .flipper
+  transform: rotateY(180deg);
+
+.quiz-complete.answered .flipper
+  transform: rotateY(0deg);
+  color: white;
+
+.quiz-complete.correct .flipper__circle
+  background-color: rgb(34, 134, 34);
+  color: white;
+
+.quiz-complete.incorrect .flipper__circle
+  background-color: #DD371E;
+  color: white;
+
+/* TODO */
+/* Module/Block: Answer Info */
+.answer-information
+  opacity 0
+  transition: opacity 1s;
+
+.answer-information
+  display: none;
+  position: relative;
+  top: -30px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background: rgb(234, 234, 234);
+  color: black;
+  padding: 10px;
+  font-family: Georgia,serif;
+  text-transform: none;
+  font-size: 16px;
+  box-shadow: 0px 5px 24px -7px rgba(10, 8, 8, 0.53);
+
+.answer-information:before
+  content: '';
+  position: absolute;
+  left: 50%;
+  margin-left: -10px;
+  height: 20px;
+  width: 20px;
+  /* -webkit-transform: rotateY(180deg); */
+  transform: rotateZ(45deg);
+  background: rgb(234, 234, 234);
+  top: -10px;
+
+.quiz-complete .answer-information
+  display: block;
+
+.answer-information.is-revealed
+  opacity 1
+
+/*
+ * The styles below are not implemented as yet
+ * Is .ie-old going to be used in new site?
+ * Is .chrome.windows transform: rotate an issue still?
+ */
+
+/*
+
+.quiz-complete-panel h2, #cp-quiz-share, .cp-more, #cp-quiz {
+  opacity: 0;
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+}
+
+.cp-more, #cp-quiz-share
+  opacity 0
+}
+
+.at-resp-share-element a .label {
+  font-family: 'Arial Black','Arial Bold',Arial,Helvetica,sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ie-old #cp-quiz .cp-progress li.answered .flipper, .ie-old #cp-quiz .cp-progress .front {
+  transform: rotateY(0deg) !important;
+}
+
+.ie-old #cp-quiz .cp-progress li {
+  line-height: 28px;
+}
+
+.ie-old #cp-quiz .cp-progress li.answered .back {
+  display: none;
+}
+.ie-old #cp-quiz .cp-progress li .flipper .front {
+  background-color: #7d7e7f;
+}
+.ie-old #cp-quiz .cp-progress li.answered .flipper .front {
+  background-color: #000;
+}
+.ie-old #cp-quiz .cp-progress li .front, .chrome.windows #cp-quiz .cp-progress li .front, .chrome.windows #cp-quiz .cp-progress li .back {
+  padding-top: 0px;
+}
+.ie-old #cp-quiz .cp-progress li.quiz-complete.correct .flipper .front {
+  background-color: rgb(34, 134, 34);
+}
+.ie-old #cp-quiz .cp-progress li.quiz-complete.incorrect .flipper .front {
+  background-color: #DD371E;
+}
+
+.ie-old #cp-quiz .cp-progress.cp-static  ul {
+  width: 110%;
+}
+*/

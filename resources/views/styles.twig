@@ -1,0 +1,19 @@
+<style>
+
+    {# Common plugin CSS. #}
+    {% include common_css_path %}
+
+    {#
+        Configurable CSS values provided through WP settings panel.
+        Overrides values in common CSS.
+    #}
+    .answer {
+      background-color: {{ plugin_settings_property_primary_colour|default('ff00ff') }};
+      color: {{ plugin_settings_property_secondary_colour|default('black') }};
+      font-family: {{ plugin_settings_property_font_family }};
+    }
+
+    {# Free text CSS also provided through WP settings panel. #}
+    {{ plugin_settings_free_text }}
+
+</style>

@@ -1,0 +1,101 @@
+{#
+{% if advertBasicPosition is empty %}
+  {% set advertBasicPosition = 'widget' %}
+{% endif %}
+
+{% if advertBasicContentType is empty %}
+  {% set advertBasicContentType = 'homepage' %}
+{% endif %}
+#}
+
+{% if quiz is empty %}
+{% set quiz = TimberPost(widget.quiz_post) %}
+{% endif %}
+
+<div class="js-plugin-module quiz {% if appMode %}in-app{% endif %}"
+    data-module="Quiz"
+    data-section="{{ category.slug }}"
+    data-content-type="article"
+    data-quiz-type="{{ quiz.quiz_type }}"
+    data-position="main">
+
+    <script>
+        var textOutcomes= [{% for outcome in quiz.get_field('text_outcomes') %}
+            {
+              label: "{{outcome.label}}",
+              description : "{{outcome.description}}",
+              image : "{{TimberImage(outcome.image).src('large')}}"
+            }{% if loop.last == false %},{% endif %}{% endfor %}
+        ];
+    </script>
+
+    {% for q in quiz.get_field('questions') %}
+    <div class="quiz__question-container">
+        <div class="question">
+            <h2 class="question__number">Q{{loop.index}}.</h2>
+            <h3 class="question__label">{{q.question}}</h3>
+        </div>
+        {% if q.image %}
+        <img class="question-image" src="{{TimberImage(q.image).src('large')}}"/>
+        {% endif %}
+
+        <ul data-question-index="question-{{loop.index0}}" class="answers answers-{{q.answers|length}}">
+            {% for answer in q.answers %}
+            <li >
+                <div class="answer" {% if answer.is_correct %}data-cor{%else%}data-inc{%endif%} {%if answer.text_outcome %}data-outcome-{{answer.text_outcome}}{% endif %}>
+                	{% if answer.image %}
+                	<img class="answer-image" src="{{TimberImage(answer.image).src('medium')}}"/>
+                	{% else %}
+                	<div class="answer-text">
+                	    {{ answer.answer_label }}
+                	</div>
+                	{% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+        {% if q.answer_information %}
+        <div class="answer-information mobile">
+            {{q.answer_information|raw}}
+        </div>
+        {% endif %}
+    </div>
+    {% endfor %}
+
+    <div class="quiz-complete-panel">
+        <div class="cp-progress-anchor"></div>
+        <h1 class="cp-progress-text">0 questions of 20 answered</h1>
+        <div class="cp-progress is-static">
+            <ul class="cp-progress__items">
+                {% for q in quiz.get_field('questions') %}
+                <li data-number="{{loop.index}}">
+                    <div class="flipper">
+                        <div class="flipper__circle flipper__circle--front">
+                            <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+                            {{loop.index}}
+                        </div>
+                        <div class="flipper__circle flipper__circle--back">
+                            <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+                            {{loop.index}}
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="score-panel">
+            <img class="outcome-image"/>
+            <h3 class="score-panel__message">
+              You scored <span class="score-panel__message__score">0</span> out of <span class="score-panel__message__total">0</span>!
+            </h3>
+            <div class="score-panel__summary summary__meta"></div>
+            <div id="cp-quiz-share" class="addthis_sharing_toolbox"></div>
+            <script type="text/template" id="cp-quiz-message-bad">{{ quiz.score_bad|raw }}</script>
+            <script type="text/template" id="cp-quiz-message-okay">{{ quiz.score_okay }}</script>
+            <script type="text/template" id="cp-quiz-message-good">{{ quiz.score_good|raw }}</script>
+            <script type="text/template" id="cp-quiz-message-excellent">{{ quiz.score_excellent|raw }}</script>
+        </div>
+    </div>
+
+</div>
