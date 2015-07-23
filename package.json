@@ -1,7 +1,7 @@
 {
-  "name": "slm-wp-quiz-plugin",
+  "name": "slm-wp-promo-plugin",
   "version": "0.1.0",
-  "description": "Shortlist Media Quiz Plugin",
+  "description": "Shortlist Media Promo Plugin",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:ShortlistMedia/slm-wp-quiz-plugin.git"
+    "url": "git@bitbucket.org:ShortlistMedia/slm-wp-promo-plugin.git"
   },
   "author": "Shortlist Media",
   "license": "ISC",

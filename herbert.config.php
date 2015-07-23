@@ -13,7 +13,7 @@ return [
      */
     'requires' => [
         __DIR__ . '/app/customPostTypes.php',
-        __DIR__ . '/app/custom-fields/quiz.php',
+        __DIR__ . '/app/custom-fields/promo.php',
         __DIR__ . '/app/hooks.php',
     ],
 
@@ -56,21 +56,21 @@ return [
      * The routes to auto-load.
      */
     'routes' => [
-        // 'AgreableQuizPlugin' => __DIR__ . '/app/routes.php'
+        // 'AgreablePromoPlugin' => __DIR__ . '/app/routes.php'
     ],
 
     /**
      * The panels to auto-load.
      */
     'panels' => [
-        'AgreableQuizPlugin' => __DIR__ . '/app/panels.php'
+        'AgreablePromoPlugin' => __DIR__ . '/app/panels.php'
     ],
 
     /**
      * The APIs to auto-load.
      */
     'apis' => [
-        // 'AgreableQuizPlugin' => __DIR__ . '/app/api.php'
+        // 'AgreablePromoPlugin' => __DIR__ . '/app/api.php'
     ],
 
     /**
@@ -81,7 +81,7 @@ return [
      * when rendering a view in twig.
      */
     'views' => [
-        'AgreableQuizPlugin' => __DIR__ . '/resources/views'
+        'AgreablePromoPlugin' => __DIR__ . '/resources/views'
     ],
 
     /**
@@ -99,10 +99,10 @@ return [
     /**
      * Namespace used in ACF Panel definitions.
      */
-    'agreable_namespace' => 'agreable_quiz',
+    'agreable_namespace' => 'agreable_promo',
 
     /**
      *
      */
-    'agreable_pluginTitle'      => 'Quiz'
+    'agreable_pluginTitle'      => 'Promo'
 ];

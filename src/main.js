@@ -4,17 +4,17 @@ require('./stylus/main.styl')
 
 // Backbone.$ = $
 
-class Quiz extends Backbone.View {
+class Promo extends Backbone.View {
 
   // scrolled = false
 
   constructor (options) {
 
-    console.log('Quiz::constructor')
+    console.log('Promo::constructor')
     this.setElement(options.el)
     this.$el = $(options.el)
 
-    this.quizType = this.$el.data('quiz-type');
+    this.promoType = this.$el.data('promo-type');
     this.$questions = this.$('.question')
     this.$progressItems = this.$('.cp-progress__items li')
     this.scrollTimer = new Date()
@@ -58,13 +58,13 @@ class Quiz extends Backbone.View {
     $('html, body').animate({ scrollTop: newScrollTop } , speed)
   }
 
-  updateQuiz(){
+  updatePromo(){
     var numberAnswered = this.$('.answer.selected').length
     console.log(numberAnswered, this.$questions.length)
 
     if (numberAnswered >= this.$questions.length) {
       var score = this.$el.find('.selected[data-cor]').length
-      this.endQuiz(score)
+      this.endPromo(score)
     } else {
       var message = numberAnswered + ' of ' + this.$questions.length + ' answered'
       console.log(message)
@@ -94,18 +94,18 @@ class Quiz extends Backbone.View {
     this.$('.selected').each($.proxy(this.updateProgressBarItem, this))
   }
 
-  endQuiz(score) {
-    this.$el.addClass('quiz-complete')
+  endPromo(score) {
+    this.$el.addClass('promo-complete')
 
     // move to finish
-    $(window).scrollTop(this.$('.quiz-complete-panel').position().top - (($(window).height() /2) -100))
+    $(window).scrollTop(this.$('.promo-complete-panel').position().top - (($(window).height() /2) -100))
 
     $('.cp-progress-text').html('You\'re done!')
 
-    /* Reveal "Quiz complete!" */
+    /* Reveal "Promo complete!" */
     $('.score-panel').addClass('is-revealed')
 
-    if (this.quizType === 'score') {
+    if (this.promoType === 'score') {
       this.showScore(score)
     } else {
       console.log(this.getTextOutcome())
@@ -137,7 +137,7 @@ class Quiz extends Backbone.View {
     var $target = $(e.currentTarget);
     $target.parents('ul').find('.answer').removeClass('selected')
     $target.addClass('selected')
-    $target.parents('.quiz__question-container').addClass('answered')
+    $target.parents('.promo__question-container').addClass('answered')
 
     this.render()
   }
@@ -172,13 +172,13 @@ class Quiz extends Backbone.View {
 
     var message
     if (score <= 8) {
-      message = $('#cp-quiz-message-bad').html()
+      message = $('#cp-promo-message-bad').html()
     } else if (score <= 13) {
-      message = $('#cp-quiz-message-okay').html()
+      message = $('#cp-promo-message-okay').html()
     } else if (score <= 17) {
-      message = $('#cp-quiz-message-good').html()
+      message = $('#cp-promo-message-good').html()
     } else {
-      message = $('#cp-quiz-message-excellent').html()
+      message = $('#cp-promo-message-excellent').html()
     }
 
     $('.score-panel__summary').html(message)
@@ -191,7 +191,7 @@ class Quiz extends Backbone.View {
       $('.cp-progress li').each(function(index, el) {
         var $item = $(el)
         setTimeout(function() {
-          $item.addClass('quiz-complete')
+          $item.addClass('promo-complete')
         }, i++ * revealAnswerDuration)
       })
     }, revealOffest)
@@ -219,20 +219,20 @@ class Quiz extends Backbone.View {
 
     /* Show sharing */
     setTimeout(function() {
-      $('#cp-quiz-share').addClass('is-revealed')
+      $('#cp-promo-share').addClass('is-revealed')
     }, timeTakenToRevealAnswers + 2000)
 
   }
 
   render() {
-    this.updateQuiz()
+    this.updatePromo()
     this.updateProgressBar()
   }
 
 }
 
-var modules = $('.js-plugin-module[data-module="Quiz"]')
+var modules = $('.js-plugin-module[data-module="Promo"]')
 modules.each((index, el) => {
-  new Quiz({el:el})
+  new Promo({el:el})
 })
 

@@ -1,4 +1,4 @@
-<?php namespace AgreableQuizPlugin;
+<?php namespace AgreablePromoPlugin;
 
 class Helper {
 

@@ -2,9 +2,9 @@
 
 /**
  * @wordpress-plugin
- * Plugin Name:       Agreable Quiz Plugin
+ * Plugin Name:       Agreable Promo Plugin
  * Plugin URI:        http://shortlistmedia.co.uk
- * Description:       Created custom quizes.
+ * Description:       Created custom promoes.
  * Version:           0.1.0
  * Author:            Shortlist Media
  * Author URI:        http://shortlistmedia.co.uk

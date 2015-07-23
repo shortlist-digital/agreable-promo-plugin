@@ -1,6 +1,6 @@
-<?php namespace AgreableQuizPlugin\Hooks;
+<?php namespace AgreablePromoPlugin\Hooks;
 
-use AgreableQuizPlugin\Helper;
+use AgreablePromoPlugin\Helper;
 
 class TimberLoaderPaths {
 

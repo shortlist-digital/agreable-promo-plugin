@@ -12,13 +12,13 @@ if( function_exists('register_field_group') ):
 
 
 register_field_group(array (
-  'key' => 'quiz_definition',
-  'title' => 'Quiz Definition',
+  'key' => 'promo_definition',
+  'title' => 'Promo Definition',
   'fields' => array (
       array (
-          'key' => 'quiz_definition_quiz_type',
-          'label' => 'Quiz Type!',
-          'name' => 'quiz_type',
+          'key' => 'promo_definition_promo_type',
+          'label' => 'Promo Type!',
+          'name' => 'promo_type',
           'prefix' => '',
           'type' => 'select',
           'instructions' => 'Score outcome "You scored 15 out of 20!"
@@ -46,7 +46,7 @@ register_field_group(array (
           'readonly' => 0,
       ),
       array (
-          'key' => 'quiz_definition_score_bad',
+          'key' => 'promo_definition_score_bad',
           'label' => 'Score "bad" label',
           'name' => 'score_bad',
           'prefix' => '',
@@ -56,7 +56,7 @@ register_field_group(array (
           'conditional_logic' => array (
               array (
                   array (
-                      'field' => 'quiz_definition_quiz_type',
+                      'field' => 'promo_definition_promo_type',
                       'operator' => '==',
                       'value' => 'score',
                   ),
@@ -77,7 +77,7 @@ register_field_group(array (
           'disabled' => 0,
       ),
       array (
-          'key' => 'quiz_definition_score_okay_label',
+          'key' => 'promo_definition_score_okay_label',
           'label' => 'Score "okay" label',
           'name' => 'score_okay_label',
           'prefix' => '',
@@ -87,7 +87,7 @@ register_field_group(array (
           'conditional_logic' => array (
               array (
                   array (
-                      'field' => 'quiz_definition_quiz_type',
+                      'field' => 'promo_definition_promo_type',
                       'operator' => '==',
                       'value' => 'score',
                   ),
@@ -108,17 +108,17 @@ register_field_group(array (
           'disabled' => 0,
       ),
       array (
-          'key' => 'quiz_definition_score_good_label',
+          'key' => 'promo_definition_score_good_label',
           'label' => 'Score "good" label',
           'name' => 'score_good_label',
           'prefix' => '',
           'type' => 'text',
-          'instructions' => 'e.g. Nice going, there could be a career in answering quiz questions ahead of you',
+          'instructions' => 'e.g. Nice going, there could be a career in answering promo questions ahead of you',
           'required' => 0,
           'conditional_logic' => array (
               array (
                   array (
-                      'field' => 'quiz_definition_quiz_type',
+                      'field' => 'promo_definition_promo_type',
                       'operator' => '==',
                       'value' => 'score',
                   ),
@@ -139,7 +139,7 @@ register_field_group(array (
           'disabled' => 0,
       ),
       array (
-          'key' => 'quiz_definition_score_excellent',
+          'key' => 'promo_definition_score_excellent',
           'label' => 'Score "excellent" label',
           'name' => 'score_excellent',
           'prefix' => '',
@@ -149,7 +149,7 @@ register_field_group(array (
           'conditional_logic' => array (
               array (
                   array (
-                      'field' => 'quiz_definition_quiz_type',
+                      'field' => 'promo_definition_promo_type',
                       'operator' => '==',
                       'value' => 'score',
                   ),
@@ -170,17 +170,17 @@ register_field_group(array (
           'disabled' => 0,
       ),
       array (
-          'key' => 'quiz_definition_text_outcomes',
+          'key' => 'promo_definition_text_outcomes',
           'label' => 'Text outcomes',
           'name' => 'text_outcomes',
           'prefix' => '',
           'type' => 'repeater',
-          'instructions' => 'Add various outcomes to the quiz',
+          'instructions' => 'Add various outcomes to the promo',
           'required' => 1,
           'conditional_logic' => array (
               array (
                   array (
-                      'field' => 'quiz_definition_quiz_type',
+                      'field' => 'promo_definition_promo_type',
                       'operator' => '==',
                       'value' => 'text',
                   ),
@@ -199,7 +199,7 @@ register_field_group(array (
           'max' => 0,
           'sub_fields' => array (
               array (
-                  'key' => 'quiz_definition_text_outcomes_label',
+                  'key' => 'promo_definition_text_outcomes_label',
                   'label' => 'Title',
                   'name' => 'label',
                   'prefix' => '',
@@ -209,7 +209,7 @@ register_field_group(array (
                   'conditional_logic' => array (
                       array (
                           array (
-                              'field' => 'quiz_definition_quiz_type',
+                              'field' => 'promo_definition_promo_type',
                               'operator' => '==',
                               'value' => 'text',
                           ),
@@ -230,7 +230,7 @@ register_field_group(array (
                   'disabled' => 0,
               ),
               array (
-                  'key' => 'quiz_definition_text_outcomes_description',
+                  'key' => 'promo_definition_text_outcomes_description',
                   'label' => 'Description',
                   'name' => 'description',
                   'prefix' => '',
@@ -240,7 +240,7 @@ register_field_group(array (
                   'conditional_logic' => array (
                       array (
                           array (
-                              'field' => 'quiz_definition_quiz_type',
+                              'field' => 'promo_definition_promo_type',
                               'operator' => '==',
                               'value' => 'text',
                           ),
@@ -260,7 +260,7 @@ register_field_group(array (
                   'disabled' => 0,
               ),
               array (
-                  'key' => 'quiz_definition_text_outcomes_image',
+                  'key' => 'promo_definition_text_outcomes_image',
                   'label' => 'Image',
                   'name' => 'image',
                   'prefix' => '',
@@ -270,7 +270,7 @@ register_field_group(array (
                   'conditional_logic' => array (
                       array (
                           array (
-                              'field' => 'quiz_definition_quiz_type',
+                              'field' => 'promo_definition_promo_type',
                               'operator' => '==',
                               'value' => 'text',
                           ),
@@ -295,7 +295,7 @@ register_field_group(array (
           ),
       ),
       array (
-          'key' => 'quiz_definition_questions',
+          'key' => 'promo_definition_questions',
           'label' => 'Questions',
           'name' => 'questions',
           'prefix' => '',
@@ -316,7 +316,7 @@ register_field_group(array (
           'max' => 0,
           'sub_fields' => array (
               array (
-                  'key' => 'quiz_definition_questions_question',
+                  'key' => 'promo_definition_questions_question',
                   'label' => 'Question',
                   'name' => 'question',
                   'prefix' => '',
@@ -339,7 +339,7 @@ register_field_group(array (
                   'disabled' => 0,
               ),
               array (
-                  'key' => 'quiz_definition_questions_answers',
+                  'key' => 'promo_definition_questions_answers',
                   'label' => 'Answers',
                   'name' => 'answers',
                   'prefix' => '',
@@ -360,7 +360,7 @@ register_field_group(array (
                   'max' => 0,
                   'sub_fields' => array (
                       array (
-                          'key' => 'quiz_definition_questions_answers_answer_label',
+                          'key' => 'promo_definition_questions_answers_answer_label',
                           'label' => 'Answer label',
                           'name' => 'answer_label',
                           'prefix' => '',
@@ -383,7 +383,7 @@ register_field_group(array (
                           'disabled' => 0,
                       ),
                       array (
-                          'key' => 'quiz_definition_questions_answers_is_correct',
+                          'key' => 'promo_definition_questions_answers_is_correct',
                           'label' => 'Is correct',
                           'name' => 'is_correct',
                           'prefix' => '',
@@ -393,7 +393,7 @@ register_field_group(array (
                           'conditional_logic' => array (
                               array (
                                   array (
-                                      'field' => 'quiz_definition_quiz_type',
+                                      'field' => 'promo_definition_promo_type',
                                       'operator' => '==',
                                       'value' => 'score',
                                   ),
@@ -408,7 +408,7 @@ register_field_group(array (
                           'default_value' => 0,
                       ),
                       array (
-                          'key' => 'quiz_definition_questions_answers_text_outcome',
+                          'key' => 'promo_definition_questions_answers_text_outcome',
                           'label' => 'Text Outcome',
                           'name' => 'text_outcome',
                           'prefix' => '',
@@ -418,7 +418,7 @@ register_field_group(array (
                           'conditional_logic' => array (
                               array (
                                   array (
-                                      'field' => 'quiz_definition_quiz_type',
+                                      'field' => 'promo_definition_promo_type',
                                       'operator' => '==',
                                       'value' => 'text',
                                   ),
@@ -453,7 +453,7 @@ register_field_group(array (
                           'readonly' => 0,
                       ),
                       array (
-                          'key' => 'widget_quiz_questions_answers_image',
+                          'key' => 'widget_promo_questions_answers_image',
                           'label' => 'Image',
                           'name' => 'image',
                           'prefix' => '',
@@ -480,7 +480,7 @@ register_field_group(array (
                   ),
               ),
               array (
-                  'key' => 'widget_quiz_questions_image',
+                  'key' => 'widget_promo_questions_image',
                   'label' => 'Image',
                   'name' => 'image',
                   'prefix' => '',
@@ -505,17 +505,17 @@ register_field_group(array (
                   'mime_types' => '',
               ),
               array (
-                  'key' => 'widget_quiz_questions_legacy_image',
+                  'key' => 'widget_promo_questions_legacy_image',
                   'label' => 'Legacy image URL',
                   'name' => 'legacy_image',
                   'prefix' => '',
                   'type' => 'text',
-                  'instructions' => 'Only use this with old-style quizzes',
+                  'instructions' => 'Only use this with old-style promozes',
                   'required' => 0,
                   'conditional_logic' => array (
                       array (
                           array (
-                              'field' => 'quiz_definition_quiz_type',
+                              'field' => 'promo_definition_promo_type',
                               'operator' => '==',
                               'value' => 'score',
                           ),
@@ -536,7 +536,7 @@ register_field_group(array (
                   'disabled' => 0,
               ),
               array (
-                  'key' => 'widget_quiz_questions_answer_information',
+                  'key' => 'widget_promo_questions_answer_information',
                   'label' => 'Answer Information',
                   'name' => 'answer_information',
                   'prefix' => '',
@@ -546,7 +546,7 @@ register_field_group(array (
                   'conditional_logic' => array (
                       array (
                           array (
-                              'field' => 'quiz_definition_quiz_type',
+                              'field' => 'promo_definition_promo_type',
                               'operator' => '==',
                               'value' => 'score',
                           ),
@@ -573,7 +573,7 @@ register_field_group(array (
           array (
               'param' => 'post_type',
               'operator' => '==',
-              'value' => 'quiz',
+              'value' => 'promo',
           ),
       ),
   ),

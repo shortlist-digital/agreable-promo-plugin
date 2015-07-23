@@ -1,17 +1,17 @@
 @import 'nib'
 // @import 'stylus/variables'
 
-.widget-quiz
+.widget-promo
   user-select none
 
-/* Module/Block: Quiz */
-.quiz
+/* Module/Block: Promo */
+.promo
   background transparent
 
-.quiz ul
+.promo ul
   overflow hidden
 
-.quiz__question-container
+.promo__question-container
   position relative
 
 /* Module/Block: Question */
@@ -86,16 +86,16 @@
   width 90%
   margin 5%
 
-/* Module/Block: Quiz Complete Panel */
-.quiz-complete-panel
+/* Module/Block: Promo Complete Panel */
+.promo-complete-panel
   border-top 1px solid #dcdcdc
   padding-top 30px
   margin-bottom -3px
 
-.quiz-complete-panel h1
+.promo-complete-panel h1
   margin-bottom 10px
 
-/* Module/Block: Quiz Complete Panel Progress */
+/* Module/Block: Promo Complete Panel Progress */
 .cp-progress
   position: static;
 
@@ -230,15 +230,15 @@
 li.answered .flipper
   transform: rotateY(180deg);
 
-.quiz-complete.answered .flipper
+.promo-complete.answered .flipper
   transform: rotateY(0deg);
   color: white;
 
-.quiz-complete.correct .flipper__circle
+.promo-complete.correct .flipper__circle
   background-color: rgb(34, 134, 34);
   color: white;
 
-.quiz-complete.incorrect .flipper__circle
+.promo-complete.incorrect .flipper__circle
   background-color: #DD371E;
   color: white;
 
@@ -274,7 +274,7 @@ li.answered .flipper
   background: rgb(234, 234, 234);
   top: -10px;
 
-.quiz-complete .answer-information
+.promo-complete .answer-information
   display: block;
 
 .answer-information.is-revealed
@@ -288,13 +288,13 @@ li.answered .flipper
 
 /*
 
-.quiz-complete-panel h2, #cp-quiz-share, .cp-more, #cp-quiz {
+.promo-complete-panel h2, #cp-promo-share, .cp-more, #cp-promo {
   opacity: 0;
   -webkit-transition: opacity 1s;
   transition: opacity 1s;
 }
 
-.cp-more, #cp-quiz-share
+.cp-more, #cp-promo-share
   opacity 0
 }
 
@@ -304,34 +304,34 @@ li.answered .flipper
   letter-spacing: 1px;
 }
 
-.ie-old #cp-quiz .cp-progress li.answered .flipper, .ie-old #cp-quiz .cp-progress .front {
+.ie-old #cp-promo .cp-progress li.answered .flipper, .ie-old #cp-promo .cp-progress .front {
   transform: rotateY(0deg) !important;
 }
 
-.ie-old #cp-quiz .cp-progress li {
+.ie-old #cp-promo .cp-progress li {
   line-height: 28px;
 }
 
-.ie-old #cp-quiz .cp-progress li.answered .back {
+.ie-old #cp-promo .cp-progress li.answered .back {
   display: none;
 }
-.ie-old #cp-quiz .cp-progress li .flipper .front {
+.ie-old #cp-promo .cp-progress li .flipper .front {
   background-color: #7d7e7f;
 }
-.ie-old #cp-quiz .cp-progress li.answered .flipper .front {
+.ie-old #cp-promo .cp-progress li.answered .flipper .front {
   background-color: #000;
 }
-.ie-old #cp-quiz .cp-progress li .front, .chrome.windows #cp-quiz .cp-progress li .front, .chrome.windows #cp-quiz .cp-progress li .back {
+.ie-old #cp-promo .cp-progress li .front, .chrome.windows #cp-promo .cp-progress li .front, .chrome.windows #cp-promo .cp-progress li .back {
   padding-top: 0px;
 }
-.ie-old #cp-quiz .cp-progress li.quiz-complete.correct .flipper .front {
+.ie-old #cp-promo .cp-progress li.promo-complete.correct .flipper .front {
   background-color: rgb(34, 134, 34);
 }
-.ie-old #cp-quiz .cp-progress li.quiz-complete.incorrect .flipper .front {
+.ie-old #cp-promo .cp-progress li.promo-complete.incorrect .flipper .front {
   background-color: #DD371E;
 }
 
-.ie-old #cp-quiz .cp-progress.cp-static  ul {
+.ie-old #cp-promo .cp-progress.cp-static  ul {
   width: 110%;
 }
 */

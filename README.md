@@ -1,4 +1,4 @@
-Shortlist Media Wordpress Quiz Plugin
+Shortlist Media Wordpress Promo Plugin
 ===============
 
 Wordpress Plugin built  for Croissant stack using [Herbert](http://getherbert.com/) plugin framework.
@@ -27,7 +27,7 @@ Parent theme will include the plugin Twig templates and render using Timber (see
 * `/app/hooks/slm_plugin_enqueue.php`  
 Just before rendering the plugin template, the parent theme calls Wordpress `do_action('acf_{{name}}_enqueue')`. e.g. (using Timber):  
 `{% do action('slm_'~widget.acf_fc_layout~'_enqueue', widget) %}`  
-The hook name is constructed from the ACF Field Group 'name' in `widget-loader-acf.php`. e.g. 'acf_quiz_plugin_enqueue'
+The hook name is constructed from the ACF Field Group 'name' in `widget-loader-acf.php`. e.g. 'acf_promo_plugin_enqueue'
 
 #### Configurable plugin options for Wordpress installation 
 * `app/panels.php`  
@@ -36,9 +36,9 @@ Adds Settings panel for installation specific configuration. Uses ACF definition
 ##### Using ACF to create panels in Post Type menu
 ```
 acf_add_options_sub_page(array(
-  'page_title'  => 'Quiz Style Settings',
-  'menu_title'  => 'Quiz Settings',
-  'parent_slug' => 'edit.php?post_type=quiz',
+  'page_title'  => 'Promo Style Settings',
+  'menu_title'  => 'Promo Settings',
+  'parent_slug' => 'edit.php?post_type=promo',
 ));
 ```
 
@@ -51,9 +51,9 @@ array (
     array (
       'param' => 'options_page',
       'operator' => '==',
-      'value' => 'acf-options-quiz-settings',
+      'value' => 'acf-options-promo-settings',
     ),
   ),
 ),
 ```
-Note: If `acf_add_options_sub_page` is given 'menu_title' of 'Quiz Settings', the location 'value' is 'acf-options-quiz-settings' (as above).
+Note: If `acf_add_options_sub_page` is given 'menu_title' of 'Promo Settings', the location 'value' is 'acf-options-promo-settings' (as above).

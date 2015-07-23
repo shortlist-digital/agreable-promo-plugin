@@ -1,8 +1,8 @@
-<?php namespace AgreableQuizPlugin;
+<?php namespace AgreablePromoPlugin;
 
-use AgreableQuizPlugin\Helper;
+use AgreablePromoPlugin\Helper;
 // $ns = Helper::get('agreable_namespace');
-$ns = 'agreable_quiz';
+$ns = 'agreable_promo';
 
 /*
  * Although we're in the Herbert panel file, we're not using any built in
@@ -13,12 +13,12 @@ $ns = 'agreable_quiz';
 
 acf_add_options_sub_page(array(
   'page_title'  => 'Style Settings',
-  'menu_title'  => 'Quiz Settings',
-  'parent_slug' => 'edit.php?post_type=quiz',
+  'menu_title'  => 'Promo Settings',
+  'parent_slug' => 'edit.php?post_type=promo',
 ));
 
 // Constructed using (lowercased and hyphenated) 'menu_title' from above.
-$options_page_name = 'acf-options-quiz-settings';
+$options_page_name = 'acf-options-promo-settings';
 
 if( function_exists('register_field_group') ):
 
