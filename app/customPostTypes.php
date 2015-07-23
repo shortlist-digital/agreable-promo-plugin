@@ -5,17 +5,17 @@
 \add_action( 'init', function()
 {
     $labels = array(
-        'name'                => _x( 'Promozes', 'Post Type General Name', 'text_domain' ),
+        'name'                => _x( 'Promos', 'Post Type General Name', 'text_domain' ),
         'singular_name'       => _x( 'Promo', 'Post Type Singular Name', 'text_domain' ),
-        'menu_name'           => __( 'Promozes', 'text_domain' ),
+        'menu_name'           => __( 'Promos', 'text_domain' ),
         'parent_item_colon'   => __( 'Parent Item:', 'text_domain' ),
-        'all_items'           => __( 'All Promozes', 'text_domain' ),
+        'all_items'           => __( 'All Promos', 'text_domain' ),
         'view_item'           => __( 'View Promo', 'text_domain' ),
         'add_new_item'        => __( 'Add New Promo', 'text_domain' ),
         'add_new'             => __( 'Add New', 'text_domain' ),
         'edit_item'           => __( 'Edit Promo', 'text_domain' ),
         'update_item'         => __( 'Update Promo', 'text_domain' ),
-        'search_items'        => __( 'Search Promozes', 'text_domain' ),
+        'search_items'        => __( 'Search Promos', 'text_domain' ),
         'not_found'           => __( 'Not found', 'text_domain' ),
         'not_found_in_trash'  => __( 'Not found in Trash', 'text_domain' ),
     );

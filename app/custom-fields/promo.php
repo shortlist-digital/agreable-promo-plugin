@@ -510,7 +510,7 @@ register_field_group(array (
                   'name' => 'legacy_image',
                   'prefix' => '',
                   'type' => 'text',
-                  'instructions' => 'Only use this with old-style promozes',
+                  'instructions' => 'Only use this with old-style promos',
                   'required' => 0,
                   'conditional_logic' => array (
                       array (
