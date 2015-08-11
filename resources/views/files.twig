@@ -1,7 +1,12 @@
+<script>
+  {{js_string|raw}}
+</script>
+
 <style>
 
     {# Common plugin CSS. #}
     {% include common_css_path %}
+
 
     {#
         Configurable CSS values provided through WP settings panel.
@@ -14,6 +19,8 @@
     }
 
     {# Free text CSS also provided through WP settings panel. #}
-    {{ plugin_settings_free_text }}
+    {% filter raw %}
+      {{ plugin_settings_free_text}}
+    {% endfilter %}
 
 </style>

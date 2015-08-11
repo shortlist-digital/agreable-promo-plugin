@@ -98,7 +98,7 @@ register_field_group(array (
       'placeholder' => '',
       'maxlength' => '',
       'rows' => '',
-      'new_lines' => 'wpautop',
+      'new_lines' => '',
       'readonly' => 0,
       'disabled' => 0,
     ),

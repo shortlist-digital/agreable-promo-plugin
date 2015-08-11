@@ -14,7 +14,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.styl$/, loader: ExtractTextPlugin.extract("style", "css!stylus")},
-      { test: /\.js$/, exclude:'node_modules', loader: 'babel' },
+      { test: /\.js$/, exclude:'node_modules', loader: 'babel-loader?stage=0&loose=all' },
     ]
   },
 

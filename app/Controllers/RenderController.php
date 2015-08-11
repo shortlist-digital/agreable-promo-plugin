@@ -6,9 +6,6 @@ class RenderController {
 
   public function enqueue(){
 
-    // Enqueue scripts.
-    wp_enqueue_script( 'agreable_promo_script', Helper::assetUrl('app.js'), array(), '1.0.0', true );
-
     /*
      * @AgreablePromoPlugin is a Twig namespace which Herbert generates from
      * values in herbert.config.php.
@@ -20,8 +17,11 @@ class RenderController {
      */
 
     $ns = Helper::get('agreable_namespace');
-    echo view('@AgreablePromoPlugin/styles.twig', [
+    $location = realpath(__DIR__."../../../resources/assets/");
+    $js_string = file_get_contents($location."/app.js");
+    echo view('@AgreablePromoPlugin/files.twig', [
         'common_css_path'   => Helper::asset('styles.css'),
+        'js_string' => $js_string,
         'plugin_settings_property_primary_colour'      => get_field($ns.'_plugin_settings_property_primary_colour', 'option'),
         'plugin_settings_property_secondary_colour'    => get_field($ns.'_plugin_settings_property_secondary_colour', 'option'),
         'plugin_settings_property_font_family'         => get_field($ns.'_plugin_settings_property_font_family', 'option'),
