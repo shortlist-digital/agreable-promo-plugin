@@ -1,6 +1,8 @@
 .agreable-promo__label {
+  display: block;
   font-weight: bold;
-  margin-bottom: 5px;
+  padding-top: 5px;
+  margin-bottom: 2px;
 }
 .agreable-promo__input {
   border-style: solid;
@@ -19,4 +21,19 @@
 }
 .agreable-promo__input--valid {
   border-color: #008000;
+}
+@media (min-width: 767px) {
+  .agreable-promo--half {
+    box-sizing: border-box;
+    float: left;
+    margin-bottom: 10px;
+    max-width: 50%;
+    width: calc(50% - 10px);
+  }
+  .agreable-promo--half:nth-child(odd) {
+    margin-right: 10px;
+  }
+  .agreable-promo--half:nth-child(even) {
+    margin-left: 10px;
+  }
 }

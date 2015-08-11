@@ -2,7 +2,8 @@ var React = require('react')
 
 var Optins = require('./optins.js')
 var Email = require('./email.js')
-var Name = require('./name.js')
+var FullName = require('./full-name.js')
+var Address = require('./address.js')
 
 class Form extends React.Component {
   constructor () {
@@ -19,6 +20,20 @@ class Form extends React.Component {
       console.log('yes fields')
       this.props.fields.map((field, index) => {
         switch (field) {
+          case 'fullName':
+            fields.push(
+              <FullName
+                reportFirstName={this._handleFirstName}
+                reportLastName={this._handleLastName}
+              />
+            )
+            break
+          case 'address':
+            fields.push(
+              <Address
+                reportAddress={this._handleAddress}/>
+            )
+            break
           case 'email':
             fields.push(
               <Email
@@ -31,15 +46,26 @@ class Form extends React.Component {
     return fields
   }
 
+  _handleAddress = (addressObject) => {
+    console.log('form reporting addressObject: ', addressObject) 
+  }
+
   _handleEmail = (emailString) => {
     console.log('form reporting emailString: ', emailString) 
+  }
+
+  _handleFirstName = (firstNameString) => {
+    console.log('form reporting firstNameString: ', firstNameString) 
+  }
+
+  _handleLastName = (lastNameString) => {
+    console.log('form reporting lastNameString: ', lastNameString) 
   }
 
   render () {
     var fields = this._buildFormByField()
     return (
       <div>
-        <h2>This is a form</h2>
         {fields}
         <Optins
           optins={this.props.optins}

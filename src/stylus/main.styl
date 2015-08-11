@@ -1,6 +1,8 @@
 .agreable-promo__label
+  display block
   font-weight bold
-  margin-bottom 5px
+  padding-top 5px
+  margin-bottom 2px
 
 .agreable-promo__input
   border-style solid
@@ -17,3 +19,17 @@
     border-color red
   &--valid
     border-color green
+
+.agreable-promo--half
+  @media (min-width:767px)
+    box-sizing border-box
+    float left
+    margin-bottom 10px
+    max-width 50%
+    width calc(50% - 10px)
+    &:nth-child(odd)
+      margin-right 10px
+    &:nth-child(even)
+      margin-left 10px
+
+  

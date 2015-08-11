@@ -19,7 +19,7 @@ class Email extends React.Component {
       isInvalid: !valid
     })
 
-    if (!isInvalid) {
+    if (valid) {
       this.props.reportEmail(event.target.value)
     }
   }
