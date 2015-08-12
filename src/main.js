@@ -7,12 +7,40 @@ var Form = require('./components/form.js')
 class AgreablePromotion extends React.Component {
   constructor () {
     super()
+    this.state = {
+      started: true,   
+      open: false,
+      closed: true
+    }
   }
+  componentDidMount () {
+    this.setState({
+      open: this.props.startTime <= this._now(),
+      closed: this.props.endTime > this._now()
+    })
+  }
+
+  _now () {
+    return Math.floor(new Date().getTime() / 1000)
+  }
+
+  _start = () => {
+    this.setState({
+      started: true
+    })
+  }
+
   render () {
     var data = window.agreablePromoData
-    return (
-      <Form {...data} />
-    )
+    if (this.state.started) {
+      return (
+        <Form {...data} />
+      )
+    } else {
+      return (
+        <button onClick={this._start} className="agreable-promo__enter-button">Enter</button> 
+      )
+    }
   }
 }
 

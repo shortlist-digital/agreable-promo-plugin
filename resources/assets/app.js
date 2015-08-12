@@ -60,14 +60,47 @@
 	  _inherits(AgreablePromotion, _React$Component);
 
 	  function AgreablePromotion() {
+	    var _this = this;
+
 	    _classCallCheck(this, AgreablePromotion);
 
 	    _React$Component.call(this);
+
+	    this._start = function () {
+	      _this.setState({
+	        started: true
+	      });
+	    };
+
+	    this.state = {
+	      started: true,
+	      open: false,
+	      closed: true
+	    };
 	  }
+
+	  AgreablePromotion.prototype.componentDidMount = function componentDidMount() {
+	    this.setState({
+	      open: this.props.startTime <= this._now(),
+	      closed: this.props.endTime > this._now()
+	    });
+	  };
+
+	  AgreablePromotion.prototype._now = function _now() {
+	    return Math.floor(new Date().getTime() / 1000);
+	  };
 
 	  AgreablePromotion.prototype.render = function render() {
 	    var data = window.agreablePromoData;
-	    return React.createElement(Form, data);
+	    if (this.state.started) {
+	      return React.createElement(Form, data);
+	    } else {
+	      return React.createElement(
+	        'button',
+	        { onClick: this._start, className: 'agreable-promo__enter-button' },
+	        'Enter'
+	      );
+	    }
 	  };
 
 	  return AgreablePromotion;
