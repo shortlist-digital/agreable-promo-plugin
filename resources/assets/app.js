@@ -162,6 +162,7 @@
 	      'div',
 	      null,
 	      fields,
+	      React.createElement('hr', { style: { marginTop: '32px' } }),
 	      React.createElement(Optins, {
 	        optins: this.props.optins
 	      })
@@ -204,9 +205,15 @@
 	  _inherits(Optins, _React$Component);
 
 	  function Optins() {
+	    var _this = this;
+
 	    _classCallCheck(this, Optins);
 
 	    _React$Component.apply(this, arguments);
+
+	    this.componentDidMount = function () {
+	      console.log(_this.props);
+	    };
 	  }
 
 	  Optins.prototype.render = function render() {
