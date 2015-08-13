@@ -4,19 +4,23 @@ window.React = window.React || require('react')
 
 var Form = require('./components/form.js')
 
+var clockFace = require('./clock-face.svg')
+var moment = require('moment')
+
 class AgreablePromotion extends React.Component {
   constructor () {
     super()
+    this.data = window.agreablePromoData
     this.state = {
-      started: true,   
+      started: false,   
       open: false,
       closed: true
     }
   }
   componentDidMount () {
     this.setState({
-      open: this.props.startTime <= this._now(),
-      closed: this.props.endTime > this._now()
+      open: this.data.startTime <= this._now(),
+      closed: this.data.endTime < this._now()
     })
   }
 
@@ -31,12 +35,26 @@ class AgreablePromotion extends React.Component {
   }
 
   render () {
-    var data = window.agreablePromoData
-    if (this.state.started) {
+    var data = this.data
+    if (this.state.started && this.state.open && !this.state.closed) {
       return (
         <Form {...data} />
       )
-    } else {
+    } else if (!this.state.open && !this.state.closed) {
+      return (
+        <div classNmae="agreable-promo__not-open">
+          <div className="agreable-promo__time-icon" dangerouslySetInnerHTML={{__html: clockFace}}></div>
+          <h2 className="agreable-promo__time-message">Opens {moment(new Date(data.startTime*1000)).fromNow()} </h2>
+        </div>
+      )
+    } else if (this.state.open && this.state.closed) {
+      return (
+        <div classNmae="agreable-promo__not-open">
+          <div className="agreable-promo__time-icon" dangerouslySetInnerHTML={{__html: clockFace}}></div>
+          <h2 className="agreable-promo__time-message">Sorry. This expired {moment(new Date(data.startTime*1000)).fromNow()} </h2>
+        </div>
+      )
+    } else if (this.state.open ** !this.state.closed && !this.state.started) {
       return (
         <button onClick={this._start} className="agreable-promo__enter-button">Enter</button> 
       )

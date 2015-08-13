@@ -67,7 +67,6 @@ class Form extends React.Component {
     return (
       <div>
         {fields}
-        <hr style={{marginTop:'32px'}}/>
         <Optins
           optins={this.props.optins}
         />

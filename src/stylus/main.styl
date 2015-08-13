@@ -1,3 +1,5 @@
+@import 'nib'
+
 .promo_plugin
   padding 0px !important
   margin 0px !important
@@ -36,4 +38,48 @@
     &:nth-child(even)
       margin-left 10px
 
-  
+.agreable-promo__time-icon
+  clearfix()
+  margin auto
+  max-height 60px
+  position relative
+  width 60px
+  svg
+    max-width 100%
+ 
+.agreable-promo__time-message
+  text-align center
+
+.agreable-promo__optin
+  clearfix()
+  cursor pointer
+  margin-top 12px
+  label
+    cursor pointer
+
+.agreable-promo__checkbox
+  cursor pointer
+  margin 0 1em 0 0 
+  outline none
+  position relative
+  top -5px
+  user-select none
+  &:after, &:before
+    background white
+    content " "
+    left 0
+    position absolute
+    top 0
+    height 16px
+    width 16px
+  &:after
+    border 2px solid #eaeaea
+    z-index 20
+  &:checked
+    &:before
+      background transparent
+      content "✔︎"
+      text-align center
+      top 1px
+      z-index 30
+
