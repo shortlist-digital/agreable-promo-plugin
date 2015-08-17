@@ -1,0 +1,36 @@
+{
+  "userData": {
+    "email": "",
+    "firstName": "",
+    "lastName": "",
+    "addressOne": "",
+    "addressTwo": "",
+    "addressThree": "",
+    "postcode": "",
+    "competitionCorrect": ""
+  },
+  "promoData": {
+    "id": 139,
+    "location": "/competitions/jons-competition-test",
+    "site": "local.emeraldstreet.com",
+    "fields": [
+      "email",
+      "fullName",
+      "address"
+    ],
+    "optins": [
+      {
+        "optin_name": "Burger King",
+        "optin_label": "I would like to receive updates from Burger King"
+      },
+      {
+        "optin_name": "Chicken Cottage",
+        "optin_label": "I would like to hear about Chicken Cottage chicken burgers"
+      }
+    ],
+    "terms_and_conditions_label": "I accept the terms and conditions",
+    "terms_and_conditions": "Aenean a efficitur massa. Phasellus nec posuere diam. Suspendisse faucibus, libero sed elementum tempus, arcu ligula consectetur diam, sed aliquet arcu ex et tortor. Nulla sed euismod massa. Donec lorem eros, pellentesque sit amet aliquet luctus, dapibus sed lacus. Sed at dui id nibh venenatis tincidunt. Morbi sit amet lacus non arcu lacinia consectetur dictum at urna. Ut maximus vulputate justo vel imperdiet. Proin quis enim eu leo consectetur feugiat. Nunc eget nulla feugiat, blandit felis id, semper nisl. Mauris ac molestie purus. Nulla dapibus fringilla vulputate. Curabitur placerat erat vitae purus elementum pulvinar.",
+    "startTime": "1439368200",
+    "endTime": "1440633600"
+  }
+}

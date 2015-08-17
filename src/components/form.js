@@ -1,6 +1,7 @@
 var React = require('react')
 
 var Optins = require('./optins.js')
+var Terms = require('./terms.js')
 var Email = require('./email.js')
 var FullName = require('./full-name.js')
 var Address = require('./address.js')
@@ -69,6 +70,10 @@ class Form extends React.Component {
         {fields}
         <Optins
           optins={this.props.optins}
+        />
+        <Terms
+          termsAndConditionsLabel={this.props.terms_and_conditions_label}
+          termsAndConditions={this.props.terms_and_conditions}
         />
       </div>
     )

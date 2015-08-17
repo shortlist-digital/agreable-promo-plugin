@@ -158,6 +158,7 @@
 	var React = __webpack_require__(4);
 
 	var Optins = __webpack_require__(7);
+	var Terms = __webpack_require__(257);
 	var Email = __webpack_require__(8);
 	var FullName = __webpack_require__(9);
 	var Address = __webpack_require__(10);
@@ -227,6 +228,10 @@
 	      fields,
 	      React.createElement(Optins, {
 	        optins: this.props.optins
+	      }),
+	      React.createElement(Terms, {
+	        termsAndConditionsLabel: this.props.terms_and_conditions_label,
+	        termsAndConditions: this.props.terms_and_conditions
 	      })
 	    );
 	  };
@@ -27188,6 +27193,65 @@
 
 	module.exports = toArray;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(123)))
+
+/***/ },
+/* 257 */
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var React = __webpack_require__(4);
+
+	var Terms = (function (_React$Component) {
+	  _inherits(Terms, _React$Component);
+
+	  function Terms() {
+	    _classCallCheck(this, Terms);
+
+	    _React$Component.apply(this, arguments);
+	  }
+
+	  Terms.prototype.render = function render() {
+	    return React.createElement(
+	      "div",
+	      null,
+	      React.createElement(
+	        "label",
+	        { className: "agreable-promo__label" },
+	        "Terms & Conditions:"
+	      ),
+	      React.createElement(
+	        "textarea",
+	        { className: "agreable-promo__textarea", disabled: "true" },
+	        this.props.termsAndConditions
+	      ),
+	      React.createElement(
+	        "div",
+	        { className: "agreable-promo__optin" },
+	        React.createElement(
+	          "label",
+	          { className: "agreable-promo__checkbox-label" },
+	          React.createElement("input", {
+	            type: "checkbox",
+	            className: "agreable-promo__checkbox",
+	            name: "terms-and-conditions",
+	            onChange: this.props.reportTermsAccepted,
+	            value: this.props.checked
+	          }),
+	          this.props.termsAndConditionsLabel
+	        )
+	      )
+	    );
+	  };
+
+	  return Terms;
+	})(React.Component);
+
+	module.exports = Terms;
 
 /***/ }
 /******/ ]);
