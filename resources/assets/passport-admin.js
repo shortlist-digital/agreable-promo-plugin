@@ -30,7 +30,6 @@ PassportSelect = (function() {
       return false 
     }
     else {
-      
       var data = JSON.parse(val)
       console.log ('updated :', data)
       return data
@@ -117,6 +116,9 @@ PassportSelect = (function() {
   }
 
   PassportSelect.prototype.populatePassportSelect = function(passports) {
+    if (this.currentPassport == false) {
+      this.$select.append($('<option>').html('Select a passport').attr('selected', true))
+    }
     this.passports = passports
     passports.map(function(passport, index) {
 
