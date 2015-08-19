@@ -8,6 +8,8 @@ if ( ! class_exists( 'ACF' ) ) {
   return;
 }
 
+$passport_brand_id  = get_field('passport_brand_identifier', 'option');
+
 if( function_exists('acf_add_local_field_group') ):
 
 acf_add_local_field_group(array (
@@ -297,6 +299,48 @@ acf_add_local_field_group(array (
       'picker' => 'slider',
       'save_as_timestamp' => 'true',
       'get_as_timestamp' => 'true',
+    ),
+    array(
+      'key' => 'passport_brand_identifier_promo',
+      'label' => 'passport_brand_identifier_promo',
+      'name' => 'passport_brand_identifier_promo',
+      'type' => 'text',
+      'instructions' => 'This is the default brand identifier for this site, generally you should not need to change this',
+      'required' => 1,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => ''
+      ),
+      'default_value' => $passport_brand_id,
+      'placeholder' => 'Passport Brand Identifier',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+      'readonly' => 1,
+      'disabled' => 1
+    ),
+    array(
+      'key' => 'selected_passport',
+      'label' => 'selected_passport',
+      'name' => 'selected_passport',
+      'type' => 'text',
+      'instructions' => 'This is a field for the currently selected passport. If you can see this there is a bug as it should be hidden!',
+      'required' => 1,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => ''
+      ),
+      'default_value' => '',
+      'placeholder' => 'selected_passport',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+      'readonly' => 0,
+      'disabled' => 0
     ),
     array (
       'key' => 'promo_passport',

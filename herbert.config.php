@@ -49,7 +49,7 @@ return [
      * The widgets to auto-load.
      */
     'enqueue' => [
-        // __DIR__ . '/app/enqueue.php'
+        __DIR__ . '/app/enqueue.php'
     ],
 
     /**
