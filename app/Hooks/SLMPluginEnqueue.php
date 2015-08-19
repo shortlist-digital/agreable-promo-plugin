@@ -1,6 +1,8 @@
 <?php namespace AgreablePromoPlugin\Hooks;
 
+use AgreablePromoPlugin\Helper;
 use AgreablePromoPlugin\Controllers\RenderController;
+use Herbert\Framework\Enqueue;
 
 class SLMPluginEnqueue {
 

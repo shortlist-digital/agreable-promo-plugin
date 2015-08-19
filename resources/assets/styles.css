@@ -121,3 +121,7 @@
   min-width: 100%;
   padding: 10px;
 }
+.agreable-promo__submit-button {
+  margin-top: 12px;
+  max-width: 300px;
+}

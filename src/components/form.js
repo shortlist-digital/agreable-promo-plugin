@@ -75,6 +75,7 @@ class Form extends React.Component {
           termsAndConditionsLabel={this.props.terms_and_conditions_label}
           termsAndConditions={this.props.terms_and_conditions}
         />
+        <button className="agreable-promo__submit-button">Submit</button>
       </div>
     )
   }

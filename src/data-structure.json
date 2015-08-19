@@ -3,37 +3,44 @@
     "email": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "firstName": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "lastName": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "addressOne": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "addressTwo": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "addressThree": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "postcode": {
       "value": "",
       "valid": false,
-      "initial": true
+      "initial": true,
+      "required": true
     },
     "competitionAnswer": {
       "value": null

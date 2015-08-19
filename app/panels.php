@@ -12,7 +12,7 @@ $ns = 'agreable_promo';
  */
 
 acf_add_options_sub_page(array(
-  'page_title'  => 'Style Settings',
+  'page_title'  => 'Promo Settings',
   'menu_title'  => 'Promo Settings',
   'parent_slug' => 'edit.php?post_type=promo',
 ));
@@ -26,6 +26,27 @@ register_field_group(array (
   'key' => 'group_'.$ns.'_plugin',
   'title' => 'Display Settings',
   'fields' => array (
+    array (
+      'key' => 'passport_brand_identifier',
+      'label' => 'Passport Brand Identifier',
+      'name' => 'passport_brand_identifier',
+      'type' => 'text',
+      'instructions' => 'Enter the passport identifier for the brand associated with this site. Normally this will be all lower case "brandname", i.e "mrhyde", check with Digital Operations team if you don\'t know what to put here',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => 'lowercasebrandname',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+      'readonly' => 0,
+      'disabled' => 0,
+    ),
     array (
       'key' => $ns.'_plugin_field_'.$ns.'_primary_color',
       'label' => 'Primary Colour',

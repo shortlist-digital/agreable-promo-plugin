@@ -232,7 +232,12 @@
 	      React.createElement(Terms, {
 	        termsAndConditionsLabel: this.props.terms_and_conditions_label,
 	        termsAndConditions: this.props.terms_and_conditions
-	      })
+	      }),
+	      React.createElement(
+	        'button',
+	        { className: 'agreable-promo__submit-button' },
+	        'Submit'
+	      )
 	    );
 	  };
 

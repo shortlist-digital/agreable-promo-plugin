@@ -297,7 +297,34 @@ acf_add_local_field_group(array (
       'picker' => 'slider',
       'save_as_timestamp' => 'true',
       'get_as_timestamp' => 'true',
-    )
+    ),
+    array (
+      'key' => 'promo_passport',
+      'label' => 'Promotion Passport',
+      'name' => 'promotion_passport',
+      'type' => 'select',
+      'instructions' => 'We need to save the data for this promotion somewhere. Choose the passport you\'d like to save this data into. If you\'re not sure what Passports are, or have never heard of "Calais", our internal database, then contact a member of the Digital Operations team.',
+      'required' => 1,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'choices' => array (
+        '' => '',
+      ),
+      'default_value' => array (
+        '' => '',
+      ),
+      'allow_null' => 0,
+      'multiple' => 0,
+      'ui' => 0,
+      'ajax' => 0,
+      'placeholder' => '',
+      'disabled' => 0,
+      'readonly' => 0,
+    ),
   ),
   'location' => array (
     array (
