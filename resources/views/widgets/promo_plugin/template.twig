@@ -11,16 +11,25 @@
           "email"{% if promo.get_field('data_to_capture')|length > 0 %},{% for type in promo.get_field('data_to_capture') %}"{{type}}"{% if not loop.last %},{% endif %}{% endfor %}{% endif %}
         ],
         {% if promo.collect_optins %}
-        "optins": [{% for optin in promo.get_field('third_party_optins') %}{{optin|json_encode}}{% if not loop.last %},{% endif %}{% endfor %}
-        ],
+          "optins": [
+            {% for optin in promo.get_field('third_party_optins') %}
+              {
+                "optin_name":"optin-{{optin.optin_name|sanitize}}",
+                "optin_label" : "{{optin.optin_label}}"
+              }
+              {% if not loop.last %}
+                ,
+              {% endif %}
+            {% endfor %}
+          ],
         {% endif %}
         "terms_and_conditions_label" : "{{promo.terms_and_conditions_label}}",
         "terms_and_conditions" : "{{promo.terms_and_conditions}}",
         "startTime": "{{promo.start_time}}",
         "endTime": "{{promo.end_time}}"
         {% if 'competition' in promo.get_field('data_to_capture')|keys %}
-        ,"competition_question": "{{promo.competition_question}}",
-        "competition_answers": [
+        ,"competitionQuestion": "{{promo.competition_question}}",
+        "competitionAnswers": [
           {% for answer in  promo.get_field('competition_answers') %}
             {{answer|json_encode}},
           {% endfor %}

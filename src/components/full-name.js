@@ -12,6 +12,7 @@ class FullName extends React.Component {
       lastNameInitial: true
     }
   }
+  
 
   _handleFirstName = (event) => {
     var firstName = event.target.value
@@ -19,14 +20,16 @@ class FullName extends React.Component {
       firstNameInitial: false,
       firstName: firstName
     })
+    this.props.reportFirstName(firstName)
   }
 
   _handleLastName = (event) => {
     var lastName = event.target.value
     this.setState({
-      lastNameInitial:false,
+      lastNameInitial: false,
       lastName: lastName
     })
+    this.props.reportLastName(lastName)
   }
 
   render () {

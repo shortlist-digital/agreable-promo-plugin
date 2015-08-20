@@ -42,10 +42,17 @@ class AgreablePromotion extends React.Component {
     })
   }
 
+  _handleCompetitionAnswer (competitionAnswer) {
+    this.setState({
+      competitionAnswered: true,
+      competitionAnswer: competitionAnswer
+    })
+  }
+
   render () {
     var data = this.data
     if (this.state.started && this.state.open && this.state.competition && !this.state.competitionAnswered) {
-      return <Competition {...data} />
+      return <Competition {...data} handleAnswer={this._handleCompetitionAnswer.bind(this)} />
     }
 
     if (this.state.started && this.state.open && !this.state.closed) {
@@ -68,7 +75,7 @@ class AgreablePromotion extends React.Component {
       )
     } else if (this.state.open ** !this.state.closed && !this.state.started) {
       return (
-        <button onClick={this._start} className="agreable-promo__enter-button">Enter</button> 
+        <button onClick={this._start} className="agreable-promo__button agreable-promo__button--enter">Enter</button> 
       )
     }
   }

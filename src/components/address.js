@@ -6,10 +6,10 @@ class Address extends React.Component {
   constructor () {
     super()
     this.state = {
-      addressOne: null,
-      addressTwo: null,
-      addressThree: null,
-      postcode: null
+      Address1: null,
+      Address2: null,
+      Address3: null,
+      PostCode: null
     }
   }
 
@@ -17,42 +17,45 @@ class Address extends React.Component {
     var name = event.target.name
     var value = event.target.value
     switch (name) {
-      case 'addressOne':
-        this.setState({addressOne: value})
+      case 'Address1':
+        this.setState({Address1: value})
         break
-      case 'addressTwo':
-        this.setState({addressTwo: value})
+      case 'Address2':
+        this.setState({Address2: value})
         break
-      case 'addressThree':
-        this.setState({addressThree: value})
+      case 'Address3':
+        this.setState({Address3: value})
         break
-      case 'postcode':
-        this.setState({postcode: value.toUpperCase()})
+      case 'PostCode':
+        this.setState({PostCode: value.toUpperCase()})
         break
     }
+    var object = {}
+    object[name] = value
+    this.props.reportAddress(object)
   }
 
   render () {
 
-    var addressOneClasses = classNames('agreable-promo__input', {
-      'agreable-promo__input--invalid': (this.state.addressOne && this.state.addressOne.length < 3),
-      'agreable-promo__input--valid': (this.state.addressOne && this.state.addressOne.length > 2)
+    var Address1Classes = classNames('agreable-promo__input', {
+      'agreable-promo__input--invalid': (this.state.Address1 && this.state.Address1.length < 3),
+      'agreable-promo__input--valid': (this.state.Address1 && this.state.Address1.length > 2)
     })
 
-    var addressTwoClasses = classNames('agreable-promo__input', {
-      'agreable-promo__input--invalid': (this.state.addressTwo && this.state.addressTwo.length < 3),
-      'agreable-promo__input--valid': (this.state.addressTwo && this.state.addressTwo.length > 2)
+    var Address2Classes = classNames('agreable-promo__input', {
+      'agreable-promo__input--invalid': (this.state.Address2 && this.state.Address2.length < 3),
+      'agreable-promo__input--valid': (this.state.Address2 && this.state.Address2.length > 2)
 
     })
 
-    var addressThreeClasses = classNames('agreable-promo__input', {
-      'agreable-promo__input--invalid': (this.state.addressThree && this.state.addressThree.length < 3),
-      'agreable-promo__input--valid': (this.state.addressThree && this.state.addressThree.length > 2)
+    var Address3Classes = classNames('agreable-promo__input', {
+      'agreable-promo__input--invalid': (this.state.Address3 && this.state.Address3.length < 3),
+      'agreable-promo__input--valid': (this.state.Address3 && this.state.Address3.length > 2)
     })
 
-    var postcodeClasses = classNames('agreable-promo__input', {
-      'agreable-promo__input--invalid': (this.state.postcode && this.state.postcode.length < 3),
-      'agreable-promo__input--valid': (this.state.postcode && this.state.postcode.length > 2)
+    var PostCodeClasses = classNames('agreable-promo__input', {
+      'agreable-promo__input--invalid': (this.state.PostCode && this.state.PostCode.length < 3),
+      'agreable-promo__input--valid': (this.state.PostCode && this.state.PostCode.length > 2)
 
     })
 
@@ -63,12 +66,12 @@ class Address extends React.Component {
           Address 1:
           </label>
           <input
-            className={addressOneClasses}
+            className={Address1Classes}
             onChange={this._handleUpdate}
-            name="addressOne"
+            name="Address1"
             placeholder="Address 1"
             type="text"
-            value={this.state.addressOne}
+            value={this.state.Address1}
           />
         </div>
         <div className="agreable-promo--half">
@@ -76,12 +79,12 @@ class Address extends React.Component {
           Address 2:
           </label>
           <input
-            className={addressTwoClasses}
+            className={Address2Classes}
             onChange={this._handleUpdate}
-            name="addressTwo"
+            name="Address2"
             placeholder="Address 2"
             type="text"
-            value={this.state.addressTwo}
+            value={this.state.Address2}
           />
         </div>
         <div className="agreable-promo--half">
@@ -89,25 +92,25 @@ class Address extends React.Component {
           Address 3:
           </label>
           <input
-            className={addressThreeClasses}
+            className={Address3Classes}
             onChange={this._handleUpdate}
-            name="addressThree"
+            name="Address3"
             placeholder="Address 3"
             type="text"
-            value={this.state.addressThree}
+            value={this.state.Address3}
           />
         </div>
         <div className="agreable-promo--half">
           <label className="agreable-promo__label">
-          Postcode:
+          PostCode:
           </label>
           <input
-            className={postcodeClasses}
+            className={PostCodeClasses}
             onChange={this._handleUpdate}
-            name="postcode"
-            placeholder="Postcode"
+            name="PostCode"
+            placeholder="Post Code"
             type="text"
-            value={this.state.postcode}
+            value={this.state.PostCode}
           />
         </div>
       </div>

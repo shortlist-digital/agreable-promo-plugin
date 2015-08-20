@@ -10,6 +10,9 @@ var Competition = require('./competition.js')
 class Form extends React.Component {
   constructor () {
     super()
+    this.state = {
+      Location: window.location.pathname
+    }
   }
 
   componentDidMount () {
@@ -19,7 +22,6 @@ class Form extends React.Component {
   _buildFormByField () {
     var fields = []
     if (this.props.fields) {
-      console.log('yes fields')
       this.props.fields.map((field, index) => {
         switch (field) {
           case 'fullName':
@@ -49,19 +51,41 @@ class Form extends React.Component {
   }
 
   _handleAddress = (addressObject) => {
-    console.log('form reporting addressObject: ', addressObject) 
+    this.setState(addressObject)
   }
 
   _handleEmail = (emailString) => {
-    console.log('form reporting emailString: ', emailString) 
+    this.setState({
+      Email: emailString
+    })
   }
 
   _handleFirstName = (firstNameString) => {
+    this.setState({
+      FirstName: firstNameString
+    })
     console.log('form reporting firstNameString: ', firstNameString) 
   }
 
   _handleLastName = (lastNameString) => {
+    this.setState({
+      LastName: lastNameString
+    })
     console.log('form reporting lastNameString: ', lastNameString) 
+  }
+
+  _handleOptins = (optinsObject) => {
+    this.setState(optinsObject)
+  }
+
+  _handleTerms = (termsBoolean) => {
+    this.setState({
+      OptInTermsConditions: termsBoolean
+    })
+  }
+
+  _handleSubmit = () => {
+    console.log('Current form state: ', this.state)
   }
 
   render () {
@@ -71,12 +95,19 @@ class Form extends React.Component {
         {fields}
         <Optins
           optins={this.props.optins}
+          reportOptins={this._handleOptins}
         />
         <Terms
           termsAndConditionsLabel={this.props.terms_and_conditions_label}
           termsAndConditions={this.props.terms_and_conditions}
+          reportTerms={this._handleTerms}
         />
-        <button className="agreable-promo__submit-button">Submit</button>
+        <button
+          className="agreable-promo__button agreable-promo__button--submit"
+          onClick={this._handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     )
   }
