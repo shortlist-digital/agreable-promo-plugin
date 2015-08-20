@@ -5,6 +5,7 @@ var Terms = require('./terms.js')
 var Email = require('./email.js')
 var FullName = require('./full-name.js')
 var Address = require('./address.js')
+var Competition = require('./competition.js')
 
 class Form extends React.Component {
   constructor () {

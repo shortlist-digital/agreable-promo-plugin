@@ -3,25 +3,33 @@ require('./stylus/main.styl')
 window.React = window.React || require('react')
 
 var Form = require('./components/form.js')
+var Competition = require('./components/competition.js')
 
 var clockFace = require('./clock-face.svg')
 var moment = require('moment')
 
 class AgreablePromotion extends React.Component {
+
   constructor () {
     super()
     this.data = window.agreablePromoData
     this.state = {
       started: false,   
-      open: false,
-      closed: true
+      open: this.data.startTime <= this._now(),
+      closed: this.data.endTime < this._now(),
+      competition: (this.data.fields.indexOf('competition') >= 0) ? true : false,
+      competitionAnswered: false
     }
   }
-  componentDidMount () {
-    this.setState({
-      open: this.data.startTime <= this._now(),
-      closed: this.data.endTime < this._now()
-    })
+
+  componentWillMount () {
+    // Calculate state
+    // If it hasn't started - show "opens in"
+    // If it's closed - show "closed ago"
+    // If it's running now show enter button
+    // If it's running, and enter clicked, and it's a competition show competition
+    // If it's running, and enter clicked, and it's a competition and the answer has been given show form
+    // If its running, and enter clicked, show form
   }
 
   _now () {
@@ -36,13 +44,17 @@ class AgreablePromotion extends React.Component {
 
   render () {
     var data = this.data
+    if (this.state.started && this.state.open && this.state.competition && !this.state.competitionAnswered) {
+      return <Competition {...data} />
+    }
+
     if (this.state.started && this.state.open && !this.state.closed) {
       return (
         <Form {...data} />
       )
     } else if (!this.state.open && !this.state.closed) {
       return (
-        <div classNmae="agreable-promo__not-open">
+        <div className="agreable-promo__not-open">
           <div className="agreable-promo__time-icon" dangerouslySetInnerHTML={{__html: clockFace}}></div>
           <h2 className="agreable-promo__time-message">Opens {moment(new Date(data.startTime*1000)).fromNow()} </h2>
         </div>
