@@ -24,7 +24,7 @@
           ],
         {% endif %}
         "terms_and_conditions_label" : "{{promo.terms_and_conditions_label}}",
-        "terms_and_conditions" : {{promo.terms_and_conditions|json_encode}},
+        "terms_and_conditions" : {{promo.terms_and_conditions|escape|json_encode}},
         "startTime": "{{promo.start_time}}",
         "endTime": "{{promo.end_time}}"
         {% if 'competition' in promo.get_field('data_to_capture')|keys %}

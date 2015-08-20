@@ -757,7 +757,7 @@
 
 	    this._renderOptins = function () {
 	      var optinViews = [];
-	      if (_this.props.optins.length) {
+	      if (_this.props.optins && _this.props.optins.length) {
 	        _this.props.optins.map((function (optin, index) {
 	          optinViews.push(React.createElement(
 	            "div",

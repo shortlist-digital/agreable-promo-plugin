@@ -25,7 +25,7 @@ class Optins extends React.Component {
 
   _renderOptins = () => {
     var optinViews = []
-    if (this.props.optins.length) {
+    if (this.props.optins && this.props.optins.length) {
       this.props.optins.map((optin, index) => {
         optinViews.push(
           <div className="agreable-promo__optin">
