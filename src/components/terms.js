@@ -1,4 +1,5 @@
 var React = require('react')
+var entities = require('entities')
 
 class Terms extends React.Component {
 
@@ -9,7 +10,7 @@ class Terms extends React.Component {
           Terms & Conditions:
         </label>
         <textarea className="agreable-promo__textarea" disabled="true">
-          {this.props.termsAndConditions}
+          {entities.decodeHTML(this.props.termsAndConditions)}
         </textarea>
         <div className="agreable-promo__optin">
           <label className="agreable-promo__checkbox-label">

@@ -47,6 +47,7 @@ class AgreablePromotion extends React.Component {
       competitionAnswered: true,
       competitionAnswer: competitionAnswer
     })
+    this.data.competitionAnswer = competitionAnswer
   }
 
   render () {

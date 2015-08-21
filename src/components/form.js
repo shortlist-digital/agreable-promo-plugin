@@ -6,17 +6,30 @@ var Email = require('./email.js')
 var FullName = require('./full-name.js')
 var Address = require('./address.js')
 var Competition = require('./competition.js')
+var CalaisClient = require('calais-js-client')
 
 class Form extends React.Component {
   constructor () {
     super()
     this.state = {
+      submitting: false,
+      OptInTermsConditions: false,
       Location: window.location.pathname
     }
   }
 
+
   componentDidMount () {
-    console.log('Form: ', this.props)
+    this.calaisClient = new CalaisClient(this.props.passport.id, this.props.passport.shared_secret)
+    this.setState({
+      PostId: this.props.id
+    })
+    if (this.props.competitionAnswer) {
+      this.setState({
+        AnswerCorrect: this.props.competitionAnswer.answer_correct,
+        AnswerOption: this.props.competitionAnswer.answer_text
+      })
+    }
   }
 
   _buildFormByField () {
@@ -78,18 +91,43 @@ class Form extends React.Component {
     this.setState(optinsObject)
   }
 
-  _handleTerms = (termsBoolean) => {
+  _handleTerms = (changeEvent) => {
+    console.log('terms: ', changeEvent)
+    var termsBoolean = changeEvent.target.checked
     this.setState({
       OptInTermsConditions: termsBoolean
     })
   }
 
   _handleSubmit = () => {
-    console.log('Current form state: ', this.state)
+    if (this.state.OptInTermsConditions) {
+      this._postData()
+    } else {
+      alert('Please accept the Terms & Conditions to continue')
+    }
+  }
+
+  _postData = () => {
+    this.setState({submitting:true})
+    this.calaisClient.setDataRecord(this.state)
+    this.calaisClient.post().then(this._handleSuccess, this._handleFailure)
+  }
+
+  _handleSuccess = (response) => {
+    this.setState({submitting:false, submitted: true})
+    console.log(response)
+  }
+
+  _handleFailure = (error) => {
+    this.setState({submitting:false})
+    alert(`Something went wrong with your submission: ${error}`)
   }
 
   render () {
     var fields = this._buildFormByField()
+    if (this.state.submitted) {
+      return <h2 className="agreable-promo__success-message">Successfully submitted!</h2>
+    }
     return (
       <div>
         {fields}
@@ -100,13 +138,13 @@ class Form extends React.Component {
         <Terms
           termsAndConditionsLabel={this.props.terms_and_conditions_label}
           termsAndConditions={this.props.terms_and_conditions}
-          reportTerms={this._handleTerms}
+          reportTermsAccepted={this._handleTerms}
         />
         <button
           className="agreable-promo__button agreable-promo__button--submit"
           onClick={this._handleSubmit}
         >
-          Submit
+          {this.state.submitting ? 'Submitting...' : 'Submit'}
         </button>
       </div>
     )
