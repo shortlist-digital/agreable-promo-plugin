@@ -17,7 +17,7 @@ class RenderController {
      */
 
     $ns = Helper::get('agreable_namespace');
-    $location = realpath(__DIR__."../../../resources/assets/");
+    $location = realpath(__DIR__)."/../../resources/assets";
     $js_string = file_get_contents($location."/app.js");
     echo view('@AgreablePromoPlugin/files.twig', [
         'common_css_path'   => Helper::asset('styles.css'),
