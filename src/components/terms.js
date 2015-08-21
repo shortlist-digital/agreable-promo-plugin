@@ -9,8 +9,7 @@ class Terms extends React.Component {
         <label className="agreable-promo__label">
           Terms & Conditions:
         </label>
-        <textarea className="agreable-promo__textarea" disabled="true">
-          {entities.decodeHTML(this.props.termsAndConditions)}
+        <textarea className="agreable-promo__textarea" disabled="true" value={entities.decodeHTML(this.props.termsAndConditions)}>
         </textarea>
         <div className="agreable-promo__optin">
           <label className="agreable-promo__checkbox-label">

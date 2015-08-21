@@ -10,7 +10,6 @@ class Competition extends React.Component {
   }
 
   componentWillMount () {
-    console.log('Competition props: ', this.props)
   }
 
   _handleChange = (object) => {

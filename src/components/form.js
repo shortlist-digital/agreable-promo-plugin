@@ -40,6 +40,7 @@ class Form extends React.Component {
           case 'fullName':
             fields.push(
               <FullName
+                key={index}
                 reportFirstName={this._handleFirstName}
                 reportLastName={this._handleLastName}
               />
@@ -48,12 +49,14 @@ class Form extends React.Component {
           case 'address':
             fields.push(
               <Address
+                key={index}
                 reportAddress={this._handleAddress}/>
             )
             break
           case 'email':
             fields.push(
               <Email
+                key={index}
                 reportEmail={this._handleEmail}/>
             )
             break
@@ -77,14 +80,12 @@ class Form extends React.Component {
     this.setState({
       FirstName: firstNameString
     })
-    console.log('form reporting firstNameString: ', firstNameString) 
   }
 
   _handleLastName = (lastNameString) => {
     this.setState({
       LastName: lastNameString
     })
-    console.log('form reporting lastNameString: ', lastNameString) 
   }
 
   _handleOptins = (optinsObject) => {
@@ -92,7 +93,6 @@ class Form extends React.Component {
   }
 
   _handleTerms = (changeEvent) => {
-    console.log('terms: ', changeEvent)
     var termsBoolean = changeEvent.target.checked
     this.setState({
       OptInTermsConditions: termsBoolean
@@ -115,7 +115,6 @@ class Form extends React.Component {
 
   _handleSuccess = (response) => {
     this.setState({submitting:false, submitted: true})
-    console.log(response)
   }
 
   _handleFailure = (error) => {

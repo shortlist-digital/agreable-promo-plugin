@@ -11,7 +11,6 @@ class Optins extends React.Component {
       object[optinValueString] = false
       this.props.reportOptins(object)
     }.bind(this))
-    console.log(this.props)
   }
 
   _handleOptinChange = (optin_name, index, event) => {
@@ -28,8 +27,8 @@ class Optins extends React.Component {
     if (this.props.optins.length) {
       this.props.optins.map((optin, index) => {
         optinViews.push(
-          <div className="agreable-promo__optin">
-            <label class="agreable-promo__checkbox-label">
+          <div key={index} className="agreable-promo__optin">
+            <label className="agreable-promo__checkbox-label">
               <input
                 type="checkbox" 
                 className="agreable-promo__checkbox"
