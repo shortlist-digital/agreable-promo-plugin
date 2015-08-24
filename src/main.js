@@ -71,7 +71,7 @@ class AgreablePromotion extends React.Component {
       return (
         <div classNmae="agreable-promo__not-open">
           <div className="agreable-promo__time-icon" dangerouslySetInnerHTML={{__html: clockFace}}></div>
-          <h2 className="agreable-promo__time-message">Sorry. This expired {moment(new Date(data.startTime*1000)).fromNow()} </h2>
+          <h2 className="agreable-promo__time-message">Sorry. This expired {moment(new Date(data.endTime*1000)).fromNow()} </h2>
         </div>
       )
     } else if (this.state.open ** !this.state.closed && !this.state.started) {
