@@ -4,13 +4,8 @@ class Optins extends React.Component {
  
   componentDidMount = () => {
     this.props.optins.map((optin, index) => {
-<<<<<<< HEAD
       var optinKeyString = `ThirdPartyOptIn${index+1}Key`
       var optinValueString = `ThirdPartyOptIn${index+1}Value`
-=======
-      var optinKeyString = `ThirdPartyOptin${index+1}Key`
-      var optinValueString = `ThirdPartyOptin${index+1}Value`
->>>>>>> e0023c976348cbb0f90d80ad0c7843acc3ba1f0a
       var object = {}
       object[optinKeyString] = optin.optin_name
       object[optinValueString] = false
