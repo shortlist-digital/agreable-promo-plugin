@@ -1,7 +1,7 @@
 var react = require('react')
 
 class Competition extends React.Component {
-  
+
   constructor () {
     super()
     this.state = {
@@ -41,8 +41,9 @@ class Competition extends React.Component {
   }
 
   _handleAnswer = () => {
+    this.setState({message:false})
     if (this.state.selectedAnswer == false) {
-      alert('Please select an answer')
+      this.setState({message:'Please select an answer'})
     } else {
       this.props.handleAnswer(this.state.selectedAnswer)
     }
@@ -57,6 +58,7 @@ class Competition extends React.Component {
         </h2>
         {this._renderAnswers()}
         <button className="agreable-promo__button agreable-promo__button--next" onClick={this._handleAnswer.bind(this)}>next</button>
+        {!!this.state.message && <span className="agreable-promo__message agreable-promo__message--error">{this.state.message}</span>}
       </div>
     )
   }

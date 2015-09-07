@@ -126,6 +126,17 @@
   margin-top: 12px;
   max-width: 300px;
 }
+.agreable-promo__message {
+  clear: both;
+  display: block;
+  font-size: small;
+  font-style: italic;
+  margin: 0.8em 0;
+  text-align: center;
+}
+.agreable-promo__message--error {
+  color: #f00;
+}
 .agreable-promo__answer-label {
   cursor: pointer;
   zoom: 1;
