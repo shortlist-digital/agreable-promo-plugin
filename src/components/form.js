@@ -101,10 +101,12 @@ class Form extends React.Component {
   }
 
   _handleSubmit = () => {
+    if(this.state.submitting) return
+    this.setState({message:false})
     if (this.state.OptInTermsConditions) {
       this._postData()
     } else {
-      alert('Please accept the Terms & Conditions to continue')
+      this.setState({message:'Please accept the Terms & Conditions to continue'})
     }
   }
 
@@ -120,7 +122,7 @@ class Form extends React.Component {
 
   _handleFailure = (error) => {
     this.setState({submitting:false})
-    alert(`Something went wrong with your submission: ${error}`)
+    this.setState({message:`Something went wrong with your submission: ${error}`})
   }
 
   render () {
@@ -146,6 +148,7 @@ class Form extends React.Component {
         >
           {this.state.submitting ? 'Submitting...' : 'Submit'}
         </button>
+        {!!this.state.message && <span className="agreable-promo__message agreable-promo__message--error">{this.state.message}</span>}
       </div>
     )
   }
