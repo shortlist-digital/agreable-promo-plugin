@@ -46,7 +46,4 @@ DOMReady(function() {
     rootElement
   )
 
-  // Stop listening to state updates
-  unsubscribe()
-
 })

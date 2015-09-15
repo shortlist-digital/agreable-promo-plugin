@@ -15,7 +15,7 @@ class App extends Component {
     if (this.props.screen == 0) {
       return (
         <EnterScreen 
-          onNextClick={dispatch(nextScreen)}
+          onEnterClick={()=> dispatch(nextScreen())}
         />
       )
     }
