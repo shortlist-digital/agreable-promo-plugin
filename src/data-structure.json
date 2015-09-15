@@ -1,74 +1,96 @@
 {
   "userData": {
-    "email": {
+    "Email": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "firstName": {
+    "FirstName": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "lastName": {
+    "LastName": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "addressOne": {
+    "Address1": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "addressTwo": {
+    "Address2": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "addressThree": {
+    "Address3": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "postcode": {
+    "PostCode": {
       "value": "",
       "valid": false,
       "initial": true,
       "required": true
     },
-    "competitionAnswer": {
-      "value": null
-      "valid": false
+    "AnswerOption": {
+      "value": "",
+      "valid": false,
+      "initial": true,
+      "required": true
+    },
+    "AnswerCorrect": {
+      "value": null,
+      "valid": false,
+      "initial": true
+    },
+    "OptIntermsAndConditions": {
+      "value": false,
+      "valid": false,
+      "initial": true,
+      "required": true
+    },
+    "ThirdPartyOptIn1Key": {
+      "value": "",
+      "required": true
+    },
+    "ThirdPartyOptIn1Value": {
+      "value": false,
+      "intial": true
+    },
+    "ThirdPartyOptIn2Key": {
+      "value": "",
+      "required": true
+    },
+    "ThirdPartyOptIn2Value": {
+      "value": false,
+      "intial": true
+    },
+    "ThirdPartyOptIn3Key": {
+      "value": "",
+      "required": true
+    },
+    "ThirdPartyOptIn3Value": {
+      "value": false,
+      "intial": true
+    },
+    "Location": {
+      "value": null,
+      "required": true
+    },
+    "PostId": {
+      "value": null,
+      "required": true
     }
-  },
-  "promoData": {
-    "id": 139,
-    "location": "/competitions/jons-competition-test",
-    "site": "local.emeraldstreet.com",
-    "fields": [
-      "email",
-      "fullName",
-      "address"
-    ],
-    "optins": [
-      {
-        "optin_name": "Burger King",
-        "optin_label": "I would like to receive updates from Burger King"
-      },
-      {
-        "optin_name": "Chicken Cottage",
-        "optin_label": "I would like to hear about Chicken Cottage chicken burgers"
-      }
-    ],
-    "terms_and_conditions_label": "I accept the terms and conditions",
-    "terms_and_conditions": "Aenean a efficitur massa. Phasellus nec posuere diam. Suspendisse faucibus, libero sed elementum tempus, arcu ligula consectetur diam, sed aliquet arcu ex et tortor. Nulla sed euismod massa. Donec lorem eros, pellentesque sit amet aliquet luctus, dapibus sed lacus. Sed at dui id nibh venenatis tincidunt. Morbi sit amet lacus non arcu lacinia consectetur dictum at urna. Ut maximus vulputate justo vel imperdiet. Proin quis enim eu leo consectetur feugiat. Nunc eget nulla feugiat, blandit felis id, semper nisl. Mauris ac molestie purus. Nulla dapibus fringilla vulputate. Curabitur placerat erat vitae purus elementum pulvinar.",
-    "startTime": "1439368200",
-    "endTime": "1440633600"
   }
 }
+
