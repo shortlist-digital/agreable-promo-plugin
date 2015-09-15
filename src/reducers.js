@@ -2,6 +2,7 @@ import { combineReducers } from 'redux'
 import { UPDATE_FIELD, CLEAR_FIELD, VALIDATE_FIELD, NEXT_SCREEN, PREV_SCREEN } from './actions'
 
 const initialState = require('./data-structure.json')
+initialState.screen = 0
 
 function userData(state = initialState.userData, action) {
   // Note "state is "userData" object
@@ -23,13 +24,27 @@ function userData(state = initialState.userData, action) {
 
   default:
     return state
+  }
+}
 
+function screen(state = initalState.screen, action) {
+  switch(action.type) {
+
+  case NEXT_SCREEN:
+    return state+1
+
+  case PREV_SCREEN:
+    return state-1
+
+  default:
+    return state
   }
 }
 
 export default function promotionsApp(state = initialState, action) {
   return {
-    userData: userData(state.userData, action)
+    userData: userData(state.userData, action),
+    screen: screen(state.screen, action)
   } 
 }
 

@@ -1,9 +1,12 @@
 require('./stylus/main.styl')
 
 import DOMReady from './dom-ready'
+import React from 'react'
 import { createStore } from 'redux'
-import { updateField, clearField } from './actions'
+import { Provider } from 'react-redux'
+import App from './app'
 import promotionsApp from './reducers'
+import { updateField, clearField } from './actions'
 
 DOMReady(function() {
 
@@ -25,11 +28,23 @@ DOMReady(function() {
     logCounter = logCounter+1
   })
 
-  // Dispatch some actions
+  // Dispatch some test actions
+  /*
   store.dispatch(updateField({name: 'Email', value: 'jon@andthats.it'}))
   store.dispatch(updateField({name: 'FirstName', value: 'Jonathon'}))
   store.dispatch(updateField({name: 'LastName', value: 'Sherrard'}))
   store.dispatch(clearField({name: 'Email'}))
+  */
+
+  let rootElement = document.getElementById('agreable-promotion');
+  React.render(
+  // The child must be wrapped in a function
+  // to work around an issue in React 0.13.
+    <Provider store={store}>
+      {() => <App />}
+    </Provider>,
+    rootElement
+  )
 
   // Stop listening to state updates
   unsubscribe()
