@@ -4,6 +4,7 @@ import { UPDATE_FIELD, CLEAR_FIELD, VALIDATE_FIELD, NEXT_SCREEN, PREV_SCREEN } f
 const initialState = require('./data-structure.json')
 
 function userData(state = initialState.userData, action) {
+  // Note "state is "userData" object
   switch (action.type) {
 
   case UPDATE_FIELD:
