@@ -1,3 +1,4 @@
+// Can I use Slack style emoji notation
 require('./stylus/main.styl')
 
 import DOMReady from './dom-ready'
