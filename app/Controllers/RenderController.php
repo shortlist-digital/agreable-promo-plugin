@@ -20,6 +20,7 @@ class RenderController {
     $location = realpath(__DIR__)."/../../resources/assets";
     $js_string = file_get_contents($location."/app.js");
     echo view('@AgreablePromoPlugin/files.twig', [
+        'environment' => getenv('WP_ENV'),
         'common_css_path'   => Helper::asset('styles.css'),
         'js_string' => $js_string,
         'plugin_settings_property_primary_colour'      => get_field($ns.'_plugin_settings_property_primary_colour', 'option'),
