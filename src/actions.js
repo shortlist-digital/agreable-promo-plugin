@@ -5,6 +5,7 @@
 export const UPDATE_FIELD = 'UPDATE_FIELD'
 export const CLEAR_FIELD = 'CLEAR_FIELD'
 export const VALIDATE_FIELD = 'VALIDATE_FIELD'
+export const SUBMIT_FORM = 'SUBMIT_FORM'
 
 export const NEXT_SCREEN = 'NEXT_SCREEN'
 export const PREV_SCREEN = 'PREV_SCREEN'
