@@ -18,10 +18,10 @@ export function updateField(object) {
   }
 }
 
-export function clearField(name) {
+export function clearField(object) {
   return {
     type: CLEAR_FIELD,
-    name: name
+    name: object.name
   }
 }
 

@@ -15,6 +15,7 @@ console.log(store.getState())
 store.dispatch(updateField({name: 'Email', value: 'jon@andthats.it'}))
 store.dispatch(updateField({name: 'FirstName', value: 'Jonathon'}))
 store.dispatch(updateField({name: 'LastName', value: 'Sherrard'}))
+store.dispatch(clearField({name: 'Email'}))
 
   // Stop listening to state updates
 unsubscribe()

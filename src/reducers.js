@@ -3,32 +3,33 @@ import { UPDATE_FIELD, CLEAR_FIELD, VALIDATE_FIELD, NEXT_SCREEN, PREV_SCREEN } f
 
 const initialState = require('./data-structure.json')
 
-export default function promotionsApp(state = initialState, action) {
-
+function userData(state = initialState.userData, action) {
   switch (action.type) {
 
   case UPDATE_FIELD:
     return Object.assign({}, state, {
-      "userData": Object.assign({}, state.userData, {
-        [action.name]: Object.assign({}, state.userData[action.name], {
-          value: action.value
-        })
+      [action.name]: Object.assign({}, state[action.name], {
+        value: action.value
       })
     })
 
   case CLEAR_FIELD:
     return Object.assign({}, state, {
-      "userData": {
-        [action.name]: {
-          value: ''
-        }
-      }
+      [action.name]: Object.assign({}, state[action.name], {
+        value: false
+      })
     })
 
-  default: 
+  default:
     return state
-  }
 
+  }
+}
+
+export default function promotionsApp(state = initialState, action) {
+  return {
+    userData: userData(state.userData, action)
+  } 
 }
 
 
