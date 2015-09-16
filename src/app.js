@@ -11,7 +11,7 @@ class App extends Component {
 
   _renderScreen = () => {
     // Injected by connect() call:
-    const { dispatch, screen } = this.props
+    const { dispatch, screen, userData} = this.props
     switch (screen.currentScreen) {
     case ENTER_SCREEN:
       return (
@@ -22,7 +22,8 @@ class App extends Component {
     case FORM_SCREEN:
       return (
         <FormScreen
-          {...window.agreablePromoData}
+          promoData={window.agreablePromoData}
+          userData={userData}
         />
       )
 

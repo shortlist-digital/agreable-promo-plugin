@@ -1,37 +1,17 @@
-var React = require('react')
-var classNames = require('classnames')
-var checkEmailValid = require('check-email-valid')
+import React, { Component } from 'react'
+import classNames from 'classnames'
 
-class Email extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      email: '',
-      isInvalid: false
-    }
-  }
-
-  _handleEmail = (event) => {
-    var email = event.target.value
-    var valid = checkEmailValid(email)
-    this.setState({
-      email: email,
-      isInvalid: !valid
+class Email extends Component {
+  _handleChange (event) {
+    var string = event.target.value
+    this.props.onUpdate({
+      name: 'Email',
+      value: string
     })
-
-    if (valid) {
-      this.props.reportEmail(event.target.value)
-    }
-  }
-
-  componentDidMount () {
   }
 
   render () {
-    var inputClasses = classNames('agreable-promo__input', {
-      'agreable-promo__input--invalid': this.state.isInvalid && (this.state.email.length > 6),
-      'agreable-promo__input--valid': !this.state.isInvalid && this.state.email.length
-    })
+    var inputClasses = classNames('agreable-promo__input')
     return (
       <div>
         <label
@@ -41,10 +21,10 @@ class Email extends React.Component {
         </label>
         <input
           className={inputClasses}
-          onChange={this._handleEmail}
           placeholder="Email Address"
           type="email"
-          value={this.state.email}
+          value={this.props.value}
+          onChange={this._handleChange}
         />
       </div>
     )
@@ -52,4 +32,5 @@ class Email extends React.Component {
 
 }
 
-module.exports = Email
+export default Email
+
