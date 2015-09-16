@@ -10,6 +10,13 @@ export const SUBMIT_FORM = 'SUBMIT_FORM'
 export const NEXT_SCREEN = 'NEXT_SCREEN'
 export const PREV_SCREEN = 'PREV_SCREEN'
 
+export const ScreenNames = {
+  ENTER_SCREEN: 'ENTER_SCREEN',
+  COMPETITION_SCREEN: 'COMPETITION_SCREEN',
+  FORM_SCREEN: 'FORM_SCREEN',
+  THANK_YOU_SCREEN: 'THANK_YOU_SCREEN'
+}
+
 export function updateField(field) {
   return {
     type: UPDATE_FIELD, 
@@ -32,14 +39,16 @@ export function validateField(name) {
   }
 }
 
-export function nextScreen() {
+export function nextScreen(screenName) {
   return {
-    type: NEXT_SCREEN
+    type: NEXT_SCREEN,
+    screenName
   }
 }
-export function prevScreen() {
+export function prevScreen(screenName) {
   return {
-    type: PREV_SCREEN
+    type: PREV_SCREEN,
+    screenName
   }
 }
 
