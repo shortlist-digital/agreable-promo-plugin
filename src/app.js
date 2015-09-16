@@ -5,16 +5,14 @@ import { updateField, nextScreen, ScreenNames } from './actions'
 const { ENTER_SCREEN, FORM_SCREEN } = ScreenNames
 
 import EnterScreen from './enter-screen'
+import FormScreen from './form-screen'
 
 class App extends Component {
 
-  componentWillMount() {
-    console.log('App Component', this)
-  }
-
   _renderScreen = () => {
-    const { dispatch } = this.props
-    switch (this.props.screen.currentScreen) {
+    // Injected by connect() call:
+    const { dispatch, screen } = this.props
+    switch (screen.currentScreen) {
     case ENTER_SCREEN:
       return (
         <EnterScreen 
@@ -23,7 +21,9 @@ class App extends Component {
       )
     case FORM_SCREEN:
       return (
-        <h1>This will be the form</h1>
+        <FormScreen
+          {...window.agreablePromoData}
+        />
       )
 
     default:
@@ -35,8 +35,6 @@ class App extends Component {
   }
 
   render() {
-    // Injected by connect() call:
-    const { dispatch } = this.props
     return (
       <div>
         {this._renderScreen()}
