@@ -7,10 +7,6 @@ use Behat\Behat\Context\BehatContext,
 use Behat\Gherkin\Node\PyStringNode,
     Behat\Gherkin\Node\TableNode;
 
-// require "Bootstrap.php";
-require_once __DIR__ . "/../../vendor/facebook/webdriver/lib/Remote/RemoteWebDriver.php";
-require_once __DIR__ . "/../../vendor/facebook/webdriver/lib/WebDriverBy.php";
-
 class FeatureContext extends BehatContext {
   private $webDriver;
 
