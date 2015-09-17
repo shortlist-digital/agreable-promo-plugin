@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import classNames from 'classNames'
+import classNames from 'classnames'
 
 class FullName extends Component {
 
@@ -16,9 +16,11 @@ class FullName extends Component {
           </label>
           <input
             className={firstNameClasses}
-            name="firstName"
+            name="FirstName"
+            onChange={this.props.onUpdate}
             placeholder="First Name"
             type="text"
+            value={this.props.FirstName.value}
           />
         </div>
 
@@ -30,9 +32,11 @@ class FullName extends Component {
           </label>
           <input
             className={lastNameClasses}
-            name="lastName"
+            name="LastName"
+            onChange={this.props.onUpdate}
             placeholder="Last Name"
             type="text"
+            value={this.props.LastName.value}
           />
         </div>
       </div>

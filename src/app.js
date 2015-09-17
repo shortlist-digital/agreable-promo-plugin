@@ -9,6 +9,13 @@ import FormScreen from './form-screen'
 
 class App extends Component {
 
+  _dispatchFieldUpdate = (event) => {
+    this.props.dispatch(updateField({
+      name: event.target.name,
+      value: event.target.value
+    }))
+  }
+
   _renderScreen = () => {
     // Injected by connect() call:
     const { dispatch, screen, userData} = this.props
@@ -24,6 +31,7 @@ class App extends Component {
         <FormScreen
           promoData={window.agreablePromoData}
           userData={userData}
+          updateField={this._dispatchFieldUpdate}
         />
       )
 

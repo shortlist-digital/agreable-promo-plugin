@@ -19,8 +19,10 @@ class Address extends Component {
           <input
             className={Address1Classes}
             name="Address1"
+            onChange={this.props.onUpdate}
             placeholder="Address 1"
             type="text"
+            value={this.props.Address1.value}
           />
         </div>
         <div className="agreable-promo--half">
@@ -30,8 +32,10 @@ class Address extends Component {
           <input
             className={Address2Classes}
             name="Address2"
+            onChange={this.props.onUpdate}
             placeholder="Address 2"
             type="text"
+            value={this.props.Address2.value}
           />
         </div>
         <div className="agreable-promo--half">
@@ -41,8 +45,10 @@ class Address extends Component {
           <input
             className={Address3Classes}
             name="Address3"
+            onChange={this.props.onUpdate}
             placeholder="Address 3"
             type="text"
+            value={this.props.Address3.value}
           />
         </div>
         <div className="agreable-promo--half">
@@ -52,8 +58,10 @@ class Address extends Component {
           <input
             className={PostCodeClasses}
             name="PostCode"
+            onChange={this.props.onUpdate}
             placeholder="Post Code"
             type="text"
+            value={this.props.PostCode.value.toUpperCase()}
           />
         </div>
       </div>

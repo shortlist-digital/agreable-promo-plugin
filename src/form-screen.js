@@ -1,10 +1,7 @@
-import { dispatch } from 'redux'
 import React, { Component } from 'react' 
 import Email from './components/email'
 import FullName from './components/full-name'
 import Address from './components/address'
-
-import updateField from './actions'
 
 class FormScreen extends Component {
 
@@ -22,16 +19,32 @@ class FormScreen extends Component {
           fieldComponents.push(
             <Email
               key={field}
+              onUpdate={this.props.updateField}
               {...this.props.userData.Email}
-              onUpdate={(object)=> dispatch(updateField(object)}
             />
           )
           break
         case 'address':
-          fieldComponents.push(<Address key={field} />)
+          fieldComponents.push(
+            <Address
+              key={field}
+              onUpdate={this.props.updateField}
+              Address1={this.props.userData.Address1}
+              Address2={this.props.userData.Address2}
+              Address3={this.props.userData.Address3}
+              PostCode={this.props.userData.PostCode}
+            />
+          )
           break
         case 'fullName':
-          fieldComponents.push(<FullName key={field}/>)
+          fieldComponents.push(
+            <FullName
+              key={field}
+              onUpdate={this.props.updateField}
+              FirstName={this.props.userData.FirstName}
+              LastName={this.props.userData.LastName}
+            />
+          )
           break
       }
     }

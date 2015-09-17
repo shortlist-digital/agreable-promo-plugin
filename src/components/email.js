@@ -2,13 +2,6 @@ import React, { Component } from 'react'
 import classNames from 'classnames'
 
 class Email extends Component {
-  _handleChange (event) {
-    var string = event.target.value
-    this.props.onUpdate({
-      name: 'Email',
-      value: string
-    })
-  }
 
   render () {
     var inputClasses = classNames('agreable-promo__input')
@@ -20,11 +13,12 @@ class Email extends Component {
         Email:
         </label>
         <input
+          name='Email'
           className={inputClasses}
           placeholder="Email Address"
           type="email"
           value={this.props.value}
-          onChange={this._handleChange}
+          onChange={this.props.onUpdate}
         />
       </div>
     )
