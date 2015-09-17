@@ -1,7 +1,7 @@
-var React = require('react')
-var entities = require('entities')
+import React, { Component } from 'react'
+import entities from 'entities'
 
-class Terms extends React.Component {
+class Terms extends Component {
 
   render () {
     return (

@@ -32,7 +32,9 @@ acf_add_local_field_group(array (
       'choices' => array (
         'fullName' => 'Full Name',
         'address' => 'Address',
-        'competition' => 'Competition answer',
+        'telephoneNumber' => 'Telephone Number',
+        'competition' => 'Competition Answer',
+        
       ),
       'default_value' => array (
         '' => '',
@@ -264,7 +266,7 @@ acf_add_local_field_group(array (
       'name' => 'start_time',
       'type' => 'date_time_picker',
       'instructions' => 'Choose the time and date that this promotion will start',
-      'required' => 0,
+      'required' => 1,
       'conditional_logic' => 0,
       'wrapper' => array (
         'width' => '',
@@ -285,7 +287,7 @@ acf_add_local_field_group(array (
       'name' => 'end_time',
       'type' => 'date_time_picker',
       'instructions' => 'Choose the time and date that this promotion will end',
-      'required' => 0,
+      'required' => 1,
       'conditional_logic' => 0,
       'wrapper' => array (
         'width' => '',
