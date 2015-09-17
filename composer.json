@@ -10,7 +10,12 @@
     }
   ],
   "require": {
-    "getherbert/framework": "dev-dev"
+    "getherbert/framework": "dev-dev",
+    "facebook/webdriver": "~1.0",
+    "behat/behat": "~2.5"
+  },
+  "config": {
+      "bin-dir": "bin/"
   },
   "config": {
     "preferred-install": "dist"
