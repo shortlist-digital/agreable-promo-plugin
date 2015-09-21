@@ -1,24 +1,17 @@
 import React, { Component } from 'react'
-import classNames from 'classnames'
+import TextInput from './text-input'
 
 class Email extends Component {
 
   render () {
-    var inputClasses = classNames('agreable-promo__input')
     return (
       <div>
-        <label
-          className="agreable-promo__label"
-        >
-        Email:
-        </label>
-        <input
+        <TextInput
+          fullWidth={true}
           name='Email'
-          className={inputClasses}
           placeholder="Email Address"
           type="email"
-          value={this.props.value}
-          onChange={this.props.onUpdate}
+          {...this.props}
         />
       </div>
     )

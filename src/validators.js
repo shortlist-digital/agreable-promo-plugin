@@ -7,18 +7,18 @@ let validators = {
   },
 
   text: function (textString) {
-    return console.log('validating text: ', textString)
+    return (textString.length >= 2)
   },
 
   selected: function (value) {
-    return console.log('validating selected: ', value)
+    return (value !== undefined || value !== "")
   },
 
   postcode: function (postcodeString) {
     return postcodeValidator.validate(postcodeString, 'UK')
   },
   phone: function (number) {
-    return console.log('validating hone number: ', number)
+    return /^(?=.*\d)[\d ]+$/.test(number)
   }
 
 }
