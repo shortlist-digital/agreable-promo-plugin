@@ -19,16 +19,6 @@ class TextInput extends Component {
     })
   }
 
-  _renderValidationMessage() {
-    if (this.props.validationMessage && this.props.formValidating && !this.props.valid && this.props.required) {
-      return (
-        <span className="agreable-promo__validation-message">
-        {this.props.validationMessage}
-        </span>
-      )
-    }
-  }
-
   render() {
     var inputClasses = this._inputClasses()
     var widthClass = this._widthClass()
