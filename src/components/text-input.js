@@ -31,7 +31,7 @@ class TextInput extends Component {
           onChange={this.props.onUpdate}
           placeholder={this.props.placeholder}
           type={this.props.type}
-          value={this.props.value}
+          value={this.props.upperCase ? this.props.value.toUpperCase() : this.props.value}
         />
       </div>
     )

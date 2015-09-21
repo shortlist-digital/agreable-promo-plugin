@@ -34,6 +34,7 @@ class Address extends Component {
           onUpdate={this.props.onUpdate}
           placeholder="UK Post Code"
           type="text"
+          upperCase={true}
           {...this.props.PostCode}
         />
       </div>
