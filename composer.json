@@ -12,6 +12,7 @@
   "require": {
     "getherbert/framework": "dev-dev",
     "facebook/webdriver": "~1.0",
+    "jarednova/mesh": "*",
     "behat/behat": "~2.5"
   },
   "config": {
