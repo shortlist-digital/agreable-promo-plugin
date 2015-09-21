@@ -20,13 +20,17 @@ class TextInput extends Component {
   }
 
   render() {
+
     var inputClasses = this._inputClasses()
     var widthClass = this._widthClass()
+
     return (
       <div className={widthClass}>
+
         <label className="agreable-promo__label">
-        {this.props.placeholder}:
+          {this.props.placeholder}:
         </label>
+
         <input
           className={inputClasses}
           name={this.props.name}
@@ -35,9 +39,11 @@ class TextInput extends Component {
           type={this.props.type}
           value={this.props.upperCase ? this.props.value.toUpperCase() : this.props.value}
         />
+
         <ValidationMessage
           {...this.props}
         />
+
       </div>
     )
   }
