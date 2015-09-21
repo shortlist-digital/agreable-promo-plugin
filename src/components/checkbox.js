@@ -14,6 +14,7 @@ class Checkbox extends Component {
             onChange={this.props.onUpdate}
           />
           {this.props.label}
+          {this.props.valid ? ' ✓' :''}
         </label>  
       </div>
     )

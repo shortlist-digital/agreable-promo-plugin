@@ -30,7 +30,6 @@ function userData(state = initialState.userData, action) {
   case UPDATE_FIELD:
     // If this field doesn't have a validotor,
     // just update the sate
-    console.log(action)
     if (!state[action.name].validator) {
       return Object.assign({}, state, {
         [action.name]: Object.assign({}, state[action.name], {
@@ -52,7 +51,8 @@ function userData(state = initialState.userData, action) {
   case UPDATE_CHECKBOX:
     return Object.assign({}, state, {
       [action.name]: Object.assign({}, state[action.name], {
-        value: !state[action.name].value
+        value: !state[action.name].value,
+        valid: !state[action.name].value
       })
     })
 

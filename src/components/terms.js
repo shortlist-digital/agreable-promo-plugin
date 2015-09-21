@@ -21,6 +21,7 @@ class Terms extends Component {
           value={this.props.value}
           onUpdate={this.props.onUpdate}
           label={this.props.label}
+          valid={this.props.valid}
         />
       </div>
     )

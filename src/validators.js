@@ -11,7 +11,8 @@ let validators = {
   },
 
   selected: function (value) {
-    return (value !== undefined || value !== "")
+    console.log('......................', value)
+    return (!(value !== undefined || value !== ""))
   },
 
   postcode: function (postcodeString) {

@@ -64,7 +64,6 @@ class FormScreen extends Component {
         />
       )
     } else return null
-
   }
 
   render () {
