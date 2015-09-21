@@ -20,7 +20,6 @@ let validators = {
   phone: function (number) {
     return /^(?=.*\d)[\d ]+$/.test(number)
   }
-
 }
 
 export default validators

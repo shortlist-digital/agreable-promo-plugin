@@ -32,7 +32,7 @@ class Address extends Component {
         <TextInput
           name="PostCode"
           onUpdate={this.props.onUpdate}
-          placeholder="Post Code"
+          placeholder="UK Post Code"
           type="text"
           {...this.props.PostCode}
         />

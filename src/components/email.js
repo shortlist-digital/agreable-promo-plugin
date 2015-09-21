@@ -16,7 +16,6 @@ class Email extends Component {
       </div>
     )
   }
-
 }
 
 export default Email
