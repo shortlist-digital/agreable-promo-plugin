@@ -1,5 +1,18 @@
 import { combineReducers } from 'redux'
-import { UPDATE_FIELD, CLEAR_FIELD, VALIDATE_FIELD, NEXT_SCREEN, PREV_SCREEN, ScreenNames } from './actions'
+
+import {
+  UPDATE_FIELD,
+  UPDATE_CHECKBOX,
+  CLEAR_FIELD,
+  VALIDATE_FIELD,
+  NEXT_SCREEN,
+  PREV_SCREEN,
+  ScreenNames
+} from './actions'
+// Something
+import validators from './validators'
+
+console.log('validators: ', validators)
 
 const { ENTER_SCREEN } = ScreenNames
 
@@ -15,9 +28,31 @@ function userData(state = initialState.userData, action) {
   switch (action.type) {
 
   case UPDATE_FIELD:
+    // If this field doesn't have a validotor,
+    // just update the sate
+    console.log(action)
+    if (!state[action.name].validator) {
+      return Object.assign({}, state, {
+        [action.name]: Object.assign({}, state[action.name], {
+          value: action.value
+        })
+      })
+    // If this action does have a validator, then check the validity
+    } else if (state[action.name].validator) {
+      return Object.assign({}, state, {
+        [action.name]: Object.assign({}, state[action.name], {
+          value: action.value,
+          pristine: false,
+          dirty: true,
+          valid: validators[state[action.name].validator](action.value)
+        })
+      })
+    }
+
+  case UPDATE_CHECKBOX:
     return Object.assign({}, state, {
       [action.name]: Object.assign({}, state[action.name], {
-        value: action.value
+        value: !state[action.name].value
       })
     })
 
@@ -60,8 +95,3 @@ export default function promotionsApp(state = initialState, action) {
     screen: screen(state.screen, action)
   } 
 }
-
-
-
-
-

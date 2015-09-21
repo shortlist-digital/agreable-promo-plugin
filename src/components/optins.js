@@ -1,58 +1,36 @@
-var React = require('react')
+import React, { Component } from 'react'
+import Checkbox from './checkbox'
 
-class Optins extends React.Component {
+class OptIns extends Component {
  
-  componentDidMount = () => {
-    this.props.optins.map((optin, index) => {
-      var optinKeyString = `ThirdPartyOptIn${index+1}Key`
-      var optinValueString = `ThirdPartyOptIn${index+1}Value`
-      var object = {}
-      object[optinKeyString] = optin.optin_name
-      object[optinValueString] = false
-      this.props.reportOptins(object)
-    }.bind(this))
-  }
-
-  _handleOptinChange = (optin_name, index, event) => {
-    var optinKeyString = `ThirdPartyOptIn${index+1}Key`
-    var optinValueString = `ThirdPartyOptIn${index+1}Value`
-    var object = {}
-    object[optinKeyString] = optin_name
-    object[optinValueString] = event.target.checked
-    this.props.reportOptins(object)
-  }
-
-  _renderOptins = () => {
+  _renderOptIns = () => {
     var optinViews = []
-    if (this.props.optins && this.props.optins.length) {
-      this.props.optins.map((optin, index) => {
-        optinViews.push(
-          <div key={index} className="agreable-promo__optin">
-            <label className="agreable-promo__checkbox-label">
-              <input
-                type="checkbox" 
-                className="agreable-promo__checkbox"
-                onChange={this._handleOptinChange.bind(this, optin.optin_name, index)}
-              />
-              {optin.optin_label}
-            </label>  
-          </div>
-        )
-      }.bind(this))
-      return optinViews
-    }
-    return null
+    this.props.optins.map((optin, index) => {
+      var optinValueString = `ThirdPartyOptIn${index+1}Value`
+      optinViews.push(
+        <Checkbox
+          key={index}
+          name={optinValueString}
+          value={this.props.userData[optinValueString].value}
+          onUpdate={this.props.onUpdate}
+          label={optin.label}
+        />
+      )
+    }.bind(this))
+    return optinViews
   }
 
   render () {
-    var optins = this._renderOptins()
+    var optins = this._renderOptIns()
+    var message = ` From time to time our partners would like to keep you updated about new products and services. 
+      Please check the tickbox if you'd like to hear from anyone you're interested in.`
     return (
       <div>
-        <small>From time to time our partners would like to keep you updated about new products and services. Please check the tickbox if you'd like to hear from anyone you're interested in.</small>
+        <small>{message}</small>
         {optins}
       </div>
     )
   }
 }
 
-module.exports = Optins
+export default OptIns

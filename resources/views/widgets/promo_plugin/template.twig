@@ -14,8 +14,8 @@
           "optins": [
             {% for optin in promo.get_field('third_party_optins') %}
               {
-                "optin_name":"optin-{{optin.optin_name|sanitize}}",
-                "optin_label" : "{{optin.optin_label}}"
+                "name":"optin-{{optin.optin_name|sanitize}}",
+                "label":"{{optin.optin_label}}"
               }
               {% if not loop.last %}
                 ,

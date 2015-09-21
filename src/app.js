@@ -1,6 +1,6 @@
 import React, { Component, PropTypes }  from 'react'
 import { connect } from 'react-redux'
-import { updateField, nextScreen, ScreenNames } from './actions'
+import { updateField, updateCheckbox, nextScreen, ScreenNames } from './actions'
 
 const { ENTER_SCREEN, FORM_SCREEN } = ScreenNames
 
@@ -10,9 +10,16 @@ import FormScreen from './form-screen'
 class App extends Component {
 
   _dispatchFieldUpdate = (event) => {
+    console.log(event.target.name, event.target.value)
     this.props.dispatch(updateField({
       name: event.target.name,
       value: event.target.value
+    }))
+  }
+
+  _dispatchCheckboxUpdate = (event) => {
+    this.props.dispatch(updateCheckbox({
+      name: event.target.name
     }))
   }
 
@@ -32,6 +39,7 @@ class App extends Component {
           promoData={window.agreablePromoData}
           userData={userData}
           updateField={this._dispatchFieldUpdate}
+          updateCheckbox={this._dispatchCheckboxUpdate}
         />
       )
 
@@ -39,7 +47,6 @@ class App extends Component {
       return (
         <h1>Competition not open yet</h1>
       )
-
     }
   }
 
@@ -56,5 +63,3 @@ class App extends Component {
 // You can write a function to filter the state,
 // but I'm just returning in it's pure form
 export default connect((state) => state)(App)
-
-

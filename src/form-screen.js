@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import Email from './components/email'
 import FullName from './components/full-name'
 import Address from './components/address'
+import Terms from './components/terms'
+import OptIns from './components/optins'
 
 class FormScreen extends Component {
 
@@ -52,10 +54,29 @@ class FormScreen extends Component {
     return fieldComponents
   }
 
+  _renderOptIns = () => {
+    if (this.props.promoData.optins.length) {
+      return (
+        <OptIns
+          onUpdate={this.props.updateCheckbox}
+          userData={this.props.userData}
+          optins={this.props.promoData.optins}
+        />
+      )
+    } else return null
+
+  }
+
   render () {
     return (
       <div>
         {this._renderFields()}
+        {this._renderOptIns()}
+        <Terms
+          onUpdate={this.props.updateCheckbox}
+          {...this.props.promoData.termsAndConditions}
+          {...this.props.userData.OptInTermsAndConditions}
+        />
       </div>
     )
   }

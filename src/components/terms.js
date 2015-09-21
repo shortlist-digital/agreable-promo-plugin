@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import entities from 'entities'
 
+import Checkbox from './checkbox'
+
 class Terms extends Component {
 
   render () {
@@ -9,24 +11,21 @@ class Terms extends Component {
         <label className="agreable-promo__label">
           Terms & Conditions:
         </label>
-        <textarea className="agreable-promo__textarea" disabled="true" value={entities.decodeHTML(this.props.termsAndConditions)}>
+        <textarea 
+          className="agreable-promo__textarea" 
+          disabled="true" 
+          value={entities.decodeHTML(this.props.text)}>
         </textarea>
-        <div className="agreable-promo__optin">
-          <label className="agreable-promo__checkbox-label">
-            <input
-              type="checkbox"
-              className="agreable-promo__checkbox"
-              name="terms-and-conditions"
-              onChange={this.props.reportTermsAccepted}
-              value={this.props.checked}
-            />
-            {this.props.termsAndConditionsLabel}
-          </label>  
-        </div>
+        <Checkbox
+          name="OptInTermsAndConditions"
+          value={this.props.value}
+          onUpdate={this.props.onUpdate}
+          label={this.props.label}
+        />
       </div>
     )
   }
 
 }
 
-module.exports = Terms
+export default Terms

@@ -19,6 +19,11 @@ DOMReady(function() {
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
   store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
 
+  // Setup optin keys
+  agreablePromoData.optins.map((optin, index) => {
+    store.dispatch(updateField({name: `ThirdPartyOptIn${index+1}Key`, value: optin.name}))
+  })
+
   // Log the initial state
   console.log('Initial State', store.getState())
 
@@ -46,5 +51,4 @@ DOMReady(function() {
     </Provider>,
     rootElement
   )
-
 })

@@ -3,6 +3,7 @@
 */
 
 export const UPDATE_FIELD = 'UPDATE_FIELD'
+export const UPDATE_CHECKBOX = 'UPDATE_CHECKBOX'
 export const CLEAR_FIELD = 'CLEAR_FIELD'
 export const VALIDATE_FIELD = 'VALIDATE_FIELD'
 export const SUBMIT_FORM = 'SUBMIT_FORM'
@@ -22,6 +23,13 @@ export function updateField(field) {
     type: UPDATE_FIELD, 
     name: field.name,
     value: field.value
+  }
+}
+
+export function updateCheckbox(checkbox) {
+  return {
+    type: UPDATE_CHECKBOX,
+    name: checkbox.name
   }
 }
 

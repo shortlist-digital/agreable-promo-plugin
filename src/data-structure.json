@@ -3,81 +3,104 @@
     "Email": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "email"
+    },
+    "Telephone": {
+      "value": "",
+      "valid": false,
+      "prisitine": true,
+      "dirty": false,
+      "required": true,
+      "validator": "phone"
     },
     "FirstName": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "text"
     },
     "LastName": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "text"
     },
     "Address1": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "text"
     },
     "Address2": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "text"
     },
     "Address3": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": false,
+      "validator": "text"
     },
     "PostCode": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "postcode"
     },
     "AnswerOption": {
       "value": "",
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "selected"
     },
     "AnswerCorrect": {
       "value": null,
       "valid": false,
       "initial": true
     },
-    "OptIntermsAndConditions": {
+    "OptInTermsAndConditions": {
       "value": false,
       "valid": false,
-      "initial": true,
-      "required": true
+      "pristine": true,
+			"dirty":false,
+      "required": true,
+      "validator": "selected"
     },
     "ThirdPartyOptIn1Key": {
-      "value": "",
-      "required": true
+      "value": ""
     },
     "ThirdPartyOptIn1Value": {
       "value": false,
       "intial": true
     },
     "ThirdPartyOptIn2Key": {
-      "value": "",
-      "required": true
+      "value": ""
     },
     "ThirdPartyOptIn2Value": {
       "value": false,
       "intial": true
     },
     "ThirdPartyOptIn3Key": {
-      "value": "",
-      "required": true
+      "value": ""
     },
     "ThirdPartyOptIn3Value": {
       "value": false,
