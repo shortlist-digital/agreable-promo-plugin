@@ -12,10 +12,11 @@
     "Telephone": {
       "value": "",
       "valid": false,
-      "prisitine": true,
+      "pristine": true,
       "dirty": false,
       "required": true,
-      "validator": "phone"
+      "validator": "phone",
+      "validationMessage": "Please enter your telephone number"
     },
     "FirstName": {
       "value": "",

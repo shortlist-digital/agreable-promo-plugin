@@ -5,16 +5,14 @@ class Email extends Component {
 
   render () {
     return (
-      <div>
-        <TextInput
-          formValidating={this.props.formValidating}
-          fullWidth={true}
-          name='Email'
-          placeholder="Email Address"
-          type="email"
-          {...this.props}
-        />
-      </div>
+      <TextInput
+        formValidating={this.props.formValidating}
+        fullWidth={true}
+        name='Email'
+        placeholder="Email Address"
+        type="email"
+        {...this.props}
+      />
     )
   }
 }

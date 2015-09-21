@@ -26,7 +26,7 @@ class OptIns extends Component {
       Please check the tickbox if you'd like to hear from anyone you're interested in.`
     return (
       <div>
-        <small>{message}</small>
+        <small><p>{message}</p></small>
         {optins}
       </div>
     )

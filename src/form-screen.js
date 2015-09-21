@@ -5,6 +5,8 @@ import Address from './components/address'
 import Terms from './components/terms'
 import OptIns from './components/optins'
 
+import TextInput from './components/text-input'
+
 class FormScreen extends Component {
 
   constructor() {
@@ -15,14 +17,14 @@ class FormScreen extends Component {
     }
   }
 
-  componentWillMount () {
-    console.log(this.props)
-  }
 
   _handleSubmit = () => {
-    this.setState({
-      formValidating: true
-    })
+    if (this.props.isStoreValid()) {
+      this.setState({formSubmitting: true})
+      this.props.submit()
+    } else {
+      this.setState({formValidating: true})
+    }
   }
 
   _renderFields = () => {
@@ -38,6 +40,20 @@ class FormScreen extends Component {
               key={field}
               onUpdate={this.props.updateField}
               {...this.props.userData.Email}
+            />
+          )
+          break
+        case 'telephoneNumber':
+          fieldComponents.push(
+            <TextInput
+              formValidating={this.state.formValidating}
+              key={field}
+              fullWidth={true}
+              onUpdate={this.props.updateField}
+              name='Telephone'
+              placeholder="Telephone Number"
+              type="tel"
+              {...this.props.userData.Telephone}
             />
           )
           break

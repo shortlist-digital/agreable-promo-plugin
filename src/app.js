@@ -40,6 +40,7 @@ class App extends Component {
           userData={userData}
           updateField={this._dispatchFieldUpdate}
           updateCheckbox={this._dispatchCheckboxUpdate}
+          isStoreValid={() => false}
         />
       )
 

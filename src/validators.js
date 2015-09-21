@@ -11,7 +11,6 @@ let validators = {
   },
 
   selected: function (value) {
-    console.log('......................', value)
     return (!(value !== undefined || value !== ""))
   },
 
@@ -19,7 +18,7 @@ let validators = {
     return postcodeValidator.validate(postcodeString, 'UK')
   },
   phone: function (number) {
-    return /^(?=.*\d)[\d ]+$/.test(number)
+    return (/^(?=.*\d)[\d ]+$/.test(number) && (number.length > 9))
   }
 }
 

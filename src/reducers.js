@@ -12,8 +12,6 @@ import {
 // Something
 import validators from './validators'
 
-console.log('validators: ', validators)
-
 const { ENTER_SCREEN } = ScreenNames
 
 const initialState = require('./data-structure.json')
@@ -69,7 +67,6 @@ function userData(state = initialState.userData, action) {
 }
 
 function screen(state = initalState.screen, action) {
-  console.log(action)
   switch(action.type) {
 
   case NEXT_SCREEN:
