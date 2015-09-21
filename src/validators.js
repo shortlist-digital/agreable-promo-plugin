@@ -18,7 +18,7 @@ let validators = {
     return postcodeValidator.validate(postcodeString, 'UK')
   },
   phone: function (number) {
-    return (/^(?=.*\d)[\d ]+$/.test(number) && (number.length > 9))
+    return (/^(?=.*\d)[\d ]+$/.test(number) && (number.replace(/\s/g, '').length > 9))
   }
 }
 
