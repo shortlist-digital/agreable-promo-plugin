@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import classNames from 'classnames'
+import ValidationMessage from './validation-message'
 
 class TextInput extends Component {
 
   _inputClasses() {
     return classNames('agreable-promo__input', {
        'agreable-promo__input--valid': this.props.valid,
-       'agreable-promo__input--invalid': (this.props.required && !this.props.valid && !this.props.pristine)
+       'agreable-promo__input--invalid': (this.props.required && !this.props.valid && !this.props.pristine),
+       'agreable-promo__input--invalid': (this.props.formValidating && !this.props.valid && this.props.required)
     })
   }
 
@@ -15,6 +17,16 @@ class TextInput extends Component {
       'agreable-promo--half': !this.props.fullWidth,
       'agreable-promo--full': this.props.fullWidth
     })
+  }
+
+  _renderValidationMessage() {
+    if (this.props.validationMessage && this.props.formValidating && !this.props.valid && this.props.required) {
+      return (
+        <span className="agreable-promo__validation-message">
+        {this.props.validationMessage}
+        </span>
+      )
+    }
   }
 
   render() {
@@ -32,6 +44,9 @@ class TextInput extends Component {
           placeholder={this.props.placeholder}
           type={this.props.type}
           value={this.props.upperCase ? this.props.value.toUpperCase() : this.props.value}
+        />
+        <ValidationMessage
+          {...this.props}
         />
       </div>
     )

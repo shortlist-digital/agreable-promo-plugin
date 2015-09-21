@@ -7,8 +7,22 @@ import OptIns from './components/optins'
 
 class FormScreen extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      formSubmitting: false,
+      formValidating: false
+    }
+  }
+
   componentWillMount () {
     console.log(this.props)
+  }
+
+  _handleSubmit = () => {
+    this.setState({
+      formValidating: true
+    })
   }
 
   _renderFields = () => {
@@ -20,6 +34,7 @@ class FormScreen extends Component {
         case 'email':
           fieldComponents.push(
             <Email
+              formValidating={this.state.formValidating}
               key={field}
               onUpdate={this.props.updateField}
               {...this.props.userData.Email}
@@ -30,6 +45,7 @@ class FormScreen extends Component {
           fieldComponents.push(
             <Address
               key={field}
+              formValidating={this.state.formValidating}
               onUpdate={this.props.updateField}
               Address1={this.props.userData.Address1}
               Address2={this.props.userData.Address2}
@@ -41,6 +57,7 @@ class FormScreen extends Component {
         case 'fullName':
           fieldComponents.push(
             <FullName
+              formValidating={this.state.formValidating}
               key={field}
               onUpdate={this.props.updateField}
               FirstName={this.props.userData.FirstName}
@@ -58,6 +75,7 @@ class FormScreen extends Component {
     if (this.props.promoData.optins.length) {
       return (
         <OptIns
+          formValidating={this.state.formValidating}
           onUpdate={this.props.updateCheckbox}
           userData={this.props.userData}
           optins={this.props.promoData.optins}
@@ -72,10 +90,17 @@ class FormScreen extends Component {
         {this._renderFields()}
         {this._renderOptIns()}
         <Terms
+          formValidating={this.state.formValidating}
           onUpdate={this.props.updateCheckbox}
           {...this.props.promoData.termsAndConditions}
           {...this.props.userData.OptInTermsAndConditions}
         />
+        <button
+          className="agreable-promo__button agreable-promo__button--submit"
+          onClick={this._handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     )
   }

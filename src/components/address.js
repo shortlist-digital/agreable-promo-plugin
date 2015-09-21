@@ -9,6 +9,7 @@ class Address extends Component {
     return (
       <div>
         <TextInput
+          formValidating={this.props.formValidating}
           name="Address1"
           onUpdate={this.props.onUpdate}
           placeholder="Address 1"
@@ -16,6 +17,7 @@ class Address extends Component {
           {...this.props.Address1}
         />
         <TextInput
+          formValidating={this.props.formValidating}
           name="Address2"
           onUpdate={this.props.onUpdate}
           placeholder="Address 2"
@@ -23,6 +25,7 @@ class Address extends Component {
           {...this.props.Address2}
         />
         <TextInput
+          formValidating={this.props.formValidating}
           name="Address3"
           onUpdate={this.props.onUpdate}
           placeholder="Address 3"
@@ -30,6 +33,7 @@ class Address extends Component {
           {...this.props.Address3}
         />
         <TextInput
+          formValidating={this.props.formValidating}
           name="PostCode"
           onUpdate={this.props.onUpdate}
           placeholder="UK Post Code"

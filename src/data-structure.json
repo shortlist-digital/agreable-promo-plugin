@@ -6,7 +6,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "email"
+      "validator": "email",
+      "validationMessage": "Please enter a valid email address"
     },
     "Telephone": {
       "value": "",
@@ -22,7 +23,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "text"
+      "validator": "text",
+      "validationMessage": "Please enter your first name"
     },
     "LastName": {
       "value": "",
@@ -30,7 +32,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "text"
+      "validator": "text",
+      "validationMessage": "Please enter your last name"
     },
     "Address1": {
       "value": "",
@@ -38,7 +41,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "text"
+      "validator": "text",
+      "validationMessage": "Please enter the first part of your address"
     },
     "Address2": {
       "value": "",
@@ -46,7 +50,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "text"
+      "validator": "text",
+      "validationMessage": "Please enter the second part of your address"
     },
     "Address3": {
       "value": "",
@@ -54,7 +59,8 @@
       "pristine": true,
 			"dirty":false,
       "required": false,
-      "validator": "text"
+      "validator": "text",
+      "validationMessage": "Please enter the third part of your address"
     },
     "PostCode": {
       "value": "",
@@ -62,7 +68,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "postcode"
+      "validator": "postcode",
+      "validationMessage": "Please enter a valid UK postcode"
     },
     "AnswerOption": {
       "value": "",
@@ -83,7 +90,8 @@
       "pristine": true,
 			"dirty":false,
       "required": true,
-      "validator": "selected"
+      "validator": "selected",
+      "validationMessage": "Please accept the terms and conditions to enter"
     },
     "ThirdPartyOptIn1Key": {
       "value": ""

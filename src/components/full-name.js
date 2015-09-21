@@ -7,6 +7,7 @@ class FullName extends Component {
     return (
       <div>
         <TextInput
+          formValidating={this.props.formValidating}
           name="FirstName"
           onUpdate={this.props.onUpdate}
           placeholder="First Name"
@@ -14,6 +15,7 @@ class FullName extends Component {
           {...this.props.FirstName}
         />
         <TextInput
+          formValidating={this.props.formValidating}
           name="LastName"
           onUpdate={this.props.onUpdate}
           placeholder="Last Name"

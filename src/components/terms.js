@@ -18,10 +18,7 @@ class Terms extends Component {
         </textarea>
         <Checkbox
           name="OptInTermsAndConditions"
-          value={this.props.value}
-          onUpdate={this.props.onUpdate}
-          label={this.props.label}
-          valid={this.props.valid}
+          {...this.props}
         />
       </div>
     )

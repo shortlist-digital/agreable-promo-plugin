@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ValidationMessage from './validation-message'
 
 class Checkbox extends Component {
 
@@ -14,8 +15,10 @@ class Checkbox extends Component {
             onChange={this.props.onUpdate}
           />
           {this.props.label}
-          {this.props.valid ? ' ✓' :''}
         </label>  
+        <ValidationMessage
+          {...this.props}
+        />
       </div>
     )
   }

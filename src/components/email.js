@@ -7,6 +7,7 @@ class Email extends Component {
     return (
       <div>
         <TextInput
+          formValidating={this.props.formValidating}
           fullWidth={true}
           name='Email'
           placeholder="Email Address"
