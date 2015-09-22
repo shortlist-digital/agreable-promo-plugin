@@ -5,7 +5,7 @@ class Competition extends React.Component {
   constructor() {
     super()
     this.state = {
-      selectedAnswer: false,
+      selectedAnswer: false
     }
   }
 
@@ -14,7 +14,7 @@ class Competition extends React.Component {
 
   _handleChange = (object) => {
     this.setState({
-      selectedAnswer: object,
+      selectedAnswer: object
     })
   }
 

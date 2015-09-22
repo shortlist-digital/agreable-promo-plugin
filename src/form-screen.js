@@ -13,7 +13,7 @@ class FormScreen extends Component {
     super()
     this.state = {
       formSubmitting: false,
-      formValidating: false,
+      formValidating: false
     }
   }
 

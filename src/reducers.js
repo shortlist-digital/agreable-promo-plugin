@@ -19,7 +19,7 @@ const initialState = require('./data-structure.json')
 
 initialState.screen = {
   currentScreen: ENTER_SCREEN,
-  prevScreen: false,
+  prevScreen: false
 }
 
 function userData(state = initialState.userData, action) {
@@ -33,8 +33,8 @@ function userData(state = initialState.userData, action) {
     if (!state[action.name].validator) {
       return Object.assign({}, state, {
         [action.name]: Object.assign({}, state[action.name], {
-          value: action.value,
-        }),
+          value: action.value
+        })
       })
 
     // If this action does have a validator, then check the validity
@@ -44,8 +44,8 @@ function userData(state = initialState.userData, action) {
           value: action.value,
           pristine: false,
           dirty: true,
-          valid: validators[state[action.name].validator](action.value),
-        }),
+          valid: validators[state[action.name].validator](action.value)
+        })
       })
     }
 
@@ -53,15 +53,15 @@ function userData(state = initialState.userData, action) {
     return Object.assign({}, state, {
       [action.name]: Object.assign({}, state[action.name], {
         value: !state[action.name].value,
-        valid: !state[action.name].value,
-      }),
+        valid: !state[action.name].value
+      })
     })
 
   case CLEAR_FIELD:
     return Object.assign({}, state, {
       [action.name]: Object.assign({}, state[action.name], {
-        value: false,
-      }),
+        value: false
+      })
     })
 
   default:
@@ -75,13 +75,13 @@ function screen(state = initalState.screen, action) {
   case NEXT_SCREEN:
     return {
       prevScreen: state.currentScreen ? state.currentScreen : false,
-      currentScreen: action.screenName,
+      currentScreen: action.screenName
     }
 
   case PREV_SCREEN:
     return {
       prevScreen: false,
-      currentScreen: state.prevScreen ? state.prevScreen : false,
+      currentScreen: state.prevScreen ? state.prevScreen : false
     }
 
   default:
@@ -92,6 +92,6 @@ function screen(state = initalState.screen, action) {
 export default function promotionsApp(state = initialState, action) {
   return {
     userData: userData(state.userData, action),
-    screen: screen(state.screen, action),
+    screen: screen(state.screen, action)
   }
 }

@@ -8,14 +8,14 @@ class TextInput extends Component {
     return classNames('agreable-promo__input', {
       'agreable-promo__input--valid': this.props.valid,
       'agreable-promo__input--invalid': (this.props.required && !this.props.valid && !this.props.pristine),
-      'agreable-promo__input--invalid': (this.props.formValidating && !this.props.valid && this.props.required),
+      'agreable-promo__input--invalid': (this.props.formValidating && !this.props.valid && this.props.required)
     })
   }
 
   _widthClass() {
     return classNames({
       'agreable-promo--half': !this.props.fullWidth,
-      'agreable-promo--full': this.props.fullWidth,
+      'agreable-promo--full': this.props.fullWidth
     })
   }
 

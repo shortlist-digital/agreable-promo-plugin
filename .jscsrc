@@ -2,5 +2,7 @@
   "preset": "airbnb",
   "requireSemicolons": false,
   "disallowSemicolons": true,
+  "requireTrailingComma": false,
+  "disallowTrailingComma": true,
   "maxErrors": 200
 }

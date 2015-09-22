@@ -20,7 +20,7 @@ let validators = {
 
   phone: function(number) {
     return (/^(?=.*\d)[\d ]+$/.test(number) && (number.replace(/\s/g, '').length > 9))
-  },
+  }
 }
 
 export default validators
