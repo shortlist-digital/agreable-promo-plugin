@@ -45,7 +45,6 @@ module.exports = {
       'widgets', 'javascripts', 'web_modules', 'style-atoms', 'node_modules'
     ]
   },
-
   stylus: {
     use: [nib()]
   }
