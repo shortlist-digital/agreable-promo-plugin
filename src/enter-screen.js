@@ -6,10 +6,10 @@ class EnterScreen extends Component {
     return (
       <button
         onClick={this.props.onEnterClick}
-        className="agreable-promo__button agreable-promo__button--enter"
+        className='agreable-promo__button agreable-promo__button--enter'
       >
         Enter
-      </button> 
+      </button>
     )
   }
 }

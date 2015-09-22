@@ -13,13 +13,13 @@ class App extends Component {
     console.log(event.target.name, event.target.value)
     this.props.dispatch(updateField({
       name: event.target.name,
-      value: event.target.value
+      value: event.target.value,
     }))
   }
 
   _dispatchCheckboxUpdate = (event) => {
     this.props.dispatch(updateCheckbox({
-      name: event.target.name
+      name: event.target.name,
     }))
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
     switch (screen.currentScreen) {
     case ENTER_SCREEN:
       return (
-        <EnterScreen 
+        <EnterScreen
           onEnterClick={()=> dispatch(nextScreen(FORM_SCREEN))}
         />
       )

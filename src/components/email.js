@@ -3,14 +3,14 @@ import TextInput from './text-input'
 
 class Email extends Component {
 
-  render () {
+  render() {
     return (
       <TextInput
         formValidating={this.props.formValidating}
         fullWidth={true}
         name='Email'
-        placeholder="Email Address"
-        type="email"
+        placeholder='Email Address'
+        type='email'
         {...this.props}
       />
     )

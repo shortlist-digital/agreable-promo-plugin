@@ -1,4 +1,4 @@
-import React, { Component } from 'react' 
+import React, { Component } from 'react'
 import Email from './components/email'
 import FullName from './components/full-name'
 import Address from './components/address'
@@ -13,10 +13,9 @@ class FormScreen extends Component {
     super()
     this.state = {
       formSubmitting: false,
-      formValidating: false
+      formValidating: false,
     }
   }
-
 
   _handleSubmit = () => {
     if (this.props.isStoreValid()) {
@@ -51,8 +50,8 @@ class FormScreen extends Component {
               fullWidth={true}
               onUpdate={this.props.updateField}
               name='Telephone'
-              placeholder="Telephone Number"
-              type="tel"
+              placeholder='Telephone Number'
+              type='tel'
               {...this.props.userData.Telephone}
             />
           )
@@ -83,6 +82,7 @@ class FormScreen extends Component {
           break
       }
     }
+
     console.log(fieldComponents)
     return fieldComponents
   }
@@ -100,7 +100,7 @@ class FormScreen extends Component {
     } else return null
   }
 
-  render () {
+  render() {
     return (
       <div>
         {this._renderFields()}
@@ -112,7 +112,7 @@ class FormScreen extends Component {
           {...this.props.userData.OptInTermsAndConditions}
         />
         <button
-          className="agreable-promo__button agreable-promo__button--submit"
+          className='agreable-promo__button agreable-promo__button--submit'
           onClick={this._handleSubmit}
         >
           Submit

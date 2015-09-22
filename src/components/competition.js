@@ -2,37 +2,36 @@ var react = require('react')
 
 class Competition extends React.Component {
 
-  constructor () {
+  constructor() {
     super()
     this.state = {
-      selectedAnswer: false
+      selectedAnswer: false,
     }
   }
 
-  componentWillMount () {
+  componentWillMount() {
   }
 
   _handleChange = (object) => {
     this.setState({
-      selectedAnswer: object
+      selectedAnswer: object,
     })
   }
 
-
-  _renderAnswers () {
+  _renderAnswers() {
     var answers = []
     this.props.competitionAnswers.map((answer, index) => {
       answers.push(
-        <div key={index} className="agreable-promo__answer-container">
-          <label className="agreable-promo__answer-label">
+        <div key={index} className='agreable-promo__answer-container'>
+          <label className='agreable-promo__answer-label'>
             <input
-              className="agreable-promo__answer-input"
-              type="radio"
-              name="answer"
+              className='agreable-promo__answer-input'
+              type='radio'
+              name='answer'
               value={answer.answer_text}
               onChange={this._handleChange.bind(null, answer)}
             />
-            <span className="agreable-promo__answer-span">{answer.answer_text}</span>
+            <span className='agreable-promo__answer-span'>{answer.answer_text}</span>
           </label>
         </div>
       )
@@ -49,16 +48,16 @@ class Competition extends React.Component {
     }
   }
 
-  render () {
+  render() {
     return (
       <div>
-        <h2 className="agreable-promo__question-text">
+        <h2 className='agreable-promo__question-text'>
           {this.props.competitionQuestion}
           {(this.props.competitionQuestion.indexOf('?') >= 0) ? '' : '?'}
         </h2>
         {this._renderAnswers()}
-        <button className="agreable-promo__button agreable-promo__button--next" onClick={this._handleAnswer.bind(this)}>next</button>
-        {!!this.state.message && <span className="agreable-promo__message agreable-promo__message--error">{this.state.message}</span>}
+        <button className='agreable-promo__button agreable-promo__button--next' onClick={this._handleAnswer.bind(this)}>next</button>
+        {!!this.state.message && <span className='agreable-promo__message agreable-promo__message--error'>{this.state.message}</span>}
       </div>
     )
   }

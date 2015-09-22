@@ -14,41 +14,42 @@ export const ScreenNames = {
   ENTER_SCREEN: 'ENTER_SCREEN',
   COMPETITION_SCREEN: 'COMPETITION_SCREEN',
   FORM_SCREEN: 'FORM_SCREEN',
-  THANK_YOU_SCREEN: 'THANK_YOU_SCREEN'
+  THANK_YOU_SCREEN: 'THANK_YOU_SCREEN',
 }
 
 export function updateField(field) {
   return {
-    type: UPDATE_FIELD, 
+    type: UPDATE_FIELD,
     name: field.name,
-    value: field.value
+    value: field.value,
   }
 }
 
 export function updateCheckbox(checkbox) {
   return {
     type: UPDATE_CHECKBOX,
-    name: checkbox.name
+    name: checkbox.name,
   }
 }
 
 export function clearField(field) {
   return {
     type: CLEAR_FIELD,
-    name: field.name
+    name: field.name,
   }
 }
 
 export function nextScreen(screenName) {
   return {
     type: NEXT_SCREEN,
-    screenName
+    screenName,
   }
 }
+
 export function prevScreen(screenName) {
   return {
     type: PREV_SCREEN,
-    screenName
+    screenName,
   }
 }
 

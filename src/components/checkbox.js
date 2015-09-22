@@ -3,20 +3,20 @@ import ValidationMessage from './validation-message'
 
 class Checkbox extends Component {
 
-  render () {
+  render() {
     return (
-      <div className="agreable-promo__optin">
-        <label className="agreable-promo__checkbox-label">
+      <div className='agreable-promo__optin'>
+        <label className='agreable-promo__checkbox-label'>
           <input
-            type="checkbox"
-            className="agreable-promo__checkbox"
+            type='checkbox'
+            className='agreable-promo__checkbox'
             name={this.props.name}
             checked={this.props.value}
             onChange={this.props.onUpdate}
           />
           {this.props.label}
         </label>  
-        <ValidationMessage
+                                                                                                                                                                                                                                                                <ValidationMessage
           {...this.props}
         />
       </div>

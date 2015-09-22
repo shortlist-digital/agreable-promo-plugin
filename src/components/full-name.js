@@ -3,23 +3,23 @@ import TextInput from './text-input'
 
 class FullName extends Component {
 
-  render () {
+  render() {
     return (
       <div>
         <TextInput
           formValidating={this.props.formValidating}
-          name="FirstName"
+          name='FirstName'
           onUpdate={this.props.onUpdate}
-          placeholder="First Name"
-          type="text"
+          placeholder='First Name'
+          type='text'
           {...this.props.FirstName}
         />
         <TextInput
           formValidating={this.props.formValidating}
-          name="LastName"
+          name='LastName'
           onUpdate={this.props.onUpdate}
-          placeholder="Last Name"
-          type="text"
+          placeholder='Last Name'
+          type='text'
           {...this.props.LastName}
         />
       </div>

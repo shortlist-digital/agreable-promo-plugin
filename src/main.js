@@ -12,15 +12,17 @@ DOMReady(function() {
 
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
+
   // Great a store based on the reducer functions
   let store = createStore(promotionsApp)
+
   // We can populate the store with some data we already know about the promotion
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
   store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
 
   // Setup optin keys
   agreablePromoData.optins.map((optin, index) => {
-    store.dispatch(updateField({name: `ThirdPartyOptIn${index+1}Key`, value: optin.name}))
+    store.dispatch(updateField({name: `ThirdPartyOptIn${index + 1}Key`, value: optin.name}))
   })
 
   // Log the initial state
@@ -29,8 +31,8 @@ DOMReady(function() {
   // Every time the state changes, log it
   var logCounter = 1
   let unsubscribe = store.subscribe(() => {
-    console.log('Update',logCounter, store.getState())
-    logCounter = logCounter+1
+    console.log('Update', logCounter, store.getState())
+    logCounter = logCounter + 1
   })
 
   // Dispatch some test actions
@@ -44,6 +46,7 @@ DOMReady(function() {
   let rootElement = document.getElementById('agreable-promotion')
 
   React.render(
+
   // The child must be wrapped in a function
   // to work around an issue in React 0.13.
     <Provider store={store}>
