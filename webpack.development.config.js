@@ -20,6 +20,11 @@ module.exports = {
     publicPath: 'http://localhost:8082/static/'
   },
   module: {
+    preLoaders: [{
+      test:    /\.js$/,
+      exclude: /node_modules/,
+      loader: 'jscs-loader'
+    }],
     loaders: [
       { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader?paths[]=./src/styles&paths[]=./node_modules'},
       { test: /\.svg$/, exclude:'node_modules', loader: 'raw-loader' },

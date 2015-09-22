@@ -22,7 +22,7 @@ class OptIns extends Component {
 
   render() {
     var optins = this._renderOptIns()
-    var message = ` From time to time our partners would like to keep you updated about new products and services. 
+    var message = `From time to time our partners would like to keep you updated about new products and services.
       Please check the tickbox if you'd like to hear from anyone you're interested in.`
     return (
       <div>
