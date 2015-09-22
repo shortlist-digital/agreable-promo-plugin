@@ -9,7 +9,7 @@ class ValidationMessage extends Component {
         </span>
       )
     } else {
-      return null
+      return (<span class="agreable-promo__validation-message">&nbsp;</span>)
     }
   }
 }

@@ -1,6 +1,6 @@
 require('./stylus/main.styl')
 
-import DOMReady from './dom-ready'
+import DOMReady from 'detect-dom-ready'
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
@@ -41,7 +41,8 @@ DOMReady(function() {
   store.dispatch(clearField({name: 'Email'}))
   */
 
-  let rootElement = document.getElementById('agreable-promotion');
+  let rootElement = document.getElementById('agreable-promotion')
+
   React.render(
   // The child must be wrapped in a function
   // to work around an issue in React 0.13.
