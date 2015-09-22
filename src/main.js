@@ -29,11 +29,13 @@ DOMReady(function() {
   console.log('Initial State', store.getState())
 
   // Every time the state changes, log it
+  /*
   var logCounter = 1
   let unsubscribe = store.subscribe(() => {
     console.log('Update', logCounter, store.getState())
     logCounter = logCounter + 1
   })
+  */
 
   // Dispatch some test actions
   /*

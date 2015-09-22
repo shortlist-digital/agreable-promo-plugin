@@ -30,7 +30,6 @@ class FormScreen extends Component {
     const { fields } = this.props.promoData
     let fieldComponents = []
     for (let field of fields) {
-      console.log(field)
       switch (field) {
         case 'email':
           fieldComponents.push(
@@ -83,7 +82,6 @@ class FormScreen extends Component {
       }
     }
 
-    console.log(fieldComponents)
     return fieldComponents
   }
 

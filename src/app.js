@@ -10,7 +10,6 @@ import FormScreen from './form-screen'
 class App extends Component {
 
   _dispatchFieldUpdate = (event) => {
-    console.log(event.target.name, event.target.value)
     this.props.dispatch(updateField({
       name: event.target.name,
       value: event.target.value
