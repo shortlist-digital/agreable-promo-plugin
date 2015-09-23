@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import Email from './components/email'
-import FullName from './components/full-name'
-import Address from './components/address'
-import Terms from './components/terms'
-import OptIns from './components/optins'
+import Email from '../components/email'
+import FullName from '../components/full-name'
+import Address from '../components/address'
+import Terms from '../components/terms'
+import OptIns from '../components/optins'
 
-import TextInput from './components/text-input'
+import TextInput from '../components/text-input'
 
 class FormScreen extends Component {
 

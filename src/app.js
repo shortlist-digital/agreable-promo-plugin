@@ -4,8 +4,8 @@ import { updateField, updateCheckbox, nextScreen, ScreenNames } from './actions'
 
 const { ENTER_SCREEN, FORM_SCREEN } = ScreenNames
 
-import EnterScreen from './enter-screen'
-import FormScreen from './form-screen'
+import EnterScreen from './screens/enter'
+import FormScreen from './screens/form'
 
 class App extends Component {
 

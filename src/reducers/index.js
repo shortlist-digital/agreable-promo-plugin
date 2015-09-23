@@ -8,10 +8,10 @@ import {
   NEXT_SCREEN,
   PREV_SCREEN,
   ScreenNames
-} from './actions'
+} from '../actions'
 
 // Something
-import validators from './validators'
+import * as validators from '../validators'
 
 const { ENTER_SCREEN } = ScreenNames
 

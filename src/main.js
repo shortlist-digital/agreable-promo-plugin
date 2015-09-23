@@ -5,8 +5,8 @@ import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './app'
-import promotionsApp from './reducers'
-import { updateField, clearField, ScreenNames } from './actions'
+import promotionsApp from './reducers/'
+import { updateField, clearField, ScreenNames } from './actions/'
 import * as fieldDefinitions from './data-structure.js'
 
 DOMReady(function() {

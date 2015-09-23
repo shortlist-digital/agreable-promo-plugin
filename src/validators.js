@@ -1,26 +1,22 @@
 import checkEmailValid from 'check-email-valid'
 import postcodeValidator from 'postcode-validator'
 
-let validators = {
-  email: function(emailString) {
-    return checkEmailValid(emailString)
-  },
-
-  text: function(textString) {
-    return (textString.length >= 2)
-  },
-
-  selected: function(value) {
-    return (!(value !== undefined || value !== ''))
-  },
-
-  postcode: function(postcodeString) {
-    return postcodeValidator.validate(postcodeString, 'UK')
-  },
-
-  phone: function(number) {
-    return (/^(?=.*\d)[\d ]+$/.test(number) && (number.replace(/\s/g, '').length > 9))
-  }
+export function email(emailString) {
+  return checkEmailValid(emailString)
 }
 
-export default validators
+export function text(textString) {
+  return (textString.length >= 2)
+}
+
+export function selected(value) {
+  return (!(value !== undefined || value !== ''))
+}
+
+export function postcode(postcodeString) {
+  return postcodeValidator.validate(postcodeString, 'UK')
+}
+
+export function phone(number) {
+  return (/^(?=.*\d)[\d ]+$/.test(number) && (number.replace(/\s/g, '').length > 9))
+}
