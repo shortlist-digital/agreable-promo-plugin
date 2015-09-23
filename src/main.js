@@ -13,11 +13,13 @@ DOMReady(function() {
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
-  // Start building the state of the app withe defautlss
+  // Start building the state of the app withe defaults
+  // The model of the userdata can accept different fields,
+  // but we always send these to calais as a baseline
   var userData = {}
   Object.assign(userData,
     fieldDefinitions.email,
-    fieldDefinitions.postData,
+    fieldDefinitions.promoData,
     fieldDefinitions.termsAndConditions
   )
 
@@ -51,12 +53,18 @@ DOMReady(function() {
       break
   }
 
-  const { ENTER_SCREEN } = ScreenNames
+  const { CLOSED_SCREEN, ENTER_SCREEN } = ScreenNames
+
+  const isActive = function() {
+    let { timings } = agreablePromoData
+    var now = Math.floor(new Date().getTime() / 1000)
+    return (now > timings.start && now < timings.end)
+  }
 
   var initialState = {
     userData: userData,
     screen: {
-      currentScreen: ENTER_SCREEN,
+      currentScreen: isActive() ? ENTER_SCREEN : CLOSED_SCREEN,
       prevScreen: null
     }
   }

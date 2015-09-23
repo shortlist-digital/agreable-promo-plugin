@@ -141,7 +141,7 @@ export const thirdOptin = {
   }
 }
 
-export const postData = {
+export const promoData = {
   'Location': {
     'value': null,
     'required': true

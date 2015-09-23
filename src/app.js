@@ -2,8 +2,9 @@ import React, { Component, PropTypes }  from 'react'
 import { connect } from 'react-redux'
 import { updateField, updateCheckbox, nextScreen, ScreenNames } from './actions'
 
-const { ENTER_SCREEN, FORM_SCREEN } = ScreenNames
+const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN } = ScreenNames
 
+import ClosedScreen from './screens/closed'
 import EnterScreen from './screens/enter'
 import FormScreen from './screens/form'
 
@@ -26,6 +27,12 @@ class App extends Component {
     // Injected by connect() call:
     const { dispatch, screen, userData} = this.props
     switch (screen.currentScreen) {
+    case CLOSED_SCREEN:
+      return (
+        <ClosedScreen
+          promoData={window.agreablePromoData}
+        />
+      )
     case ENTER_SCREEN:
       return (
         <EnterScreen
