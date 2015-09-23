@@ -6,15 +6,62 @@ import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './app'
 import promotionsApp from './reducers'
-import { updateField, clearField } from './actions'
+import { updateField, clearField, ScreenNames } from './actions'
+import * as fieldDefinitions from './data-structure.js'
 
 DOMReady(function() {
-
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
-  // Great a store based on the reducer functions
-  let store = createStore(promotionsApp)
+  // Start building the state of the app withe defautlss
+  var userData = {}
+  Object.assign(userData,
+    fieldDefinitions.email,
+    fieldDefinitions.postData,
+    fieldDefinitions.termsAndConditions
+  )
+
+  // Merge the fields for this promo into the app state
+  agreablePromoData.fields.map((field, index) => {
+    var fieldObject = fieldDefinitions[field]
+    Object.assign(userData, fieldObject)
+  })
+
+  // Add the optins for this promo
+  var numberOfOptIns = agreablePromoData.optins.length
+  switch (numberOfOptIns) {
+    case 0:
+      break
+    case 1:
+      Object.assign(userData, fieldDefinitions[firstOptIn])
+      break
+    case 2:
+      Object.assign(userData,
+        fieldDefinitions.firstOptIn,
+        fieldDefinitions.secondOptIn
+      )
+      break
+    case 3:
+      Object.assign(userData,
+        fieldDefinitions.firstOptIn,
+        fieldDefinitions.secondOptIn,
+        fieldDefinitions.thirdOptIn
+      )
+    default:
+      break
+  }
+
+  const { ENTER_SCREEN } = ScreenNames
+
+  var initialState = {
+    userData: userData,
+    screen: {
+      currentScreen: ENTER_SCREEN,
+      prevScreen: null
+    }
+  }
+
+  let store = createStore(promotionsApp, initialState)
 
   // We can populate the store with some data we already know about the promotion
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))

@@ -15,14 +15,7 @@ import validators from './validators'
 
 const { ENTER_SCREEN } = ScreenNames
 
-const initialState = require('./data-structure.json')
-
-initialState.screen = {
-  currentScreen: ENTER_SCREEN,
-  prevScreen: false
-}
-
-function userData(state = initialState.userData, action) {
+function userData(state, action) {
   // Note "state is "userData" object
   switch (action.type) {
 
@@ -69,7 +62,7 @@ function userData(state = initialState.userData, action) {
   }
 }
 
-function screen(state = initalState.screen, action) {
+function screen(state = initialState.screen, action) {
   switch (action.type) {
 
   case NEXT_SCREEN:
