@@ -38,7 +38,7 @@ PassportSelect = (function() {
 
   PassportSelect.prototype.getPassports = function() {
     var timestamp = Math.floor(Date.now() / 1000)
-    var url = "http://calaisapi.com/passports/" + this.brandIdentifier + "?v=" + timestamp
+    var url = "http://calaisapi.com/passport/" + this.brandIdentifier + "?v=" + timestamp
     $.ajax({
       dataType: "json",
       url: url,
