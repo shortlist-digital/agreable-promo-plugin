@@ -47,7 +47,7 @@
 {% if user.ID %}
   <div class="entry-data">
       Total entries: 
-      <form><button class="btn" id="total-count" type="submit">0</button></form>
+      <form><button class="btn" id="total-count" type="submit">&hellip;</button></form>
       
       Export all: 
       <form class="js-confirm-action" id="download-full-csv" method="get">
@@ -100,11 +100,10 @@
     }
 
     for (var optinIndex = 1; optinIndex <= {{thirdPartyOptinCount}}; optinIndex++) {
-      //document.getElementById('download-optins-' + optinIndex + '-json').action = downloadUrl + '/criteria/{"PostId":{{ promo.ID }}, "ThirdPartyOptIn' + optinIndex + 'Value": true}/format/json'
       document.getElementById('download-optins-' + optinIndex + '-csv').action = downloadUrl + '/criteria/{"PostId":{{ promo.ID }}, "ThirdPartyOptIn' + optinIndex + 'Value": true}/format/csv'
     }
     var request = new XMLHttpRequest();
-    request.open('GET', downloadUrl + '/criteria/{"PostId":{{ promo.ID }}}/count?v=' + Math.round(Math.random() * 100000), true);
+    request.open('GET', downloadUrl + '/criteria/{"PostId":{{ promo.ID }}}/count', true);
     request.onload = function() {
       console.log('load total success')
       console.log(request.responseText)
