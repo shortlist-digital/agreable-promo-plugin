@@ -44,27 +44,19 @@ class EmailController {
   }
 
   public function build_message(){
-    ob_start();
-      print $this->build_subject();
-      print "\r\n";
-      print "You are receiving this email as the Passport on a live promotion has changed.";
-      print "\r\n";
-      print "The promotion is '".$this->post_object->title."'.";
-      print "\r\n";
-      print "The passport for this promotion was previously: ".$this->old_passport->id;
-      print "\r\n";
-      print "The passport for this promotion was changed to: ".$this->new_passport->id;
-      print "\r\n";
-      $time = new \DateTime();
-      $time_now = $time->format('Y-m-d H:i:s');
-      print "The change was made by ".wp_get_current_user()->data->user_login." at ".$time_now.". (This might be off by 1 hour depending on the server)";
-      print "\r\n";
-      print edit_post_link("Click here to edit the promotion in question.", null, null, $this->post_object->ID);
-      if (WP_ENV !== 'production') {
-        print "\r\n";
-        print "This is a test alert, no further action is neccessary.";
-      }
-    return ob_get_clean();
+    $time = new \DateTime();
+    $time_now = $time->format('Y-m-d H:i:s');
+    return view('@AgreablePromoPlugin/email.twig', array(
+      'post' => $this->post_object,
+      'old_passport' => $this->old_passport->id,
+      'new_passport' => $this->new_passport->id,
+      'user' => wp_get_current_user()->data,
+      'subject' => $this->build_subject(),
+      'site' => get_bloginfo(),
+      'time' => $time_now,
+      'edit_link' => get_edit_post_link($this->post_object->ID),
+      'environment' => WP_ENV
+    ))->getBody();
   }
 
   public function send_warning_email() {

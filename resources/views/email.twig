@@ -1,0 +1,22 @@
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<h2>{{subject}}</h2>
+<hr>
+<p>You are receiving this email as the Calais Passport on a live promotion has changed on <strong>{{site}}</strong>.</p>
+<p>Passport changed on <strong>
+  <a href="{{post.guid}}">
+    {{post.post_title}}
+  </a>
+  </strong>
+</p>
+<hr>
+<p>The passport for this promotion was previously: <pre>OLD: {{old_passport}}</pre></p>
+<p>The passport for this promotion was changed to: <pre>NEW: {{new_passport}}</pre></p>
+<hr>
+<p>The change was made by <strong>{{user.user_login}}</strong> at {{time}}. </br> <small>This might be off by 1 hour depending on Daylight Savings time and the server.)</small>
+<hr>
+<a target="_blank" href="{{edit_link}}">Click here to edit the promotion</a>
+{% if environment != "production" %}
+<p style="color:red;">This is a test alert, no further action is neccessary</p>
+{% endif %}
+<pre>
+</pre>
