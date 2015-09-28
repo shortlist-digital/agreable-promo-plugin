@@ -60,6 +60,10 @@ class EmailController {
       print "The change was made by ".wp_get_current_user()->data->user_login." at ".$time_now.". (This might be off by 1 hour depending on the server)";
       print "\r\n";
       print edit_post_link("Click here to edit the promotion in question.", null, null, $this->post_object->ID);
+      if (WP_ENV !== 'production') {
+        print "\r\n";
+        print "This is a test alert, no further action is neccessary.";
+      }
     return ob_get_clean();
   }
 
@@ -77,7 +81,7 @@ class EmailController {
         return "WARN: Calais Passport Alert";
         break;
       case "staging":
-        return "TEST: Calais Passport Alert";
+        return "TEST from staging: Calais Passport Alert";
         break;
       case "development":
         return "TEST from local machine: Calais Passport Alert";
