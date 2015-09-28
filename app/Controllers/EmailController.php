@@ -63,6 +63,7 @@ class EmailController {
     $to_emails = $this->get_admin_email_array();
     $subject = $this->build_subject();
     $message = $this->build_message();
+    echo $message;die;
     $headers = $this->build_headers();
     return wp_mail($to_emails, $subject, $message, $headers);
   }
