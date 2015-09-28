@@ -16,7 +16,6 @@ class AdminController {
      * ACF definitions for Panel are in app/panels.php.
      */
 
-    \Jigsaw::show_notice('Jigsaw is working', 'updated'); 
     \Jigsaw::add_column('promo', 'Passport', function($pid){
       // This is a render callback
       $data = array();
