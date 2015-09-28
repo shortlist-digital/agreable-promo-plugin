@@ -46,19 +46,19 @@ class EmailController {
   public function build_message(){
     ob_start();
       print $this->build_subject();
-      print "\n\n";
+      print "\r\n";
       print "You are receiving this email as the Passport on a live promotion has changed.";
-      print "\n\n";
+      print "\r\n";
       print "The promotion is '".$this->post_object->title."'.";
-      print "\n\n";
+      print "\r\n";
       print "The passport for this promotion was previously: ".$this->old_passport->id;
-      print "\n\n";
+      print "\r\n";
       print "The passport for this promotion was changed to: ".$this->new_passport->id;
-      print "\n\n";
+      print "\r\n";
       $time = new \DateTime();
       $time_now = $time->format('Y-m-d H:i:s');
       print "The change was made by ".wp_get_current_user()->data->user_login." at ".$time_now.". (This might be off by 1 hour depending on the server)";
-      print "\n\n";
+      print "\r\n";
       print edit_post_link("Click here to edit the promotion in question.", null, null, $this->post_object->ID);
     return ob_get_clean();
   }
