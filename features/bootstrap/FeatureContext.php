@@ -1,6 +1,12 @@
 <?php
 include __DIR__ . '/bootstrap.php';
-include __DIR__ . '/../../vendor/jarednova/mesh/mesh.php';
+
+// Load Mesh (non-autoloadable)
+if(file_exists(__DIR__ . '/../../vendor/jarednova/mesh/')){
+  require_once __DIR__ . '/../../vendor/jarednova/mesh/mesh.php';
+} else {
+  require_once __DIR__ . '/../../../../../../vendor/jarednova/mesh/mesh.php';
+}
 
 use Facebook\WebDriver\Remote\RemoteWebDriver;
 use Facebook\WebDriver\WebDriverBy;
@@ -22,7 +28,7 @@ class FeatureContext extends BehatContext {
     $promoTitle = 'Test (system) - promo';
     $postTitle = 'Test (system) - promo post';
 
-    $promo = new Mesh\Post($promoTitle, 'promo');
+    $promo = new \Mesh\Post($promoTitle, 'promo');
     $promo->set('data_to_capture', 'a:1:{i:0;s:8:"fullName";}');
     $promo->set('collect_optins', 1);
     $promo->set('third_party_optins_0_optin_name', 'Croissant');
@@ -32,8 +38,8 @@ class FeatureContext extends BehatContext {
     $promo->set('terms_and_conditions', 'Test terms and conditions');
     $promo->set('start_time', 1441065600);
     $promo->set('end_time', 1916697600);
-    $promo->set('selected_passport', '{"id":"test_promotion_main-subscribe","shared_secret":"6e3e482e46c095e935415ac49d5a0cdf32d13e895abecc44da60bf19c1d05d27"}');
-    $promo->set('promotion_passport', '{"id":"test_promotion_main-subscribe","shared_secret":"6e3e482e46c095e935415ac49d5a0cdf32d13e895abecc44da60bf19c1d05d27"}');
+    $promo->set('selected_passport', '{"id":"test_promotion_main-subscribe","shared_secret":"6a9962bdd2359e32a4090951829247b1db507fc3b66b25c34e02e257c3ef9e48"}');
+    $promo->set('promotion_passport', '{"id":"test_promotion_main-subscribe","shared_secret":"6a9962bdd2359e32a4090951829247b1db507fc3b66b25c34e02e257c3ef9e48"}');
 
     self::$testPostPromo = new Mesh\Post($postTitle, 'post');
     self::$testPostPromo->set('short_headline', 'Test (system) - promo');
