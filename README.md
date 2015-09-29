@@ -57,3 +57,14 @@ array (
 ),
 ```
 Note: If `acf_add_options_sub_page` is given 'menu_title' of 'Promo Settings', the location 'value' is 'acf-options-promo-settings' (as above).
+
+#### Deploy to packagist
+
+Check the current latest tag
+`git fetch && git tag`
+
+Bump the version appropriately and tag
+`git tag x.x.x`
+
+Push to Github. Packagist will receive a hook and update the file
+`git push origin master --tags`
