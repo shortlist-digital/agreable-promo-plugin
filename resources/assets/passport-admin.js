@@ -1,6 +1,6 @@
 var $ = window.$ || window.jQuery
 
-var PassportSelect, PublishedWarnings
+var PassportSelect, PublishedWarnings, GetCounts
 
 PassportSelect = (function() {
   function PassportSelect() {
@@ -182,8 +182,41 @@ SenseCheckFields = (function() {
 
 })()
 
+GetCounts = (function() {
+  function GetCounts() {
+    this.counts = $('.count-column')
+    if (this.counts.length) { this.start() }
+  }
+
+  GetCounts.prototype.updateCount = function(index, el) {
+    var $el = $(el)
+    var countRequest = new XMLHttpRequest();
+    var url = $el.data('url')
+    $.ajax(url, {
+      success: function(response) {
+        console.log('load total success')
+        console.log(response)
+        $el.html(response)
+      },
+      error: function() {
+        $el.html('Error').css({color:'red'})
+      }
+    })
+    
+
+  }
+
+  GetCounts.prototype.start = function() {
+    this.counts.each(this.updateCount)
+  }
+
+  return GetCounts
+
+})()
+
 
 $(window).ready(function() {
+  new GetCounts()
   new PassportSelect()
   new PublishedWarnings()
 })
