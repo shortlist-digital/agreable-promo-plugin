@@ -1,6 +1,6 @@
 var $ = window.$ || window.jQuery
 
-var PassportSelect
+var PassportSelect, PublishedWarnings
 
 PassportSelect = (function() {
   function PassportSelect() {
@@ -149,7 +149,42 @@ PassportSelect = (function() {
 
 })()
 
+PublishedWarnings = (function() {
+  function PublishedWarnings () {
+    var status = this.getPublishStatus()
+    if (status) {
+      this.lockKeyInputs()
+      alert('Hi! Editing a promo is fraught with danger! Take care with the passport, "data to capture", and optins.')
+    }
+  }
+
+  PublishedWarnings.prototype.lockKeyInputs = function () {
+    var $optins = $('*[data-name="optin_name"]')
+    var $fields = $optins.find('input')
+    $fields.prop('disabled', true)
+    var message = $('<h4>').text('DANGER: Careful editing these').css({color:'red'})
+    $('*[data-name="third_party_optins"] .acf-label:first, *[data-name="promotion_passport"] .acf-label:first, *[data-name="data_to_capture"] .acf-label:first').after(message)
+  }
+
+  PublishedWarnings.prototype.getPublishStatus = function () {
+    return ($('#post-status-display').html().trim() == 'Published')
+  }
+
+  return PublishedWarnings
+})()
+
+SenseCheckFields = (function() {
+  function SenseCheckFields () {
+    
+  }
+
+  return SenseCheckFields
+
+})()
+
+
 $(window).ready(function() {
   new PassportSelect()
+  new PublishedWarnings()
 })
 
