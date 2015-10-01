@@ -1,6 +1,6 @@
 var $ = window.$ || window.jQuery
 
-var PassportSelect
+var PassportSelect, PublishedWarnings, GetCounts
 
 PassportSelect = (function() {
   function PassportSelect() {
@@ -38,7 +38,7 @@ PassportSelect = (function() {
 
   PassportSelect.prototype.getPassports = function() {
     var timestamp = Math.floor(Date.now() / 1000)
-    var url = "http://calaisapi.com/passports/" + this.brandIdentifier + "?v=" + timestamp
+    var url = "http://calaisapi.com/passport/" + this.brandIdentifier + "?v=" + timestamp
     $.ajax({
       dataType: "json",
       url: url,
@@ -116,9 +116,7 @@ PassportSelect = (function() {
   }
 
   PassportSelect.prototype.populatePassportSelect = function(passports) {
-    if (this.currentPassport == false) {
-      this.$select.append($('<option>').html('Select a passport').attr('selected', true))
-    }
+    this.$select.append($('<option>').html('Select a passport').attr('selected', true))
     this.passports = passports
     passports.map(function(passport, index) {
 
@@ -126,9 +124,10 @@ PassportSelect = (function() {
       var option = $('<option>', {
         value: JSON.stringify({
           id: passport.passport_id,
-          shared_secret: passport.secret
+          shared_secret: passport.secret,
+          title: passport.title
         })
-      }).text(passport.passport_id)
+      }).html(passport.title)
 
       // Select if currently selected passport
       if (this.currentPassport.id == passport.passport_id) {
@@ -149,7 +148,77 @@ PassportSelect = (function() {
 
 })()
 
+PublishedWarnings = (function() {
+  function PublishedWarnings () {
+    var status = this.getPublishStatus()
+    if (status) {
+      this.lockKeyInputs()
+    }
+  }
+
+  PublishedWarnings.prototype.lockKeyInputs = function () {
+    var $optins = $('*[data-name="optin_name"]')
+    var $fields = $optins.find('input')
+    $fields.prop('disabled', true)
+    var message = $('<h4>').text('DANGER: Careful editing these').css({color:'red'})
+    $('*[data-name="third_party_optins"] .acf-label:first, *[data-name="promotion_passport"] .acf-label:first, *[data-name="data_to_capture"] .acf-label:first').after(message)
+  }
+
+  PublishedWarnings.prototype.getPublishStatus = function () {
+    return ($('#post-status-display').html().trim() == 'Published')
+  }
+
+  return PublishedWarnings
+})()
+
+SenseCheckFields = (function() {
+  function SenseCheckFields () {
+    
+  }
+
+  return SenseCheckFields
+
+})()
+
+GetCounts = (function() {
+  function GetCounts() {
+    this.counts = $('.count-column')
+    if (this.counts.length) { this.start() }
+  }
+
+  GetCounts.prototype.updateCount = function(index, el) {
+    var $el = $(el)
+    var countRequest = new XMLHttpRequest();
+    var url = $el.data('url')
+    $.ajax(url, {
+      success: function(response) {
+        console.log('load total success')
+        console.log(response)
+        $el.html(response)
+      },
+      error: function() {
+        $el.html('Error').css({color:'red'})
+      }
+    })
+    
+
+  }
+
+  GetCounts.prototype.start = function() {
+    this.counts.each(this.updateCount)
+  }
+
+  return GetCounts
+
+})()
+
+
 $(window).ready(function() {
-  new PassportSelect()
+  if ($('body').hasClass('post-type-promo')) {
+    new GetCounts()
+    new PassportSelect()
+    new PublishedWarnings()
+  }
+ 
 })
 
