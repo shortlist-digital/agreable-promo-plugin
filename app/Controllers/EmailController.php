@@ -19,7 +19,7 @@ class EmailController {
     $this->post_array = $post_array;
     $this->post_object = new \TimberPost($post_array['ID']);
     // Check we're updating
-    if (($post_array['post_status'] == 'publish') && ($this->post_object->post_status == 'publish')) {
+    if (($post_array['post_status'] == 'publish') && ($this->post_object->post_status == 'publish') && ($this->post_object->post_type == 'promo')) {
       $this->check_if_passport_changed();
     }
   }
@@ -63,7 +63,6 @@ class EmailController {
     $to_emails = $this->get_admin_email_array();
     $subject = $this->build_subject();
     $message = $this->build_message();
-    echo $message;die;
     $headers = $this->build_headers();
     return wp_mail($to_emails, $subject, $message, $headers);
   }

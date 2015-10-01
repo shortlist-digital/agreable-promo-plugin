@@ -216,8 +216,11 @@ GetCounts = (function() {
 
 
 $(window).ready(function() {
-  new GetCounts()
-  new PassportSelect()
-  new PublishedWarnings()
+  if ($('body').hasClass('post-type-promo')) {
+    new GetCounts()
+    new PassportSelect()
+    new PublishedWarnings()
+  }
+ 
 })
 
