@@ -116,9 +116,7 @@ PassportSelect = (function() {
   }
 
   PassportSelect.prototype.populatePassportSelect = function(passports) {
-    if (this.currentPassport == false) {
-      this.$select.append($('<option>').html('Select a passport').attr('selected', true))
-    }
+    this.$select.append($('<option>').html('Select a passport').attr('selected', true))
     this.passports = passports
     passports.map(function(passport, index) {
 
@@ -128,7 +126,7 @@ PassportSelect = (function() {
           id: passport.passport_id,
           shared_secret: passport.secret
         })
-      }).text(passport.passport_id)
+      }).html(passport.title)
 
       // Select if currently selected passport
       if (this.currentPassport.id == passport.passport_id) {
@@ -154,7 +152,6 @@ PublishedWarnings = (function() {
     var status = this.getPublishStatus()
     if (status) {
       this.lockKeyInputs()
-      alert('Hi! Editing a promo is fraught with danger! Take care with the passport, "data to capture", and optins.')
     }
   }
 
