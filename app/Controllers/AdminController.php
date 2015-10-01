@@ -47,7 +47,9 @@ class AdminController {
       // This is a render callback
       $data = array();
       $data = new \TimberPost($pid);
-      echo json_decode($data->selected_passport)->id;
+      
+      $object = json_decode($data->selected_passport);
+      echo isset($object->title) ? $object->title : $object->id;
     }, 5);
 
   }

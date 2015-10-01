@@ -124,7 +124,8 @@ PassportSelect = (function() {
       var option = $('<option>', {
         value: JSON.stringify({
           id: passport.passport_id,
-          shared_secret: passport.secret
+          shared_secret: passport.secret,
+          title: passport.title
         })
       }).html(passport.title)
 
