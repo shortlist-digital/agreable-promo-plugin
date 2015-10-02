@@ -57,7 +57,7 @@ class AdminController {
       else if (time() > $end_time) {
         echo "<span>Ended</span>";
       }
-      else if ($start_time < time()) {
+      else if ($start_time > time()) {
         echo "<span style='color:orange;'>Starts soon</span>";
       }
     } else {
