@@ -23,6 +23,7 @@ class AdminController {
 
      $this->add_passport_column();
      $this->add_count_column();
+     $this->add_status_column();
 
   }
 
@@ -35,9 +36,33 @@ class AdminController {
     \Jigsaw::add_column('promo', 'Entries', function($pid){
       // This is a render callback
       $data = new \TimberPost($pid);
-      $passport_id = json_decode($data->selected_passport)->id;
-      $url = $this->build_url($passport_id, $data->ID);
-      echo "<span class='count-column' data-url='$url'>Loading Count...</span>";
+      if (null !== json_decode($data->selected_passport)) {
+        $passport_id = json_decode($data->selected_passport)->id;
+        $url = $this->build_url($passport_id, $data->ID);
+        echo "<span class='count-column' data-url='$url'>Loading Count...</span>";
+      } else {
+        echo "N/A";
+      }
+    }, 5);
+  }
+
+  public function add_status_column() {
+    \Jigsaw::add_column('promo', 'Status', function($pid){
+    $start_time =  get_field("start_time", $pid);
+    $end_time = get_field("end_time", $pid);
+    if (isset($start_time) && isset($end_time)) {
+      if (($start_time < time()) && ($end_time > time())) {
+        echo "<span style='color:green;'>Running</san>";
+      }
+      else if (time() > $end_time) {
+        echo "<span>Ended</span>";
+      }
+      else if ($start_time < time()) {
+        echo "<span style='color:orange;'>Starts soon</span>";
+      }
+    } else {
+      echo "N/A";
+    }
     }, 5);
   }
 
@@ -47,9 +72,12 @@ class AdminController {
       // This is a render callback
       $data = array();
       $data = new \TimberPost($pid);
-      
-      $object = json_decode($data->selected_passport);
-      echo isset($object->title) ? $object->title : $object->id;
+      if (null !== json_decode($data->selected_passport)) {
+        $object = json_decode($data->selected_passport);
+        echo isset($object->title) ? $object->title : $object->id;
+      } else {
+        echo "No Passport";
+      }
     }, 5);
 
   }
