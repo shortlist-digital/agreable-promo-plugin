@@ -114,6 +114,7 @@ class Form extends React.Component {
     this.setState({submitting:true})
     this.calaisClient.setDataRecord(this.state)
     this.calaisClient.post().then(this._handleSuccess, this._handleFailure)
+    setTimeout(this._handleSuccess, 2000)
   }
 
   _handleSuccess = (response) => {
