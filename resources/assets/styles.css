@@ -10,7 +10,7 @@
 }
 #agreable-promotion .agreable-promo__input {
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -34,7 +34,6 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     float: left;
-    margin-bottom: 10px;
     max-width: 50%;
     width: calc(50% - 10px);
   }
@@ -115,6 +114,8 @@
   z-index: 30;
 }
 #agreable-promotion .agreable-promo__textarea {
+  font-size: 12px;
+  line-height: 1.4;
   display: block;
   max-width: 100%;
   min-height: 50px;
@@ -126,32 +127,9 @@
   margin-top: 12px;
   max-width: 300px;
 }
-#agreable-promotion .agreable-promo__message {
-  clear: both;
-  display: block;
-  font-size: small;
-  font-style: italic;
-  margin: 0.8em 0;
-  text-align: center;
-}
-#agreable-promotion .agreable-promo__message--error {
+#agreable-promotion .agreable-promo__validation-message {
   color: #f00;
-}
-#agreable-promotion .agreable-promo__answer-label {
-  cursor: pointer;
-  zoom: 1;
-  min-width: 100%;
-}
-#agreable-promotion .agreable-promo__answer-label:before,
-#agreable-promotion .agreable-promo__answer-label:after {
-  content: "";
-  display: table;
-}
-#agreable-promotion .agreable-promo__answer-label:after {
-  clear: both;
-}
-#agreable-promotion .agreable-promo__answer-input {
-  position: relative;
-  top: -4px;
-  margin-right: 12px;
+  display: block;
+  font-size: 12px;
+  margin: 0.2em 0;
 }

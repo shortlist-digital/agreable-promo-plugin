@@ -5,7 +5,7 @@ import React, { Component } from 'react'
 class ClosedScreen extends Component {
 
   componentDidMount() {
-    console.log(this.props)
+    console.log('Closed Screen')
   }
 
   _timeMessage = () => {
@@ -13,12 +13,13 @@ class ClosedScreen extends Component {
     if (timings.end < this._now()) {
       return `Sorry. This expired ${moment(new Date(timings.end * 1000)).fromNow()}`
     }
+
     if ((timings.start > this._now()) && (timings.end > this._now())) {
       return `Opens ${moment(new Date(timings.start * 1000)).fromNow()}`
     }
   }
 
-  _now () {
+  _now() {
     return Math.floor(new Date().getTime() / 1000)
   }
 

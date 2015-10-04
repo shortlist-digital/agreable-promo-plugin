@@ -35,7 +35,7 @@ DOMReady(function() {
     case 0:
       break
     case 1:
-      Object.assign(userData, fieldDefinitions[firstOptIn])
+      Object.assign(userData, fieldDefinitions.firstOptIn)
       break
     case 2:
       Object.assign(userData,
@@ -58,8 +58,9 @@ DOMReady(function() {
   const isActive = function() {
     let { timings } = agreablePromoData
     var now = Math.floor(new Date().getTime() / 1000)
-    return (now > timings.start && now < timings.end)
+    return ((now > timings.start) && (now < timings.end))
   }
+
 
   var initialState = {
     userData: userData,

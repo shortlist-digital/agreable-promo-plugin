@@ -10,6 +10,10 @@ import FormScreen from './screens/form'
 
 class App extends Component {
 
+  componentDidMount() {
+    console.log('App Mounted')
+  }
+
   _dispatchFieldUpdate = (event) => {
     this.props.dispatch(updateField({
       name: event.target.name,
@@ -49,7 +53,6 @@ class App extends Component {
           isStoreValid={() => false}
         />
       )
-
     default:
       return (
         <h1>Competition not open yet</h1>

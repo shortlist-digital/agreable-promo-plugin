@@ -10,7 +10,7 @@ var port = 8082
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://0.0.0.0:' + port,
+    'webpack-dev-server/client?http://localhost:' + port,
     'webpack/hot/only-dev-server',
     mainPath
   ],
