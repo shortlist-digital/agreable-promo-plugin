@@ -7,7 +7,6 @@ class TextInput extends Component {
   _inputClasses() {
     return classNames('agreable-promo__input', {
       'agreable-promo__input--valid': this.props.valid,
-      'agreable-promo__input--invalid': (this.props.required && !this.props.valid && !this.props.pristine),
       'agreable-promo__input--invalid': (this.props.formValidating && !this.props.valid && this.props.required)
     })
   }
@@ -37,8 +36,7 @@ class TextInput extends Component {
           onChange={this.props.onUpdate}
           placeholder={this.props.placeholder}
           type={this.props.type}
-          value={this.props.upperCase ? this.props.value.toUpperCase() : this.props.value}
-        />
+          value={this.props.upperCase ? this.props.value.toUpperCase() : this.props.value}/>
 
         <ValidationMessage
           {...this.props}

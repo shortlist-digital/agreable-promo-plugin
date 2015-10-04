@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 
 class ValidationMessage extends Component {
   render() {
+    if (this.props.noValidation) {
+      return null
+    }
+
     var check = (this.props.validationMessage && this.props.formValidating && !this.props.valid && this.props.required)
 
     // Return validation message or blank space

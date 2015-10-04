@@ -61,7 +61,6 @@ DOMReady(function() {
     return ((now > timings.start) && (now < timings.end))
   }
 
-
   var initialState = {
     userData: userData,
     screen: {

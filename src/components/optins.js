@@ -14,6 +14,7 @@ class OptIns extends Component {
           value={this.props.userData[optinValueString].value}
           onUpdate={this.props.onUpdate}
           label={optin.label}
+          noValidation={true}
         />
       )
     }.bind(this))
