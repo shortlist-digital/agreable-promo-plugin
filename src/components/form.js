@@ -114,7 +114,6 @@ class Form extends React.Component {
     this.setState({submitting:true})
     this.calaisClient.setDataRecord(this.state)
     this.calaisClient.post().then(this._handleSuccess, this._handleFailure)
-    setTimeout(this._handleSuccess, 2000)
   }
 
   _handleSuccess = (response) => {
@@ -122,8 +121,20 @@ class Form extends React.Component {
   }
 
   _handleFailure = (error) => {
+    var message = 'Something weird.....'
+    switch (error.message) {
+      case 'Unique check failed':
+        message = "You've already entered this competition!"
+        break
+      case 'Contact is suppressed. ERROR_CONTACT_SUPPRESSED':
+        this.setState({submitted: true})
+        break
+      default:
+        message: 'Something strange happened'
+        break
+    }
     this.setState({submitting:false})
-    this.setState({message:`Something went wrong with your submission: ${error}`})
+    this.setState({message:`Something went wrong with your submission: ${message}`})
   }
 
   render () {
