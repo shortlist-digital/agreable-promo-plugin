@@ -17,12 +17,8 @@ class ValidationMessage extends Component {
         <div style={{minHeight: '18px'}}>
           <Transition
             onlyChild={true}
-            enter={{
-              opacity: 1
-            }}
-            leave={{
-              opacity: 0
-            }}
+            enter={{opacity: 1}}
+            leave={{opacity: 0}}
           >
             { check &&
               <span>{check ? this.props.validationMessage : nbspEntity}</span>
