@@ -16,9 +16,11 @@ class Checkbox extends Component {
           />
           {this.props.label}
         </label>
-        <ValidationMessage
-          {...this.props}
-        />
+        {!this.props.noValidation &&
+          <ValidationMessage
+            {...this.props}
+          />
+        }
       </div>
     )
   }
