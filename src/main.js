@@ -16,8 +16,7 @@ DOMReady(function() {
   // Start building the state of the app withe defaults
   // The model of the userdata can accept different fields,
   // but we always send these to calais as a baseline
-  var userData = {}
-  Object.assign(userData,
+  let userData = Object.assign({},
     fieldDefinitions.email,
     fieldDefinitions.promoData,
     fieldDefinitions.termsAndConditions

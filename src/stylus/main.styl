@@ -82,7 +82,7 @@
         content "✔︎"
         text-align center
         top 1px
-        z-index 30
+        z-index 50
 
   .agreable-promo__textarea
     font-size 12px
@@ -97,6 +97,10 @@
     cursor pointer
     margin-top 12px
     max-width 300px
+
+  .agreable-promo__button--close-modal
+    @media (min-width:420px)
+      max-width 240px
 
   .agreable-promo__validation-message
     color red
@@ -122,3 +126,29 @@
       text-align right
       margin-top 20px
 
+body.ReactModal__Body--open
+  overflow-y hidden
+
+.ReactModal__Overlay
+  -webkit-perspective: 600;
+  perspective: 600;
+  opacity: 0;
+
+
+.ReactModal__Overlay--after-open
+  opacity: 1
+  transition: opacity 150ms ease-out
+
+.ReactModal__Content
+  transform: scale(0.5) rotateX(-30deg)
+
+.ReactModal__Content--after-open
+  transform: scale(1) rotateX(0deg)
+  transition: all 150ms ease-in
+
+.ReactModal__Overlay--before-close
+  opacity: 0
+
+.ReactModal__Content--before-close
+  transform: scale(0.5) rotateX(30deg)
+  transition: all 150ms ease-in

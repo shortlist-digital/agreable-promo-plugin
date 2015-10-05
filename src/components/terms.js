@@ -1,9 +1,41 @@
 import React, { Component } from 'react'
 import entities from 'entities'
-
 import Checkbox from './checkbox'
+import Modal from 'react-modal'
 
 class Terms extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      showTermsModal: false
+    }
+  }
+
+  _customStyles = {
+    overlay: {
+      backgroundColor: 'rgba(255,255,255,0.9)',
+      zIndex: '2000'
+    },
+    content : {
+      background: 'white',
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      'maxWidth': '80%',
+      'maxHeight': '80vh',
+      'zIndex': '50'
+    }
+  }
+
+  _toggleTerms = () => {
+    this.setState({
+      showTermsModal: !this.state.showTermsModal
+    })
+  }
 
   render() {
     return (
@@ -15,8 +47,28 @@ class Terms extends Component {
           />
         </div>
         <div className='agreable-promo__terms-column'>
-          <a className='agreable-promo__show-terms'>Show terms and conditions</a>
+          <a
+            className='agreable-promo__show-terms'
+            onClick={this._toggleTerms}
+          >
+            Show terms and conditions
+          </a>
         </div>
+
+        <Modal
+          isOpen={this.state.showTermsModal}
+          onRequestClose={this._toggleTerms}
+          style={this._customStyles}
+        >
+          <h3 className="agreable-promo__modal-title">Terms & Conditions</h3>
+          <p>{entities.decodeHTML(this.props.text)}</p>
+          <button
+            style={{maxWidth: '300px'}}
+            className="agreable-promo__button agreable-promo__button--close-modal"
+            onClick={this._toggleTerms}
+          >Close</button>
+        </Modal>
+
       </div>
     )
   }
