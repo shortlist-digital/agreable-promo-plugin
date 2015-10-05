@@ -15,7 +15,7 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   font-size: 16px;
-  font-weight: 100;
+  font-weight: 400;
   outline: none;
   min-width: 100%;
   padding: 10px;
@@ -23,10 +23,10 @@
   width: 100%;
 }
 #agreable-promotion .agreable-promo__input--invalid {
-  border-color: #f00;
+  border-color: #e30002;
 }
 #agreable-promotion .agreable-promo__input--valid {
-  border-color: #008000;
+  border-color: #00e404;
 }
 @media (min-width: 767px) {
   #agreable-promotion .agreable-promo--half {
@@ -132,4 +132,36 @@
   display: block;
   font-size: 12px;
   margin: 0.2em 0;
+}
+#agreable-promotion .agreable-promo__terms {
+  zoom: 1;
+}
+#agreable-promotion .agreable-promo__terms:before,
+#agreable-promotion .agreable-promo__terms:after {
+  content: "";
+  display: table;
+}
+#agreable-promotion .agreable-promo__terms:after {
+  clear: both;
+}
+#agreable-promotion .agreable-promo__terms-column {
+  display: block;
+  float: left;
+  width: 100%;
+}
+@media (min-width: 430px) {
+  #agreable-promotion .agreable-promo__terms-column {
+    width: 50%;
+  }
+}
+#agreable-promotion .agreable-promo__show-terms {
+  display: inline-block;
+  font-size: 12px;
+}
+@media (min-width: 430px) {
+  #agreable-promotion .agreable-promo__show-terms {
+    float: right;
+    text-align: right;
+    margin-top: 20px;
+  }
 }

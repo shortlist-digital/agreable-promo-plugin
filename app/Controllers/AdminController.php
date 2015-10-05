@@ -28,7 +28,7 @@ class AdminController {
   }
 
   public function build_url($passport_id, $post_id) {
-    $base = "http://calaisapi.com/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count";
+    $base = "http://www.calaisapi.com/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count";
     return $base;
   }
 
