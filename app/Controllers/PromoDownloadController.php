@@ -47,9 +47,15 @@ class PromoDownloadController {
     global $wp_admin_bar;
 
     $wp_admin_bar->add_menu( array(
+      'id'    => 'promo-edit',
+      'title' => 'Edit the Promo',
+      'href'  => get_edit_post_link($this->promo_context->id)
+    ));
+
+    $wp_admin_bar->add_menu( array(
       'id'    => 'promo-downloads',
       'title' => 'Export Promo Entries',
-      'href'  => admin_url()
+      'href'  => ''
     ));
 
     $wp_admin_bar->add_menu( array(
@@ -66,7 +72,7 @@ class PromoDownloadController {
       'target' => '_BLANK',
       'href'  => $this->get_url('json'),
       'parent'=>'promo-downloads'
-    )); 
+    ));
 
     for($i = 0; $i < 3; $i++) {
       $property = "third_party_optins_".$i."_optin_name";
@@ -86,12 +92,12 @@ class PromoDownloadController {
       'target' => '_BLANK',
       'href'  => $this->get_optin_url($index),
       'parent'=>'promo-downloads'
-    ));    
+    ));
   }
 
   public function get_promo_id() {
     $promo_id = false;
-    $widgets = $this->context->article_widgets;    
+    $widgets = $this->context->article_widgets;
     foreach($widgets as $index => $widget):
       if ($widget == 'promo_plugin'):
         $property = "article_widgets_".$index."_promo_post";
