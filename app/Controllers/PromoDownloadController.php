@@ -9,11 +9,16 @@ class PromoDownloadController {
 
 
   public function build_dropdown(){
-    if (!is_admin()) {
-      $this->context = new \TimberPost();
+    // Get the current context
+    $this->context = new \TimberPost();
+    // Check we're not in the admin or on a page
+    if (!is_admin() && ($this->context->post_type == "post")) {
+      // Find the promo ID if there is one
       $promo_id = $this->get_promo_id();
       if ($promo_id) {
+        // get the post object for promo
         $this->promo_context = new \TimberPost($promo_id);
+        // kick of the menu building process
         $this->build_menu();
       }
     }
