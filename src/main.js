@@ -5,11 +5,16 @@ import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import App from './app'
-import promotionsApp from './reducers/'
-import { updateField, clearField, ScreenNames } from './actions/'
+import promotionsApp from './reducers'
+import { updateField, clearField, ScreenNames } from './actions'
 import * as fieldDefinitions from './data-structure.js'
+import { standardScreenOrder, competitionScreenOrder} from './screen-order'
 
 DOMReady(function() {
+
+  console.log('Standard', standardScreenOrder)
+  console.log('Competition', competitionScreenOrder)
+
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
