@@ -40,7 +40,7 @@ class App extends Component {
     case ENTER_SCREEN:
       return (
         <EnterScreen
-          onEnterClick={()=> dispatch(nextScreen(FORM_SCREEN))}
+          onEnterClick={()=> dispatch(nextScreen())}
         />
       )
     case FORM_SCREEN:
@@ -55,7 +55,7 @@ class App extends Component {
       )
     default:
       return (
-        <h1>Competition not open yet</h1>
+        <h1>Something went dreadfully wrong</h1>
       )
     }
   }

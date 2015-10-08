@@ -12,9 +12,6 @@ import { standardScreenOrder, competitionScreenOrder} from './screen-order'
 
 DOMReady(function() {
 
-  console.log('Standard', standardScreenOrder)
-  console.log('Competition', competitionScreenOrder)
-
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
@@ -65,10 +62,13 @@ DOMReady(function() {
     return ((now > timings.start) && (now < timings.end))
   }
 
+  let screenList = standardScreenOrder
+
   var initialState = {
     userData: userData,
     screen: {
-      currentScreen: isActive() ? ENTER_SCREEN : CLOSED_SCREEN,
+      screenList: screenList,
+      currentScreen: isActive() ? screenList[0] : CLOSED_SCREEN,
       prevScreen: null
     }
   }

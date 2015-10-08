@@ -13,7 +13,12 @@ import {
 // Something
 import * as validators from '../validators'
 
-const { ENTER_SCREEN } = ScreenNames
+const {
+  ENTER_SCREEN,
+  FORM_SCREEN,
+  COMPETITION_SCREEN,
+  THANK_YOU_SCREEN
+} = ScreenNames
 
 function userData(state, action) {
   // Note "state is "userData" object
