@@ -17,7 +17,7 @@ class Terms extends Component {
       backgroundColor: 'rgba(255,255,255,0.9)',
       zIndex: '2000'
     },
-    content : {
+    content: {
       background: 'white',
       top: '50%',
       left: '50%',
@@ -60,11 +60,11 @@ class Terms extends Component {
           onRequestClose={this._toggleTerms}
           style={this._customStyles}
         >
-          <h3 className="agreable-promo__modal-title">Terms & Conditions</h3>
+          <h3 className='agreable-promo__modal-title'>Terms & Conditions</h3>
           <p>{entities.decodeHTML(this.props.text)}</p>
           <button
             style={{maxWidth: '300px'}}
-            className="agreable-promo__button agreable-promo__button--close-modal"
+            className='agreable-promo__button agreable-promo__button--close-modal'
             onClick={this._toggleTerms}
           >Close</button>
         </Modal>
