@@ -10,10 +10,6 @@ import FormScreen from './screens/form'
 
 class App extends Component {
 
-  componentDidMount() {
-    console.log('App Mounted')
-  }
-
   _dispatchFieldUpdate = (event) => {
     this.props.dispatch(updateField({
       name: event.target.name,
@@ -36,7 +32,7 @@ class App extends Component {
 
   }
 
-  _renderScreen = () => {
+  render() {
     // Injected by connect() call:
     const { screen, userData} = this.props
     const dispatchers = {
@@ -45,7 +41,11 @@ class App extends Component {
       updateCheckbox: this._dispatchCheckboxUpdate,
       updateField: this._dispatchFieldUpdate
     }
+
+    // Render whatever screen is defined
+    // in the current state
     switch (screen.currentScreen) {
+
     case CLOSED_SCREEN:
       return (
         <ClosedScreen
@@ -73,14 +73,6 @@ class App extends Component {
         <h1 style={{textAlign:'center'}}>Something went dreadfully wrong</h1>
       )
     }
-  }
-
-  render() {
-    return (
-      <div>
-        {this._renderScreen()}
-      </div>
-    )
   }
 }
 

@@ -1,4 +1,4 @@
-require('./stylus/main.styl')
+import './stylus/main.styl'
 
 import DOMReady from 'detect-dom-ready'
 import React from 'react'

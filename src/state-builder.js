@@ -13,8 +13,6 @@ import { standardScreenOrder, competitionScreenOrder} from './screen-order'
 function stateBuilder(agreablePromoData) {
 
   // Information about the promotion is bootstrapped from the server
-  var agreablePromoData = window.agreablePromoData
-
   // Start building the state of the app withe defaults
   // The model of the userdata can accept different fields,
   // but we always send these to calais as a baseline
@@ -65,6 +63,7 @@ function stateBuilder(agreablePromoData) {
   let screenList = standardScreenOrder
 
   return {
+    agreablePromoData: agreablePromoData,
     userData: userData,
     screen: {
       screenList: screenList,
