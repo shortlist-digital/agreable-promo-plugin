@@ -26,4 +26,11 @@ class Checkbox extends Component {
   }
 }
 
+Checkbox.propTypes = {
+  name: React.PropTypes.string.isRequired,
+  label: React.PropTypes.string.isRequired,
+  value: React.PropTypes.bool,
+  onUpdate: React.PropTypes.func.isRequired
+}
+
 export default Checkbox

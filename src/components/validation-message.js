@@ -26,4 +26,8 @@ class ValidationMessage extends Component {
   }
 }
 
+ValidationMessage.propTypes = {
+  validationMessage: React.PropTypes.string.isRequired
+}
+
 export default ValidationMessage

@@ -19,35 +19,33 @@ DOMReady(function() {
 
   let store = createStore(promotionsApp, initialState)
 
+  // DEFAULTS
   // We can populate the store with some data we already know about the promotion
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
   store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
 
   // Setup optin keys
   agreablePromoData.optins.map((optin, index) => {
-    store.dispatch(updateField({name: `ThirdPartyOptIn${index + 1}Key`, value: optin.name}))
+    store.dispatch(updateField({
+      name: `ThirdPartyOptIn${index + 1}Key`, value: optin.name
+    }))
   })
 
   // Log the initial state
   console.log('Initial State', store.getState())
 
   // Every time the state changes, log it
+  // Eventuall I'll get setup with redux dev-tools
   var logCounter = 1
   let unsubscribe = store.subscribe(() => {
     console.log('Update', logCounter, store.getState())
     logCounter = logCounter + 1
   })
 
-  // Dispatch some test actions
-  /*
-  store.dispatch(updateField({name: 'Email', value: 'jon@andthats.it'}))
-  store.dispatch(updateField({name: 'FirstName', value: 'Jonathon'}))
-  store.dispatch(updateField({name: 'LastName', value: 'Sherrard'}))
-  store.dispatch(clearField({name: 'Email'}))
-  */
-
+  // The DOM node we're going to render the app into
   let rootElement = document.getElementById('agreable-promotion')
 
+  // Kick of the rendering process
   React.render(
 
   // The child must be wrapped in a function
