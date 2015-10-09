@@ -11,7 +11,6 @@ import * as fieldDefinitions from './data-structure.js'
 import { standardScreenOrder, competitionScreenOrder} from './screen-order'
 
 function stateBuilder(agreablePromoData) {
-
   // Information about the promotion is bootstrapped from the server
   // Start building the state of the app withe defaults
   // The model of the userdata can accept different fields,
@@ -63,7 +62,7 @@ function stateBuilder(agreablePromoData) {
   let screenList = standardScreenOrder
 
   return {
-    agreablePromoData: agreablePromoData,
+    promoData: agreablePromoData,
     userData: userData,
     screen: {
       screenList: screenList,

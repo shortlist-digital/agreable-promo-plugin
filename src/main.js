@@ -1,4 +1,4 @@
-import './stylus/main.styl'
+require('./stylus/main.styl')
 
 import DOMReady from 'detect-dom-ready'
 import React from 'react'
@@ -42,14 +42,9 @@ DOMReady(function() {
     logCounter = logCounter + 1
   })
 
-  // The DOM node we're going to render the app into
   let rootElement = document.getElementById('agreable-promotion')
 
-  // Kick of the rendering process
   React.render(
-
-  // The child must be wrapped in a function
-  // to work around an issue in React 0.13.
     <Provider store={store}>
       {() => <App />}
     </Provider>,

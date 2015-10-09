@@ -34,7 +34,6 @@ class App extends Component {
 
   render() {
     // Injected by connect() call:
-    const { screen, userData} = this.props
     const dispatchers = {
       nextScreen: this._dispatchNextScreen,
       prevScreen: this._dispatchPrevScreen,
@@ -44,12 +43,12 @@ class App extends Component {
 
     // Render whatever screen is defined
     // in the current state
-    switch (screen.currentScreen) {
+    switch (this.props.screen.currentScreen) {
 
     case CLOSED_SCREEN:
       return (
         <ClosedScreen
-          promoData={window.agreablePromoData}
+          {...this.props}
           {...dispatchers}
         />
       )
@@ -62,8 +61,7 @@ class App extends Component {
     case FORM_SCREEN:
       return (
         <FormScreen
-          promoData={window.agreablePromoData}
-          userData={userData}
+          {...this.props}
           {...dispatchers}
           isStoreValid={() => false}
         />

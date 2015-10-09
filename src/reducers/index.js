@@ -94,8 +94,8 @@ function screen(state = initialState.screen, action) {
 }
 
 export default function promotionsApp(state = initialState, action) {
-  return {
-    userData: userData(state.userData, action),
-    screen: screen(state.screen, action)
-  }
+  return Object.assign({}, state,
+    {userData: userData(state.userData, action)},
+    {screen: screen(state.screen, action)}
+  )
 }
