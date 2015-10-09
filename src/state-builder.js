@@ -1,3 +1,11 @@
+// This is a bit mental to understand
+// It's where we build the application state
+// Including the navigations screens, and the 'shape'
+// of the data we post to our data store
+// This can be configured in WordPress,
+// which passes through some bootstrapped data as a JSON object
+// We then use this to build the application state
+
 import { ScreenNames } from './actions'
 import * as fieldDefinitions from './data-structure.js'
 import { standardScreenOrder, competitionScreenOrder} from './screen-order'
