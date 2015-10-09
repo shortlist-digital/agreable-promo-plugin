@@ -85,17 +85,20 @@ export const address = {
 
 export const competition = {
   'AnswerOption': {
-    'value': '',
-    'valid': false,
-    'pristine': true,
     'dirty':false,
+    'pristine': true,
     'required': true,
+    'valid': false,
     'validator': 'selected'
+    'value': '',
   },
   'AnswerCorrect': {
-    'value': null,
+    'initial': true,
+    'required': true
+    'pristine': true,
+    'dirty':false,
     'valid': false,
-    'initial': true
+    'value': null,
   }
 }
 

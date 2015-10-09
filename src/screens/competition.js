@@ -1,14 +1,21 @@
 import React, { Component } from 'react'
+import AnswerButton from '../components/answer-button'
 
 class CompetitionScreen extends Component {
 
-  constructor () {
-    super()
-  }
-
   render() {
+
+    const { answers, question } = this.props.promoData.competition
+
+    var answerNodes = answers.map((answerData, index) => {
+      return (<AnswerButton {...answerData} />)
+    })
+
     return (
-      <h1>This will be the competition screen</h1>
+      <div>
+        <h1 style={{textAlign: 'center'}}>{question}</h1>
+        {answerNodes}
+      </div>
     )
   }
 }
