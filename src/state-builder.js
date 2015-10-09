@@ -59,7 +59,7 @@ function stateBuilder(agreablePromoData) {
     return ((now > timings.start) && (now < timings.end))
   }
 
-  let screenList = standardScreenOrder
+  let screenList = agreablePromoData.competition ? competitionScreenOrder : standardScreenOrder
 
   return {
     promoData: agreablePromoData,

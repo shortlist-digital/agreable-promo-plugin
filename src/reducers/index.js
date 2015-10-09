@@ -74,18 +74,18 @@ function screen(state = initialState.screen, action) {
   switch (action.type) {
 
   case NEXT_SCREEN:
-    return {
-      screenIndex: state.screenIndex + 1,
-      prevScreen: state.currentScreen ? state.currentScreen : false,
-      currentScreen: state.screenList[state.screenIndex + 1]
-    }
+    return Object.assign({}, state,
+      {screenIndex: state.screenIndex + 1},
+      {prevScreen: state.currentScreen ? state.currentScreen : false},
+      {currentScreen: state.screenList[state.screenIndex + 1]}
+    )
 
   case PREV_SCREEN:
-    return {
-      screenIndex: state.screenIndex - 1,
-      prevScreen: false,
-      currentScreen: state.prevScreen ? state.prevScreen : false
-    }
+    return Object.assing({}, state,
+      {screenIndex: state.screenIndex - 1},
+      {prevScreen: false},
+      {currentScreen: state.prevScreen ? state.prevScreen : false}
+    )
 
   default:
     return state

@@ -2,11 +2,12 @@ import React, { Component, PropTypes }  from 'react'
 import { connect } from 'react-redux'
 import { updateField, updateCheckbox, nextScreen, ScreenNames } from './actions'
 
-const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN } = ScreenNames
+const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN, COMPETITION_SCREEN } = ScreenNames
 
 import ClosedScreen from './screens/closed'
 import EnterScreen from './screens/enter'
 import FormScreen from './screens/form'
+import CompetitionScreen from './screens/competition'
 
 class App extends Component {
 
@@ -57,6 +58,13 @@ class App extends Component {
         <EnterScreen
           {...dispatchers}
         />
+      )
+    case COMPETITION_SCREEN:
+      return (
+          <CompetitionScreen
+            {...this.props}
+            {...dispatchers}
+          />
       )
     case FORM_SCREEN:
       return (

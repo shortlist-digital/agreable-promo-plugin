@@ -6,7 +6,7 @@ export function email(emailString) {
 }
 
 export function text(textString) {
-  return ((textString.length >= 2) && (/^[a-z0-9]+$/i.test(textString)))
+  return (textString.length >= 2)
 }
 
 export function selected(value) {
