@@ -27,20 +27,36 @@ class App extends Component {
     }))
   }
 
+  _dispatchNextScreen = (event) => {
+    this.props.dispatch(nextScreen())
+  }
+
+  _dispatchPrevScreen = (event) => {
+    this.props.dispatch(prevScreen())
+
+  }
+
   _renderScreen = () => {
     // Injected by connect() call:
-    const { dispatch, screen, userData} = this.props
+    const { screen, userData} = this.props
+    const dispatchers = {
+      nextScreen: this._dispatchNextScreen,
+      prevScreen: this._dispatchPrevScreen,
+      updateCheckbox: this._dispatchCheckboxUpdate,
+      updateField: this._dispatchFieldUpdate
+    }
     switch (screen.currentScreen) {
     case CLOSED_SCREEN:
       return (
         <ClosedScreen
           promoData={window.agreablePromoData}
+          {...dispatchers}
         />
       )
     case ENTER_SCREEN:
       return (
         <EnterScreen
-          onEnterClick={()=> dispatch(nextScreen())}
+          {...dispatchers}
         />
       )
     case FORM_SCREEN:
@@ -48,14 +64,13 @@ class App extends Component {
         <FormScreen
           promoData={window.agreablePromoData}
           userData={userData}
-          updateField={this._dispatchFieldUpdate}
-          updateCheckbox={this._dispatchCheckboxUpdate}
+          {...dispatchers}
           isStoreValid={() => false}
         />
       )
     default:
       return (
-        <h1>Something went dreadfully wrong</h1>
+        <h1 style={{textAlign:'center'}}>Something went dreadfully wrong</h1>
       )
     }
   }

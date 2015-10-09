@@ -13,6 +13,8 @@ import {
 // Something
 import * as validators from '../validators'
 
+import { standardScreenOrder, competitionScreenOrder } from '../screen-order'
+
 const {
   ENTER_SCREEN,
   FORM_SCREEN,
@@ -68,16 +70,19 @@ function userData(state, action) {
 }
 
 function screen(state = initialState.screen, action) {
+
   switch (action.type) {
 
   case NEXT_SCREEN:
     return {
+      screenIndex: state.screenIndex + 1,
       prevScreen: state.currentScreen ? state.currentScreen : false,
-      currentScreen: action.screenName
+      currentScreen: state.screenList[state.screenIndex + 1]
     }
 
   case PREV_SCREEN:
     return {
+      screenIndex: state.screenIndex - 1,
       prevScreen: false,
       currentScreen: state.prevScreen ? state.prevScreen : false
     }
@@ -85,6 +90,7 @@ function screen(state = initialState.screen, action) {
   default:
     return state
   }
+
 }
 
 export default function promotionsApp(state = initialState, action) {

@@ -9,69 +9,13 @@ import promotionsApp from './reducers'
 import { updateField, clearField, ScreenNames } from './actions'
 import * as fieldDefinitions from './data-structure.js'
 import { standardScreenOrder, competitionScreenOrder} from './screen-order'
+import stateBuilder from './state-builder'
 
 DOMReady(function() {
-
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
-  // Start building the state of the app withe defaults
-  // The model of the userdata can accept different fields,
-  // but we always send these to calais as a baseline
-  let userData = Object.assign({},
-    fieldDefinitions.email,
-    fieldDefinitions.promoData,
-    fieldDefinitions.termsAndConditions
-  )
-
-  // Merge the fields for this promo into the app state
-  agreablePromoData.fields.map((field, index) => {
-    var fieldObject = fieldDefinitions[field]
-    Object.assign(userData, fieldObject)
-  })
-
-  // Add the optins for this promo
-  var numberOfOptIns = agreablePromoData.optins.length
-  switch (numberOfOptIns) {
-    case 0:
-      break
-    case 1:
-      Object.assign(userData, fieldDefinitions.firstOptIn)
-      break
-    case 2:
-      Object.assign(userData,
-        fieldDefinitions.firstOptIn,
-        fieldDefinitions.secondOptIn
-      )
-      break
-    case 3:
-      Object.assign(userData,
-        fieldDefinitions.firstOptIn,
-        fieldDefinitions.secondOptIn,
-        fieldDefinitions.thirdOptIn
-      )
-    default:
-      break
-  }
-
-  const { CLOSED_SCREEN, ENTER_SCREEN } = ScreenNames
-
-  const isActive = function() {
-    let { timings } = agreablePromoData
-    var now = Math.floor(new Date().getTime() / 1000)
-    return ((now > timings.start) && (now < timings.end))
-  }
-
-  let screenList = standardScreenOrder
-
-  var initialState = {
-    userData: userData,
-    screen: {
-      screenList: screenList,
-      currentScreen: isActive() ? screenList[0] : CLOSED_SCREEN,
-      prevScreen: null
-    }
-  }
+  let initialState = stateBuilder(agreablePromoData)
 
   let store = createStore(promotionsApp, initialState)
 
@@ -88,13 +32,11 @@ DOMReady(function() {
   console.log('Initial State', store.getState())
 
   // Every time the state changes, log it
-  /*
   var logCounter = 1
   let unsubscribe = store.subscribe(() => {
     console.log('Update', logCounter, store.getState())
     logCounter = logCounter + 1
   })
-  */
 
   // Dispatch some test actions
   /*
