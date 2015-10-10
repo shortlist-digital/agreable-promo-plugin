@@ -89,16 +89,16 @@ export const competition = {
     'pristine': true,
     'required': true,
     'valid': false,
-    'validator': 'selected'
-    'value': '',
+    'validator': 'selected',
+    'value': ''
   },
   'AnswerCorrect': {
     'initial': true,
-    'required': true
+    'required': true,
     'pristine': true,
     'dirty':false,
     'valid': false,
-    'value': null,
+    'value': null
   }
 }
 

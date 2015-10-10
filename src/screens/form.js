@@ -86,7 +86,7 @@ class FormScreen extends Component {
   }
 
   _renderOptIns = () => {
-    if (this.props.promoData.optins.length) {
+    if (this.props.promoData.optins) {
       return (
         <OptIns
           formValidating={this.state.formValidating}

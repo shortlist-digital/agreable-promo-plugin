@@ -3,12 +3,22 @@ import AnswerButton from '../components/answer-button'
 
 class CompetitionScreen extends Component {
 
-  render() {
+  _handleSelectAnswer = (answerIndex) => {
+    const { answers } = this.props.promoData.competition
+    console.log(answers[answerIndex])
+    this.props.nextScreen()
+  }
 
+  render() {
     const { answers, question } = this.props.promoData.competition
 
     var answerNodes = answers.map((answerData, index) => {
-      return (<AnswerButton {...answerData} />)
+      return <AnswerButton
+        key={index}
+        {...answerData}
+        index={index}
+        selectAnswer={this._handleSelectAnswer}
+      />
     })
 
     return (

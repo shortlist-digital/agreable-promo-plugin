@@ -1,6 +1,6 @@
 import React, { Component, PropTypes }  from 'react'
 import { connect } from 'react-redux'
-import { updateField, updateCheckbox, nextScreen, ScreenNames } from './actions'
+import { updateField, updateCheckbox, prevScreen, nextScreen, ScreenNames } from './actions'
 
 const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN, COMPETITION_SCREEN } = ScreenNames
 
@@ -33,7 +33,7 @@ class App extends Component {
 
   }
 
-  render() {
+  _renderScreen = () => {
     // Injected by connect() call:
     const dispatchers = {
       nextScreen: this._dispatchNextScreen,
@@ -79,6 +79,21 @@ class App extends Component {
         <h1 style={{textAlign:'center'}}>Something went dreadfully wrong</h1>
       )
     }
+  }
+  _renderBackButton () {
+    if (this.props.screen.screenIndex) {
+      return <a onClick={this._dispatchPrevScreen}>Back</a>
+    }
+    return null
+  }
+
+  render() {
+    return(
+      <div>
+        {this._renderScreen()}
+        {this._renderBackButton()}
+      </div>
+    )
   }
 }
 

@@ -28,30 +28,32 @@ function stateBuilder(agreablePromoData) {
   })
 
   // Add the optins for this promo
-  var numberOfOptIns = agreablePromoData.optins.length
-  switch (numberOfOptIns) {
-    case 0:
-      break
-    case 1:
-      Object.assign(userData, fieldDefinitions.firstOptIn)
-      break
-    case 2:
-      Object.assign(userData,
-        fieldDefinitions.firstOptIn,
-        fieldDefinitions.secondOptIn
-      )
-      break
-    case 3:
-      Object.assign(userData,
-        fieldDefinitions.firstOptIn,
-        fieldDefinitions.secondOptIn,
-        fieldDefinitions.thirdOptIn
-      )
-    default:
-      break
+  if (agreablePromoData.optins) {
+    var numberOfOptIns = agreablePromoData.optins.length
+    switch (numberOfOptIns) {
+      case 0:
+        break
+      case 1:
+        Object.assign(userData, fieldDefinitions.firstOptIn)
+        break
+      case 2:
+        Object.assign(userData,
+          fieldDefinitions.firstOptIn,
+          fieldDefinitions.secondOptIn
+        )
+        break
+      case 3:
+        Object.assign(userData,
+          fieldDefinitions.firstOptIn,
+          fieldDefinitions.secondOptIn,
+          fieldDefinitions.thirdOptIn
+        )
+      default:
+        break
+    }
   }
 
-  const { CLOSED_SCREEN, ENTER_SCREEN } = ScreenNames
+  const { CLOSED_SCREEN } = ScreenNames
 
   const isActive = function() {
     let { timings } = agreablePromoData
