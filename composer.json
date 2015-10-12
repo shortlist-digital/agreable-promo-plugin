@@ -6,10 +6,7 @@
   "repositories": [
     {
       "type": "git",
-      "url": "https://github.com/getherbert/framework",
-      "woo": {
-        "something"
-      }
+      "url": "https://github.com/getherbert/framework"
     }
   ],
   "require": {
