@@ -4,10 +4,6 @@ import React, { Component } from 'react'
 
 class ClosedScreen extends Component {
 
-  componentDidMount() {
-    console.log('Closed Screen')
-  }
-
   _timeMessage = () => {
     let { timings } = this.props.promoData
     if (timings.end < this._now()) {

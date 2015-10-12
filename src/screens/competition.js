@@ -5,7 +5,6 @@ import AnswerButton from '../components/answer-button'
 class CompetitionScreen extends Component {
 
   componentWillMount() {
-    console.log(this)
     this.competition = this.props.promoData.competition
   }
 

@@ -33,16 +33,16 @@ DOMReady(function() {
     })
   }
 
-  // Log the initial state
-  console.log('Initial State', store.getState())
 
   // Every time the state changes, log it
   // Eventuall I'll get setup with redux dev-tools
+  /*
   var logCounter = 1
   let unsubscribe = store.subscribe(() => {
     console.log('Update', logCounter, store.getState())
     logCounter = logCounter + 1
   })
+  */
 
   let rootElement = document.getElementById('agreable-promotion')
 

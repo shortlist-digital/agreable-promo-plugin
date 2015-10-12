@@ -12,10 +12,6 @@ import ThankYouScreen from './screens/thank-you'
 
 class App extends Component {
 
-  componentDidMount() {
-    console.log(this.context)
-  }
-
   _dispatchFieldUpdate = (event) => {
     this.props.dispatch(updateField({
       name: event.target.name,

@@ -17,7 +17,6 @@ class FormScreen extends Component {
 
   constructor() {
     super()
-    console.log('form store', this.context)
     this.state = {
       formSubmitting: false,
       formValidating: false,
@@ -34,21 +33,17 @@ class FormScreen extends Component {
   _isFieldValid = (fieldObject, field) => {
     let isValid = true
     if (fieldObject.valid === false) {
-      console.log(field, 'false at not valid 1')
       isValid = false
     }
 
     if (fieldObject.required && (!fieldObject.value)) {
       isValid = false
-      console.log(field, 'false at not valid 2')
     }
 
     if (fieldObject.validator && !fieldObject.valid) {
       isValid = false
-      console.log(field, 'false at not valid 3')
     }
 
-    console.log(field, ':', fieldObject, 'valid: ', isValid)
     return isValid
   }
 

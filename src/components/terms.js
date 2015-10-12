@@ -11,7 +11,6 @@ class Terms extends Component {
     this.state = {
       showTermsModal: false
     }
-    console.log('terms', modalStyles)
   }
 
   _toggleTerms = () => {
