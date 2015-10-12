@@ -87,12 +87,12 @@ class FormScreen extends Component {
     this.setState({
       formSubmitting: false,
       isModalOpen: true,
-      modalMessage: errorMessages[errObject.message] ? errorMessage[errObject.message] : errObject.message
+      modalMessage: errorMessages[errObject.message] ? errorMessages[errObject.message] : errObject.message
     })
   }
 
   _handleSubmit = () => {
-    if (this._isStoreValid()) {
+    if (this._isStoreValid() && !this.state.formSubmitting) {
       this.setState({formSubmitting: true})
       this._postToCalais()
     } else {
