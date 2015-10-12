@@ -12,10 +12,14 @@ export const content = {
   bottom: 'auto',
   lineHeight: '1.4',
   marginRight: '-50%',
+  WebkitTransform: 'translate(-50%, -50%)',
+  MozTransform: 'translate(-50%, -50%)',
+  OTransform: 'translate(-50%, -50%)',
+  msTransform: 'translate(-50%, -50%)',
   transform: 'translate(-50%, -50%)',
-  'maxWidth': '80%',
-  'maxHeight': '80vh',
-  'zIndex': '50',
-  'whiteSpace': 'pre-wrap'
+  maxWidth: '80%',
+  maxHeight: '80vh',
+  zIndex: '50',
+  whiteSpace: 'pre-wrap'
 }
 
