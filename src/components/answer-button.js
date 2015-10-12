@@ -30,7 +30,7 @@ class AnswerButton extends Component {
         >
         </path>
        </svg>
-        {this.props.answer_text}
+        <span className='agreable-promo__competition-answer__text'>{this.props.answer_text}</span>
 
     </div>
   }
