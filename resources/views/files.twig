@@ -1,11 +1,4 @@
-<script>
-  {{js_string|raw}}
-</script>
-
 <style>
-
-    {# Common plugin CSS. #}
-    {% include common_css_path %}
 
 
     {#
@@ -24,3 +17,22 @@
     {% endfilter %}
 
 </style>
+
+{% if environment == "development" %}
+
+  <hr style="border: solid 1px red; ">
+  <script src="http://localhost:8082/static/app.js"></script>
+
+{% else %}
+
+  <script>
+    {{js_string|raw}}
+  </script>
+
+  <style>
+    {# Common plugin CSS. #}
+    {% include common_css_path %}
+  </style>
+
+{% endif %}
+

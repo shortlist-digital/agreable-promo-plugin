@@ -1,4 +1,5 @@
-<?php namespace AgreablePromoPlugin\Controllers;
+<?php
+namespace AgreablePromoPlugin\Controllers;
 
 use AgreablePromoPlugin\Helper;
 
@@ -98,3 +99,5 @@ class EmailController {
   }
 
 }
+
+?>

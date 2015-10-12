@@ -1,32 +1,68 @@
-var React = require('react')
-var entities = require('entities')
+import React, { Component } from 'react'
+import entities from 'entities'
+import Checkbox from './checkbox'
+import Modal from 'react-modal'
+import * as modalStyles from '../modal-styles.js'
 
-class Terms extends React.Component {
+class Terms extends Component {
 
-  render () {
+  constructor() {
+    super()
+    this.state = {
+      showTermsModal: false
+    }
+  }
+
+  _toggleTerms = () => {
+    this.setState({
+      showTermsModal: !this.state.showTermsModal
+    })
+  }
+
+  render() {
     return (
-      <div>
-        <label className="agreable-promo__label">
-          Terms & Conditions:
-        </label>
-        <textarea className="agreable-promo__textarea" disabled="true" value={entities.decodeHTML(this.props.termsAndConditions)}>
-        </textarea>
-        <div className="agreable-promo__optin">
-          <label className="agreable-promo__checkbox-label">
-            <input
-              type="checkbox"
-              className="agreable-promo__checkbox"
-              name="terms-and-conditions"
-              onChange={this.props.reportTermsAccepted}
-              value={this.props.checked}
-            />
-            {this.props.termsAndConditionsLabel}
-          </label>  
+      <div className='agreable-promo__terms'>
+
+        <div className='agreable-promo__terms-column'>
+          <Checkbox
+            name='OptInTermsConditions'
+            {...this.props}
+          />
         </div>
+
+        <div className='agreable-promo__terms-column'>
+          <a
+            className='agreable-promo__show-terms'
+            onClick={this._toggleTerms}
+          >
+            Show terms and conditions
+          </a>
+        </div>
+
+        <Modal
+          isOpen={this.state.showTermsModal}
+          onRequestClose={this._toggleTerms}
+          style={modalStyles}
+        >
+          <h2
+            style={{textAlign:'center'}}
+            className='agreable-promo__modal-title'
+          >
+            Terms & Conditions
+          </h2>
+          <p>{entities.decodeHTML(this.props.text)}</p>
+          <br/>
+          <button
+            style={{maxWidth: '300px'}}
+            className='agreable-promo__button agreable-promo__button--close-modal'
+            onClick={this._toggleTerms}
+          >Close</button>
+        </Modal>
+
       </div>
     )
   }
 
 }
 
-module.exports = Terms
+export default Terms
