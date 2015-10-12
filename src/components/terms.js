@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import entities from 'entities'
 import Checkbox from './checkbox'
 import Modal from 'react-modal'
+import * as modalStyles from '../modal-styles.js'
 
 class Terms extends Component {
 
@@ -10,28 +11,7 @@ class Terms extends Component {
     this.state = {
       showTermsModal: false
     }
-  }
-
-  _customStyles = {
-    overlay: {
-      backgroundColor: 'rgba(255,255,255,0.9)',
-      zIndex: '2000'
-    },
-    content: {
-      background: 'white',
-      fontSize: '14px',
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      lineHeight: '1.4',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      'maxWidth': '80%',
-      'maxHeight': '80vh',
-      'zIndex': '50',
-      'whiteSpace': 'pre-wrap'
-    }
+    console.log('terms', modalStyles)
   }
 
   _toggleTerms = () => {
@@ -63,7 +43,7 @@ class Terms extends Component {
         <Modal
           isOpen={this.state.showTermsModal}
           onRequestClose={this._toggleTerms}
-          style={this._customStyles}
+          style={modalStyles}
         >
           <h2
             style={{textAlign:'center'}}

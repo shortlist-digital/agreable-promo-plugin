@@ -90,7 +90,7 @@ class App extends Component {
   }
 
   _renderBackButton() {
-    if (this.props.screen.screenIndex) {
+    if ((0 < this.props.screen.screenIndex) && (this.props.screen.screenIndex < this.props.screen.screenList.length-1)) {
       return <a onClick={this._dispatchPrevScreen}>Back</a>
     } else return null
   }

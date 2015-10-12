@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import Modal from 'react-modal'
+import * as modalStyles from '../modal-styles'
 import Email from '../components/email'
 import FullName from '../components/full-name'
 import Address from '../components/address'
@@ -18,7 +20,9 @@ class FormScreen extends Component {
     console.log('form store', this.context)
     this.state = {
       formSubmitting: false,
-      formValidating: false
+      formValidating: false,
+      isModalOpen: false,
+      modalMessage: ''
     }
   }
 
@@ -76,7 +80,15 @@ class FormScreen extends Component {
   }
 
   _handleSubmitFailure = (errObject) => {
-    console.log('shit!', errObject)
+    let errorMessages = {
+      'Unique check failed': 'According to our records, you\'ve already entered this competition!',
+      'ERROR_CONTACT_SUPPRESSED': 'According to our records, you\'ve sent us an unsubscribe request in the past.'
+    }
+    this.setState({
+      formSubmitting: false,
+      isModalOpen: true,
+      modalMessage: errorMessages[errObject.message] ? errorMessage[errObject.message] : errObject.message
+    })
   }
 
   _handleSubmit = () => {
@@ -174,6 +186,14 @@ class FormScreen extends Component {
         >
           {this.state.formSubmitting ? 'Loading...' : 'Submit'}
         </button>
+        <Modal
+          isOpen={this.state.isModalOpen}
+          onRequestClose={this.setState.bind(this, {isModalOpen: false})}
+          style={modalStyles}
+        >
+          <h2 style={{textAlign:'center'}}>Submission error:</h2>
+          <p>{this.state.modalMessage}</p>
+        </Modal>
       </div>
     )
   }
