@@ -1,3 +1,5 @@
+require('es6-object-assign').polyfill()
+
 require('./stylus/main.styl')
 
 import DOMReady from 'detect-dom-ready'

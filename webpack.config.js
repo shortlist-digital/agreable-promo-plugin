@@ -16,7 +16,7 @@ module.exports = {
       { test: /\.styl$/, loader: 'style-loader!css-loader!stylus-loader?paths[]=./styles&paths[]=./node_modules'},
       { test: /\.svg$/, exclude:'node_modules', loader: 'raw-loader' },
       { test: /\.json$/, loader: 'json-loader' },
-      { test: /\.js$/, exclude:'node_modules', loader: 'babel-loader?stage=0&loose=all' }
+      { test: /\.js$/, exclude:'node_modules', loader: 'babel-loader?optional=runtime&stage=0&loose=all&externalHelpers' }
     ]
   },
 
