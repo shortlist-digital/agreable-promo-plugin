@@ -91,7 +91,7 @@ class App extends Component {
 
   _renderBackButton() {
     if ((0 < this.props.screen.screenIndex) && (this.props.screen.screenIndex < this.props.screen.screenList.length-1)) {
-      return <a onClick={this._dispatchPrevScreen}>Back</a>
+      return <a onClick={this._dispatchPrevScreen} dangerouslySetInnerHTML={{__html: '&#8617;'}}></a>
     } else return null
   }
 
