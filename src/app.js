@@ -2,14 +2,19 @@ import React, { Component, PropTypes }  from 'react'
 import { connect } from 'react-redux'
 import { updateField, updateCheckbox, prevScreen, nextScreen, ScreenNames } from './actions'
 
-const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN, COMPETITION_SCREEN } = ScreenNames
+const { ENTER_SCREEN, FORM_SCREEN, CLOSED_SCREEN, COMPETITION_SCREEN, THANK_YOU_SCREEN } = ScreenNames
 
 import ClosedScreen from './screens/closed'
 import EnterScreen from './screens/enter'
 import FormScreen from './screens/form'
 import CompetitionScreen from './screens/competition'
+import ThankYouScreen from './screens/thank-you'
 
 class App extends Component {
+
+  componentDidMount() {
+    console.log(this.context)
+  }
 
   _dispatchFieldUpdate = (event) => {
     this.props.dispatch(updateField({
@@ -74,24 +79,27 @@ class App extends Component {
           isStoreValid={() => false}
         />
       )
+    case THANK_YOU_SCREEN:
+      return <ThankYouScreen />
+
     default:
       return (
         <h1 style={{textAlign:'center'}}>Something went dreadfully wrong</h1>
       )
     }
   }
-  _renderBackButton () {
+
+  _renderBackButton() {
     if (this.props.screen.screenIndex) {
       return <a onClick={this._dispatchPrevScreen}>Back</a>
-    }
-    return null
+    } else return null
   }
 
   render() {
-    return(
+    return (
       <div>
-        {this._renderScreen()}
         {this._renderBackButton()}
+        {this._renderScreen()}
       </div>
     )
   }

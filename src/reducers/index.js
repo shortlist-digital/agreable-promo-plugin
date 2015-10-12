@@ -33,6 +33,8 @@ function userData(state, action) {
     if (!state[action.name].validator) {
       return Object.assign({}, state, {
         [action.name]: Object.assign({}, state[action.name], {
+          pristine: false,
+          dirty: true,
           value: action.value
         })
       })

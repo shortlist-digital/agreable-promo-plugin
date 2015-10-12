@@ -19,15 +19,18 @@ class Terms extends Component {
     },
     content: {
       background: 'white',
+      fontSize: '14px',
       top: '50%',
       left: '50%',
       right: 'auto',
       bottom: 'auto',
+      lineHeight: '1.4',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
       'maxWidth': '80%',
       'maxHeight': '80vh',
-      'zIndex': '50'
+      'zIndex': '50',
+      'whiteSpace': 'pre-wrap'
     }
   }
 
@@ -43,7 +46,7 @@ class Terms extends Component {
 
         <div className='agreable-promo__terms-column'>
           <Checkbox
-            name='OptInTermsAndConditions'
+            name='OptInTermsConditions'
             {...this.props}
           />
         </div>
@@ -62,8 +65,14 @@ class Terms extends Component {
           onRequestClose={this._toggleTerms}
           style={this._customStyles}
         >
-          <h3 className='agreable-promo__modal-title'>Terms & Conditions</h3>
+          <h2
+            style={{textAlign:'center'}}
+            className='agreable-promo__modal-title'
+          >
+            Terms & Conditions
+          </h2>
           <p>{entities.decodeHTML(this.props.text)}</p>
+          <br/>
           <button
             style={{maxWidth: '300px'}}
             className='agreable-promo__button agreable-promo__button--close-modal'

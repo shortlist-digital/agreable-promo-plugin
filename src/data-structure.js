@@ -87,23 +87,18 @@ export const competition = {
   'AnswerOption': {
     'dirty':false,
     'pristine': true,
-    'required': true,
-    'valid': false,
-    'validator': 'selected',
     'value': ''
   },
   'AnswerCorrect': {
     'initial': true,
-    'required': true,
     'pristine': true,
     'dirty':false,
-    'valid': false,
     'value': null
   }
 }
 
 export const termsAndConditions = {
-  'OptInTermsAndConditions': {
+  'OptInTermsConditions': {
     'value': false,
     'valid': false,
     'pristine': true,

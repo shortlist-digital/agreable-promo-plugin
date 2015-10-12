@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { spring } from 'react-motion'
 import Transition from 'react-motion-ui-pack'
 
 class ValidationMessage extends Component {

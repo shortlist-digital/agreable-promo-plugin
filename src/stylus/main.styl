@@ -1,7 +1,6 @@
 @import 'nib'
 
 #agreable-promotion
-
   .promo_plugin
     padding 0px !important
     margin 0px !important
@@ -125,6 +124,50 @@
       float right
       text-align right
       margin-top 20px
+
+  .agreable-promo__competition-answer
+    clearfix()
+    color #7B7B7B
+    cursor pointer
+    margin-bottom 40px
+    position relative
+    text-align center
+    font-size 32px
+    &.agreable-promo__competition-answer--selected-true
+      transition color 0.2s ease-in-out
+      color black
+
+  .agreable-promo__radio
+    background #333
+    border-radius 100%
+    display inline-block
+    height 30px
+    opacity 1
+    position absolute
+    left 18px
+    width 30px
+    vertical-align middle
+    -webkit-appearance none
+
+  .agreable-promo__radio-highlight
+    left 0px
+    width 70px
+    height 70px
+    position absolute
+    margin-top -15px
+    path
+      fill transparent
+      stroke-dasharray 275.003px, 275.003px
+      stroke-dashoffset 275.003px
+      stroke-linecap round
+      stroke-linejoin round
+      stroke-width 4px
+      stroke black
+
+  .agreable-promo__radio-highlight--show
+    path
+      transition stroke-dashoffset 0.25s ease-in 0s
+      stroke-dashoffset 0px
 
 body.ReactModal__Body--open
   overflow-y hidden
