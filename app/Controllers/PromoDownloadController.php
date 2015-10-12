@@ -43,7 +43,7 @@ class PromoDownloadController {
   public function get_optin_url($index) {
     $url_root = "http://www.calaisapi.com/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
-    $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID.",%20%22ThirdPartyOptIn".$index+1."Value%22:%20true%7D/";
+    $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID.",%20%22ThirdPartyOptIn".($index+1)."Value%22:%20true%7D/";
     $format_query = "format/csv";
     return $url_root.$passport_id.$search.$format_query;
   }
