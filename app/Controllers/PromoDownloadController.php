@@ -1,12 +1,9 @@
 <?php
 
-
 namespace AgreablePromoPlugin\Controllers;
 use AgreablePromoPlugin\Helper;
 
-
 class PromoDownloadController {
-
 
   public function build_dropdown(){
     // Get the current context
@@ -22,6 +19,7 @@ class PromoDownloadController {
         $this->build_menu();
       }
     }
+
     /*
      * @AgreablePromoPlugin is a Twig namespace which Herbert generates from
      * values in herbert.config.php.
@@ -31,6 +29,7 @@ class PromoDownloadController {
      * specific options affecting the style of the promo.
      * ACF definitions for Panel are in app/panels.php.
      */
+
   }
 
   public function get_url($format = 'csv') {

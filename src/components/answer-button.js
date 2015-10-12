@@ -17,13 +17,8 @@ class AnswerButton extends Component {
       className={parentClassName}
       onClick={this.props.selectAnswer}
     >
-      <input
+      <div
         className='agreable-promo__radio'
-        type='radio'
-        value={this.props.selected}
-        defaultChecked={false}
-        checked={this.props.selected}
-        readOnly={true}
       />
       <svg
         className={this._svgClass()}

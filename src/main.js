@@ -35,7 +35,6 @@ DOMReady(function() {
     })
   }
 
-
   // Every time the state changes, log it
   // Eventuall I'll get setup with redux dev-tools
   /*

@@ -1,6 +1,5 @@
 <?php
 
-
 namespace AgreablePromoPlugin\Controllers;
 use AgreablePromoPlugin\Helper;
 
