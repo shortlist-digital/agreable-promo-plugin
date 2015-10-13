@@ -55,7 +55,7 @@ function userData(state, action) {
     return Object.assign({}, state, {
       [action.name]: Object.assign({}, state[action.name], {
         value: !state[action.name].value,
-        valid: !state[action.name].value
+        valid: state[action.name].validator ? !state[action.name].value : true
       })
     })
 
