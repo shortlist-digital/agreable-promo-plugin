@@ -50,38 +50,14 @@
   .agreable-promo__time-message
     text-align center
 
-  .agreable-promo__optin
+  .agreable-promo__checkbox-wrapper
     clearfix()
     cursor pointer
     margin-top 12px
+    position relative
     label
       cursor pointer
 
-  .agreable-promo__checkbox
-    cursor pointer
-    margin 0 1em 0 0
-    outline none
-    position relative
-    top -5px
-    user-select none
-    &:after, &:before
-      background white
-      content " "
-      left 0
-      position absolute
-      top 0
-      height 16px
-      width 16px
-    &:after
-      border 2px solid #eaeaea
-      z-index 20
-    &:checked
-      &:before
-        background transparent
-        content "✔︎"
-        text-align center
-        top 1px
-        z-index 50
 
   .agreable-promo__textarea
     font-size 12px
@@ -133,12 +109,44 @@
     position relative
     text-align left
     font-size 21px
+    user-select none
+    -webkit-tap-highlight-color rgba(0,0,0,0)
     &.agreable-promo__competition-answer--selected-true
       transition color 0.2s ease-in-out
       color black
 
   .agreable-promo__competition-answer__text
     margin-left 80px
+
+  .agreable-promo__checkbox
+    border 2px solid #eaeaea
+    clearfix()
+    left 0
+    top 0
+    position absolute
+    height 30px
+    width 30px
+    user-select none
+    -webkit-tap-highlight rgba(0,0,0,0)
+
+  .agreable-promo__checkbox__tick
+    padding 2px
+    height 100%
+    fill transparent
+    stroke black
+    stroke-width 12px
+    stroke-linecap round
+    stroke-linejoin round
+    path
+      stroke-dasharray 126.37px, 126.37px
+      stroke-dashoffset 126.37px
+  .agreable-promo__checkbox__tick--true path
+    transition stroke-dashoffset 0.25s ease-in 0s
+    stroke-dashoffset 0px
+
+  .agreable-promo__checkbox-label
+    display block
+    margin-left 40px
 
   .agreable-promo__radio
     background #333
@@ -171,6 +179,10 @@
     path
       transition stroke-dashoffset 0.25s ease-in 0s
       stroke-dashoffset 0px
+
+  .agreable-promo__back-button
+    display inline-block
+    margin-top 10px
 
 body.ReactModal__Body--open
   overflow-y hidden

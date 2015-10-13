@@ -34,6 +34,5 @@ module.exports = {
 
   stylus: {
     use: [nib()]
-  },
-  devtool: 'source-map'
+  }
 }

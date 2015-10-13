@@ -85,7 +85,7 @@ class App extends Component {
 
   _renderBackButton() {
     if ((0 < this.props.screen.screenIndex) && (this.props.screen.screenIndex < this.props.screen.screenList.length - 1)) {
-      return <a onClick={this._dispatchPrevScreen}>Go Back</a>
+      return <a className='agreable-promo__back-button' onClick={this._dispatchPrevScreen}>Go Back</a>
     } else return null
   }
 
