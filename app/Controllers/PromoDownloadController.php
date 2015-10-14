@@ -39,6 +39,19 @@ class PromoDownloadController {
     return $url_root.$passport_id.$search;
   }
 
+  public function get_comp_url() {
+    $url_root = "http://www.calaisapi.com/data-record/";
+    $passport_id = json_decode($this->promo_context->selected_passport)->id;
+    $json_query_array = array(
+      'PostId' => $this->promo_context->ID,
+      'AnswerCorrect' => true
+    );
+    $json_query = urlencode(json_encode($json_query_array));
+    $search = "/criteria/".$json_query."/";
+    $format_query = "format/csv";
+    return $url_root.$passport_id.$search.$format_query;
+  }
+
   public function get_optin_url($index) {
     $url_root = "http://www.calaisapi.com/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
@@ -70,19 +83,22 @@ class PromoDownloadController {
       'parent'=>'promo-downloads'
     ));
 
-    $wp_admin_bar->add_menu( array(
-      'id'    => 'download-json',
-      'title' => 'Download All - JSON',
-      'target' => '_BLANK',
-      'href'  => $this->get_url('json'),
-      'parent'=>'promo-downloads'
-    ));
-
     for($i = 0; $i < 3; $i++) {
       $property = "third_party_optins_".$i."_optin_name";
       if (isset($this->promo_context->$property)) {
         $this->add_optin_download($this->promo_context->$property, $i);
       }
+    }
+
+    $fields_array = $this->promo_context->custom['data_to_capture'];
+    if (in_array("competition", $fields_array, true)) {
+      $wp_admin_bar->add_menu( array(
+        'id'    => 'download-winners-csv',
+        'title' => 'Download Winners - CSV',
+        'target' => '_BLANK',
+        'href'  => $this->get_comp_url('csv'),
+        'parent'=>'promo-downloads'
+      ));
     }
 
   }
