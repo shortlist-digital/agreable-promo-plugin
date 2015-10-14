@@ -50,7 +50,7 @@ class Terms extends Component {
           >
             Terms & Conditions
           </h2>
-          <p>{entities.decodeHTML(this.props.text)}</p>
+          <p dangerouslySetInnerHTML={{__html: entities.decodeHTML(this.props.text)}}></p>
           <br/>
           <button
             style={{maxWidth: '300px'}}
