@@ -1,6 +1,7 @@
 <?php namespace AgreablePromoPlugin\Controllers;
 
 use AgreablePromoPlugin\Helper;
+use \Exception;
 
 class RenderController {
 
@@ -17,17 +18,42 @@ class RenderController {
      */
 
     $ns = Helper::get('agreable_namespace');
-    $location = realpath(__DIR__)."/../../resources/assets";
-    $js_string = file_get_contents($location."/app.js");
+
+    $plugin_root = realpath(__DIR__ . '/../..');
+    $js_string = file_get_contents($plugin_root . '/resources/assets/app.js');
+    $webpack_port = null;
+    $environment = getenv('WP_ENV');
+
+    if ($environment === 'development') {
+      try {
+        $webpack_port = $this->getDevelopmentWebpackPort($plugin_root);
+      } catch(Exception $e) {
+        // If exception the developer hasn't run webpack so may not be
+        // 'developing' this particular plugin, force 'production'
+        $environment = 'production';
+      }
+    }
+
     echo view('@AgreablePromoPlugin/files.twig', [
-        'environment' => getenv('WP_ENV'),
-        'common_css_path'   => Helper::asset('styles.css'),
-        'js_string' => $js_string,
-        'plugin_settings_property_primary_colour'      => get_field($ns.'_plugin_settings_property_primary_colour', 'option'),
-        'plugin_settings_property_secondary_colour'    => get_field($ns.'_plugin_settings_property_secondary_colour', 'option'),
-        'plugin_settings_property_font_family'         => get_field($ns.'_plugin_settings_property_font_family', 'option'),
-        'plugin_settings_free_text'                    => get_field($ns.'_plugin_settings_free_text_css', 'option'),
+      'environment' => getenv('WP_ENV'),
+      'common_css_path'   => Helper::asset('styles.css'),
+      'js_string' =>  $js_string,
+      'webpack_port' => $webpack_port,
+      'plugin_settings_property_primary_colour'      => get_field($ns.'_plugin_settings_property_primary_colour', 'option'),
+      'plugin_settings_property_secondary_colour'    => get_field($ns.'_plugin_settings_property_secondary_colour', 'option'),
+      'plugin_settings_property_font_family'         => get_field($ns.'_plugin_settings_property_font_family', 'option'),
+      'plugin_settings_free_text'                    => get_field($ns.'_plugin_settings_free_text_css', 'option'),
     ])->getBody();
+  }
+
+  function getDevelopmentWebpackPort($plugin_root) {
+    $port_file = 'webpack-current-port.tmp';
+    $port_file_location = $plugin_root . '/' . $port_file;
+    if (!file_exists($port_file_location)) {
+      throw new Exception('Expected ' . $port_file . ' to be available.');
+    }
+
+    return file_get_contents($port_file_location);
   }
 
 }
