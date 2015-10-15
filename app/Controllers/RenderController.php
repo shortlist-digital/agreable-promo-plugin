@@ -35,7 +35,7 @@ class RenderController {
     }
 
     echo view('@AgreablePromoPlugin/files.twig', [
-      'environment' => getenv('WP_ENV'),
+      'environment' => $environment,
       'common_css_path'   => Helper::asset('styles.css'),
       'js_string' =>  $js_string,
       'webpack_port' => $webpack_port,
