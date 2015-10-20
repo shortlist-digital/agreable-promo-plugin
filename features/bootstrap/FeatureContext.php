@@ -59,8 +59,8 @@ class FeatureContext extends BehatContext {
   /** @Given /^I am on "([^"]*)"$/ */
   public function iAmOnSite($url) {
     $this->webDriver = RemoteWebDriver::create(
-      "http://elliotcoad1:h7pd74y6rVjgwVid3EP8@hub.browserstack.com/wd/hub", 
-      array("platform"=>"WINDOWS", "browserName"=>"firefox", "browserstack.local" => true)
+      "http://elliotcoad1:h7pd74y6rVjgwVid3EP8@hub.browserstack.com/wd/hub",
+      array("platform"=>"WINDOWS", "browserName"=>"firefox", "browserstack.local" => getenv('WP_ENV') === 'development')
     );
     $this->webDriver->get($_SERVER['WP_HOME'] . $url);
   }
@@ -80,7 +80,7 @@ class FeatureContext extends BehatContext {
     $element = $this->webDriver->findElement(WebDriverBy::cssSelector($cssSelector));
     $element->sendKeys($inputString);
   }
-  
+
   /**
    * @Given /^I type a random email address in to "([^"]*)"$/
    */
