@@ -18,7 +18,7 @@ use Behat\Gherkin\Node\PyStringNode,
 use Behat\Behat\Event\SuiteEvent;
 
 class FeatureContext extends BehatContext {
-  private $webDriver;
+  private static $webDriver;
   private static $testPostPromo;
 
   /**
@@ -54,30 +54,33 @@ class FeatureContext extends BehatContext {
    */
   public static function after(SuiteEvent $scope) {
     self::$testPostPromo->set('post_status', 'draft');
+    self::$webDriver->quit();
   }
 
   /** @Given /^I am on "([^"]*)"$/ */
   public function iAmOnSite($url) {
-    $this->webDriver = RemoteWebDriver::create(
+    self::$webDriver = RemoteWebDriver::create(
       "http://elliotcoad1:h7pd74y6rVjgwVid3EP8@hub.browserstack.com/wd/hub",
       array("platform"=>"WINDOWS", "browserName"=>"firefox", "browserstack.local" => getenv('WP_ENV') === 'development')
     );
-    $this->webDriver->get($_SERVER['WP_HOME'] . $url);
+    self::$webDriver->get($_SERVER['WP_HOME'] . $url);
   }
 
   /**
    * @When /^I click "([^"]*)"$/
    */
   public function iClick($cssSelector) {
-    $element = $this->webDriver->findElement(WebDriverBy::cssSelector($cssSelector));
-    $element->click();
+    $elements = self::$webDriver->findElements(WebDriverBy::cssSelector($cssSelector));
+    foreach($elements as $element) {
+      $element->click();
+    }
   }
 
   /**
    * @Given /^I type a "([^"]*)" in to "([^"]*)"$/
    */
   public function iTypeAInTo($inputString, $cssSelector) {
-    $element = $this->webDriver->findElement(WebDriverBy::cssSelector($cssSelector));
+    $element = self::$webDriver->findElement(WebDriverBy::cssSelector($cssSelector));
     $element->sendKeys($inputString);
   }
 
@@ -99,9 +102,8 @@ class FeatureContext extends BehatContext {
    * @Then /^I should see success message$/
    */
   public function iShouldSeeSuccessMessage() {
-    $this->webDriver->wait(20, 1000)->until(
-      WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::className('agreable-promo__success-message'))
+    self::$webDriver->wait(20, 1000)->until(
+      WebDriverExpectedCondition::visibilityOfElementLocated(WebDriverBy::className('success-message'))
     );
-    $this->webDriver->quit();
   }
 }
