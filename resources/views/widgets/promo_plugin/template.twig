@@ -1,51 +1,50 @@
 {% if promo is empty %}
 {% set promo = TimberPost(widget.promo_post) %}
 {% endif %}
-    <script>
-      window.agreablePromoData = {
-        "passport": {{promo.selected_passport}},
-        "id": {{promo.ID}},
-        "location": window.location.pathname,
-        "site": window.location.hostname,
-        "fields": [
-          "email"{% if promo.get_field('data_to_capture')|length > 0 %},{% for type in promo.get_field('data_to_capture') %}"{{type}}"{% if not loop.last %},{% endif %}{% endfor %}{% endif %}
-        ],
-        {% if promo.collect_optins %}
-          "optins": [
-            {% for optin in promo.get_field('third_party_optins') %}
-              {
-                "name":"optin-{{optin.optin_name|sanitize}}",
-                "label":"{{optin.optin_label}}"
-              }
-              {% if not loop.last %}
-                ,
-              {% endif %}
-            {% endfor %}
-          ],
-        {% endif %}
-        "termsAndConditions": {
-          "label" : "{{promo.terms_and_conditions_label}}",
-          "text" : {{promo.terms_and_conditions|escape|json_encode}}
-        },
-        "timings": {
-          "start": "{{promo.start_time}}",
-          "end": "{{promo.end_time}}"
-        }
-        {% if 'competition' in promo.get_field('data_to_capture') %}
-        ,"competition": {
-          "question": "{{promo.competition_question}}",
-          "answers": [
-            {% for answer in  promo.get_field('competition_answers') %}
-              {{answer|json_encode}},
-            {% endfor %}
-          ]
-        }
-        {% endif %}
-      }
-    </script>
-  <div id="agreable-promotion">
-    <h2 class="agreable-promo__time-message">
-      Please turn on javascript to enter this promotion
-    </h2>
-  </div>
+<script>
+  window.agreablePromoData = {
+    "passport": {{promo.selected_passport}},
+    "id": {{promo.ID}},
+    "location": window.location.pathname,
+    "site": window.location.hostname,
+    "fields": [
+      "email"{% if promo.get_field('data_to_capture')|length > 0 %},{% for type in promo.get_field('data_to_capture') %}"{{type}}"{% if not loop.last %},{% endif %}{% endfor %}{% endif %}
+    ],
+    {% if promo.collect_optins %}
+      "optins": [
+        {% for optin in promo.get_field('third_party_optins') %}
+          {
+            "name":"optin-{{optin.optin_name|sanitize}}",
+            "label":"{{optin.optin_label}}"
+          }
+          {% if not loop.last %}
+            ,
+          {% endif %}
+        {% endfor %}
+      ],
+    {% endif %}
+    "termsAndConditions": {
+      "label" : "{{promo.terms_and_conditions_label}}",
+      "text" : {{promo.terms_and_conditions|escape|json_encode}}
+    },
+    "timings": {
+      "start": "{{promo.start_time}}",
+      "end": "{{promo.end_time}}"
+    }
+    {% if 'competition' in promo.get_field('data_to_capture') %}
+    ,"competition": {
+      "question": "{{promo.competition_question}}",
+      "answers": [
+        {% for answer in  promo.get_field('competition_answers') %}
+          {{answer|json_encode}},
+        {% endfor %}
+      ]
+    }
+    {% endif %}
+  }
+</script>
+<div id="agreable-promotion">
+  <h2 class="agreable-promo__time-message">
+    Please turn on javascript to enter this promotion
+  </h2>
 </div>
