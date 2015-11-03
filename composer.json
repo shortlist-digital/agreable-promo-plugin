@@ -10,7 +10,7 @@
     }
   ],
   "require": {
-    "getherbert/framework": "dev-dev",
+    "getherbert/framework": "~0.9",
     "facebook/webdriver": "~1.0",
     "jarednova/mesh": "*",
     "behat/behat": "~2.5"
