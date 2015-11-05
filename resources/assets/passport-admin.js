@@ -27,7 +27,10 @@ PassportSelect = (function() {
   PassportSelect.prototype.getCurrentPassport = function() {
     var val = this.$passport.val()
     if (!val) {
-      return false 
+      return false
+    }
+    if (val == 'Select a passport') {
+      return false
     }
     else {
       var data = JSON.parse(val)
@@ -173,7 +176,7 @@ PublishedWarnings = (function() {
 
 SenseCheckFields = (function() {
   function SenseCheckFields () {
-    
+
   }
 
   return SenseCheckFields
@@ -200,7 +203,7 @@ GetCounts = (function() {
         $el.html('Error').css({color:'red'})
       }
     })
-    
+
 
   }
 
@@ -219,6 +222,6 @@ $(window).ready(function() {
     new PassportSelect()
     new PublishedWarnings()
   }
- 
+
 })
 
