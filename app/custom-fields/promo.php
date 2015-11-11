@@ -403,7 +403,7 @@ acf_add_local_field_group(array (
       'readonly' => 0,
     ),
 		array (
-			'key' => 'field_564334f7f4741',
+			'key' => 'promotion_data_capture_voucher_tab',
 			'label' => 'Voucher',
 			'name' => '',
 			'type' => 'tab',
@@ -426,7 +426,7 @@ acf_add_local_field_group(array (
 			'placement' => 'top',
 		),
 		array (
-			'key' => 'field_5643333bf616e',
+			'key' => 'promo_data_capture_email_subject',
 			'label' => 'Email Subject',
 			'name' => 'email_subject',
 			'type' => 'text',
@@ -447,7 +447,7 @@ acf_add_local_field_group(array (
 			'disabled' => 0,
 		),
 		array (
-			'key' => 'field_5643300df6169',
+			'key' => 'promo_data_capture_brand_header',
 			'label' => 'Brand Header Image',
 			'name' => 'brand_header',
 			'type' => 'image',
@@ -471,7 +471,7 @@ acf_add_local_field_group(array (
 			'mime_types' => '',
 		),
 		array (
-			'key' => 'field_56433047f616a',
+			'key' => 'promo_data_capture_hero_image',
 			'label' => 'Hero Image',
 			'name' => 'hero_image',
 			'type' => 'image',
@@ -495,7 +495,7 @@ acf_add_local_field_group(array (
 			'mime_types' => '',
 		),
 		array (
-			'key' => 'field_56433063f616b',
+			'key' => 'promo_data_capture_heading',
 			'label' => 'Heading',
 			'name' => 'heading',
 			'type' => 'text',
@@ -516,7 +516,7 @@ acf_add_local_field_group(array (
 			'disabled' => 0,
 		),
 		array (
-			'key' => 'field_56433077f616c',
+			'key' => 'promo_data_capture_description',
 			'label' => 'Description',
 			'name' => 'description',
 			'type' => 'wysiwyg',
@@ -534,7 +534,7 @@ acf_add_local_field_group(array (
 			'media_upload' => 1,
 		),
 		array (
-			'key' => 'promo_voucher_generate_code',
+			'key' => 'promo_data_capture_voucher_gen_code',
 			'label' => 'Automatically generate voucher code',
 			'name' => 'generate_code',
       'type' => 'true_false',
@@ -550,7 +550,7 @@ acf_add_local_field_group(array (
       'default_value' => 1,
 		),
 		array (
-			'key' => 'promo_voucher_voucher_code',
+			'key' => 'promo_data_capture_voucher_code',
 			'label' => 'Enter voucher code',
 			'name' => 'voucher_code',
 			'type' => 'text',
@@ -559,7 +559,7 @@ acf_add_local_field_group(array (
       'conditional_logic' => array (
         array (
           array (
-            'field' => 'promo_voucher_generate_code',
+            'field' => 'promo_data_capture_voucher_gen_code',
             'operator' => '!=',
             'value' => 1,
           ),
@@ -579,7 +579,7 @@ acf_add_local_field_group(array (
 			'disabled' => 0,
 		),
 		array (
-			'key' => 'promo_voucher_include_title',
+			'key' => 'promo_data_capture_voucher_with_title',
 			'label' => 'Include the title from the containing post?',
 			'name' => 'include_title',
 			'type' => 'true_false',
@@ -600,16 +600,16 @@ acf_add_local_field_group(array (
 			'disabled' => 0,
 		),
 		array (
-			'key' => 'promo_voucher_title_defintion',
-			'label' => 'What does the Post title describe?',
-			'name' => 'title_definition',
+			'key' => 'promo_data_capture_voucher_title_term',
+			'label' => 'Enter a one word description of the post title',
+			'name' => 'title_term',
       'type' => 'text',
-      'instructions' => 'E.g. Enter \'Venue\' if you want to display the following: </br> <b>Venue</b> - Burger and Lobster',
+      'instructions' => 'E.g. Enter \'Venue\' if you want to display the following: </br> <b>Venue</b> - Burger and Lobster </br>Leave blank to only display the post title.',
       'required' => 0,
       'conditional_logic' => array (
         array (
           array (
-            'field' => 'promo_voucher_include_title',
+            'field' => 'promo_data_capture_voucher_with_title',
             'operator' => '==',
             'value' => '1',
           ),
@@ -629,7 +629,7 @@ acf_add_local_field_group(array (
       'disabled' => 0,
 		),
 		array (
-			'key' => 'field_56433376f616f',
+			'key' => 'promo_data_capture_voucher_info',
 			'label' => 'Other Voucher Information',
 			'name' => 'voucher_info',
 			'type' => 'wysiwyg',
@@ -649,7 +649,7 @@ Only valid on Tuesday evenings',
 			'media_upload' => 1,
 		),
 		array (
-			'key' => 'field_56433482f6172',
+			'key' => 'promo_data_capture_voucher_terms',
 			'label' => 'Voucher Terms and Conditions',
 			'name' => 'voucher_terms',
 			'type' => 'textarea',
