@@ -2,11 +2,11 @@
 
 /** @var  \Herbert\Framework\Application $container */
 
-use AgreablePromoPlugin\Hooks\TimberLoaderPaths;
+use AgreablePromoPlugin\Hooks\TimberTwig;
 use AgreablePromoPlugin\Hooks\SLMPluginEnqueue;
 
-if(class_exists('AgreablePromoPlugin\Hooks\TimberLoaderPaths')){
-  (new TimberLoaderPaths)->init();
+if(class_exists('AgreablePromoPlugin\Hooks\TimberTwig')){
+  (new TimberTwig)->init();
 }
 
 if(class_exists('AgreablePromoPlugin\Hooks\SLMPluginEnqueue')){
