@@ -25,6 +25,9 @@ DOMReady(function() {
   // We can populate the store with some data we already know about the promotion
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
   store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
+  if(agreablePromoData.voucher){
+    store.dispatch(updateField({name: 'Voucher', value: agreablePromoData.voucher}))
+  }
 
   // Setup optin keys
   if (agreablePromoData.optins) {

@@ -41,6 +41,18 @@
       ]
     }
     {% endif %}
+    {% if promo.get_field('is_voucher') == true %}
+    ,"voucher" : {
+      "subject" : "{{promo.email_subject}}",
+      "brand_header_url" : "{{promo.get_field('brand_header')}}",
+      "hero_url" : "{{promo.get_field('hero_image')}}",
+      "heading" : "{{promo.heading}}",
+      "description" : {{promo.description|json_encode()}},
+      "voucher_code" : "{{promo.voucher_code}}",
+      "voucher_info" : {{promo.voucher_info|json_encode()}},
+      "voucher_terms" : {{promo.voucher_terms|json_encode()}}
+    }
+    {% endif %}
   }
 </script>
 <div id="agreable-promotion">
