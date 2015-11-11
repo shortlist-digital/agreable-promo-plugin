@@ -534,11 +534,56 @@ acf_add_local_field_group(array (
 			'media_upload' => 1,
 		),
 		array (
-			'key' => 'field_564330ccf616d',
-			'label' => 'Voucher Code',
+			'key' => 'promo_voucher_generate_code',
+			'label' => 'Automatically generate voucher code',
+			'name' => 'generate_code',
+      'type' => 'true_false',
+      'instructions' => 'Automatically generate a voucher code. Uncheck to manually enter.',
+      'required' => 0,
+      'conditional_logic' => 0,
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'message' => '',
+      'default_value' => 1,
+		),
+		array (
+			'key' => 'promo_voucher_voucher_code',
+			'label' => 'Enter voucher code',
 			'name' => 'voucher_code',
 			'type' => 'text',
-			'instructions' => '',
+			'instructions' => 'Manually enter a Voucher Code.',
+			'required' => 0,
+      'conditional_logic' => array (
+        array (
+          array (
+            'field' => 'promo_voucher_generate_code',
+            'operator' => '!=',
+            'value' => 1,
+          ),
+        ),
+      ),
+			'wrapper' => array (
+				'width' => '',
+				'class' => '',
+				'id' => '',
+			),
+			'default_value' => '',
+			'placeholder' => '',
+			'prepend' => '',
+			'append' => '',
+			'maxlength' => '',
+			'readonly' => 0,
+			'disabled' => 0,
+		),
+		array (
+			'key' => 'promo_voucher_include_title',
+			'label' => 'Include the title from the containing post?',
+			'name' => 'include_title',
+			'type' => 'true_false',
+			'instructions' => 'This allows you to add the title from the post that uses this promotion in the email voucher.',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
@@ -555,13 +600,42 @@ acf_add_local_field_group(array (
 			'disabled' => 0,
 		),
 		array (
+			'key' => 'promo_voucher_title_defintion',
+			'label' => 'What does the Post title describe?',
+			'name' => 'title_definition',
+      'type' => 'text',
+      'instructions' => 'E.g. Enter \'Venue\' if you want to display the following: </br> <b>Venue</b> - Burger and Lobster',
+      'required' => 0,
+      'conditional_logic' => array (
+        array (
+          array (
+            'field' => 'promo_voucher_include_title',
+            'operator' => '==',
+            'value' => '1',
+          ),
+        ),
+      ),
+      'wrapper' => array (
+        'width' => '',
+        'class' => '',
+        'id' => '',
+      ),
+      'default_value' => '',
+      'placeholder' => '',
+      'prepend' => '',
+      'append' => '',
+      'maxlength' => '',
+      'readonly' => 0,
+      'disabled' => 0,
+		),
+		array (
 			'key' => 'field_56433376f616f',
 			'label' => 'Other Voucher Information',
 			'name' => 'voucher_info',
 			'type' => 'wysiwyg',
 			'instructions' => 'e.g.<br/>
-Venue: Cia Bella<br/>
-Valid until: 25/12/2015',
+Valid until: 25/12/2015</br>
+Only valid on Tuesday evenings',
 			'required' => 0,
 			'conditional_logic' => 0,
 			'wrapper' => array (
