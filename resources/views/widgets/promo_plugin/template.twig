@@ -50,9 +50,12 @@
       "description" : {{promo.description|json_encode()}},
       "voucher_code" : "{% if promo.generate_code %}{{ generate_code() }}{% else %}{{promo.voucher_code}}{%  endif %}",
       "voucher_definition_list" : [
-        {% if promo.include_title %}{% if promo.title_term is empty %}
-          "{{post.title}}"{% else %}{ "{{promo.title_term}}" : "{{post.title}}" }
-        {% endif %}{% endif %}
+        {% if promo.include_title %}{
+          {% if promo.title_term is not empty %}
+            "term" : "{{promo.title_term}}",
+          {% endif %}
+            "description" : "{{post.title}}" }
+        {% endif %}
       ],
       "voucher_info" : {{promo.voucher_info|json_encode()}},
       "terms" : {{promo.voucher_terms|json_encode()}}
