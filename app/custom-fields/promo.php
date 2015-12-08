@@ -17,7 +17,7 @@ acf_add_local_field_group(array (
   'title' => 'Promotion',
   'fields' => array (
 		array (
-			'key' => 'field_564335a4d8814',
+			'key' => 'promotion_data_capture_tab',
 			'label' => 'Promotion',
 			'name' => '',
 			'type' => 'tab',
