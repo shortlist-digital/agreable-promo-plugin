@@ -147,5 +147,9 @@ export const promoData = {
   'PostId': {
     'value': null,
     'required': true
+  },
+  'sortingoffice': {
+    'value': null,
+    'required': false
   }
 }
