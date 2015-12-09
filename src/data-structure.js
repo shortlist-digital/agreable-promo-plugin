@@ -148,7 +148,7 @@ export const promoData = {
     'value': null,
     'required': true
   },
-  'Voucher': {
+  'sortingoffice': {
     'value': null,
     'required': false
   }

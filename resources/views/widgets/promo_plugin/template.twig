@@ -42,7 +42,8 @@
     }
     {% endif %}
     {% if promo.get_field('is_voucher') == true %}
-    ,"voucher" : {
+    ,"sortingoffice" : {
+      "template" : "{{promo.template}}",
       "subject" : "{{promo.email_subject}}",
       "brand_header_url" : "{{promo.get_field('brand_header')}}",
       "hero_url" : "{{promo.get_field('hero_image')}}",
