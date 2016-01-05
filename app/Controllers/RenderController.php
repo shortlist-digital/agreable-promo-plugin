@@ -34,8 +34,14 @@ class RenderController {
       }
     }
 
+    // If we're on staging then make calls to calais staging.
+    if($environment === 'staging'){
+      $pattern = '/(www\.)?(calaisapi\.com)/';
+      $js_string = preg_replace($pattern, 'staging.calaisapi.com', $js_string);
+    }
+
     echo view('@AgreablePromoPlugin/files.twig', [
-      'environment' => $environment,
+      'env' => $environment,
       'common_css_path'   => Helper::asset('styles.css'),
       'js_string' =>  $js_string,
       'webpack_port' => $webpack_port,
