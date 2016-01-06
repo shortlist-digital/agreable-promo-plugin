@@ -5,7 +5,7 @@ use AgreablePromoPlugin\Helper;
 class SavePost {
 
   public function init() {
-    \add_action( 'save_post', array($this, 'update_post_times'), 10, 1 );
+    \add_action( 'save_post', array($this, 'update_post_times'), 10, 2 );
     // \add_action( 'before_delete_post', array($this, 'remove_post_times'), 10, 1 );
   }
 
@@ -14,8 +14,8 @@ class SavePost {
     return $where;
   }
 
-  public function  update_post_times($post_id){
-    global $post;
+  public function  update_post_times($post_id, $post){
+
     if ($post->post_type != 'promo'){
       return;
     }
