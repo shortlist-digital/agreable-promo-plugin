@@ -5,16 +5,56 @@ use AgreablePromoPlugin\Helper;
 class SavePost {
 
   public function init() {
-    \add_action( 'save_post', array($this, 'update_post_times'), 10, 2 );
-    // \add_action( 'before_delete_post', array($this, 'remove_post_times'), 10, 1 );
+    // These two hooks are doing (almost) the same thing but from the inverse association.
+    // i.e. one works from promo and finds assocated post(s) and the other works
+    // from posts and finds associated promo.
+
+    // Hook attached to save_post action filtered by 'promo' post typ.
+    \add_action('save_post', array($this, 'promo_sync_times_to_posts'), 10, 2 );
+    // Hook attached to acf filter specifically for article widgets field.
+    \add_filter('acf/update_value/name=article_widgets', array($this, 'post_sync_times_from_promo'), 15, 3);
   }
 
-  public function posts_where_widgets( $where ) {
-    $where = str_replace("meta_key = 'article_widgets_%", "meta_key LIKE 'article_widgets_%", $where);
-    return $where;
+  /*
+   * This hook targets a post.
+   * Takes start and end time from promo and adds to post object. If
+   * promo doesn't exist in article_widgets we delete postmeta.
+   */
+  function post_sync_times_from_promo($value, $post_id, $field){
+    global $post;
+
+    $promo_id = null;
+    // Using the POST superglobal because we can't rely on the get_field()
+    // to be up to date. This might be in the middle of updating the value
+    // we are using so shouldn't pull from the DB.
+    foreach($_POST['acf']['article_widgets'] as $w){
+      if($w['acf_fc_layout'] === 'promo_plugin'){
+        $promo_id = $w['widget_promo_promo_post'];
+      }
+    }
+
+    // If there  is a promo on this post update time.
+    if($promo_id){
+      $start_time = get_field('start_time', $promo_id, false);
+      $end_time = get_field('end_time', $promo_id,  false);
+      update_field('override_end_time', $end_time, $post->ID);
+      update_field('override_start_time', $start_time, $post->ID);
+
+    } else {
+      update_field('override_end_time', '', $post->ID);
+      update_field('override_start_time', '', $post->ID);
+    }
+
+    return $value;
   }
 
-  public function  update_post_times($post_id, $post){
+
+  /*
+   * This hook targets a promo.
+   * Find all posts associated with this promo and adding time
+   * to them.
+   */
+  public function  promo_sync_times_to_posts($post_id, $post){
 
     if ($post->post_type != 'promo'){
       return;
@@ -47,9 +87,14 @@ class SavePost {
     \remove_filter('posts_where', array($this, 'posts_where_widgets'));
 
     foreach($posts->posts as $p){
-      update_field('end_time', $end_time, $p->ID);
-      update_field('start_time', $start_time, $p->ID);
+      update_field('override_end_time', $end_time, $p->ID);
+      update_field('override_start_time', $start_time, $p->ID);
     }
+  }
+
+  public function posts_where_widgets( $where ) {
+    $where = str_replace("meta_key = 'article_widgets_%", "meta_key LIKE 'article_widgets_%", $where);
+    return $where;
   }
 
 }
