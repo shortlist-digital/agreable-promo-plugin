@@ -9,7 +9,7 @@ class PromoDownloadController {
     // Get the current context
     $this->context = new \TimberPost();
     // Check we're not in the admin or on a page
-    if (!is_admin() && ($this->context->post_type == "post")) {
+    if (!is_admin() && (in_array($this->context->post_type, array('post', 'features-post', 'partnership-post')))) {
       // Find the promo ID if there is one
       $promo_id = $this->get_promo_id();
       if ($promo_id) {
