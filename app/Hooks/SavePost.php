@@ -24,7 +24,7 @@ class SavePost {
 
     $post = get_post($post_id);
 
-    if($post->post_type !== 'post'){
+    if(!$post || !isset($post->post_type) || $post->post_type !== 'post'){
       return;
     }
 
@@ -58,7 +58,7 @@ class SavePost {
    */
   public function  promo_sync_times_to_posts($post_id, $post){
 
-    if ($post->post_type != 'promo'){
+    if(!$post || !isset($post->post_type) || $post->post_type !== 'promo'){
       return;
     }
 
