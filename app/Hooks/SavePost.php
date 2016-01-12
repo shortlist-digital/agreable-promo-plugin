@@ -11,8 +11,8 @@ class SavePost {
 
     // Hook attached to save_post action filtered by 'promo' post typ.
     \add_action('save_post', array($this, 'promo_sync_times_to_posts'), 10, 2 );
-    // Hook attached to acf filter specifically for article widgets field.
-    \add_filter('acf/update_value/name=article_widgets', array($this, 'post_sync_times_from_promo'), 15, 3);
+    // Hook attached to acf save_post with  high priority so that it occurs.
+    \add_filter('acf/save_post', array($this, 'post_sync_times_from_promo'), 15, 3);
   }
 
   /*
@@ -20,16 +20,20 @@ class SavePost {
    * Takes start and end time from promo and adds to post object. If
    * promo doesn't exist in article_widgets we delete postmeta.
    */
-  function post_sync_times_from_promo($value, $post_id, $field){
-    global $post;
+  function post_sync_times_from_promo($post_id){
+
+    $post = get_post($post_id);
+
+    if($post->post_type !== 'post'){
+      return;
+    }
+
+    $widgets = get_field('article_widgets', $post_id);
 
     $promo_id = null;
-    // Using the POST superglobal because we can't rely on the get_field()
-    // to be up to date. This might be in the middle of updating the value
-    // we are using so shouldn't pull from the DB.
-    foreach($_POST['acf']['article_widgets'] as $w){
+    foreach($widgets as $w){
       if($w['acf_fc_layout'] === 'promo_plugin'){
-        $promo_id = $w['widget_promo_promo_post'];
+        $promo_id = $w['promo_post']->ID;
       }
     }
 
@@ -39,13 +43,11 @@ class SavePost {
       $end_time = get_field('end_time', $promo_id,  false);
       update_field('override_end_time', $end_time, $post->ID);
       update_field('override_start_time', $start_time, $post->ID);
-
     } else {
       update_field('override_end_time', '', $post->ID);
       update_field('override_start_time', '', $post->ID);
     }
 
-    return $value;
   }
 
 
