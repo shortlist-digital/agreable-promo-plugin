@@ -33,14 +33,14 @@ class PromoDownloadController {
   }
 
   public function get_url($format = 'csv') {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID."%7D/format/".$format;
     return $url_root.$passport_id.$search;
   }
 
   public function get_comp_url() {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $json_query_array = array(
       'PostId' => $this->promo_context->ID,
@@ -53,7 +53,7 @@ class PromoDownloadController {
   }
 
   public function get_optin_url($index) {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID.",%20%22ThirdPartyOptIn".($index+1)."Value%22:%20true%7D/";
     $format_query = "format/csv";
@@ -125,6 +125,13 @@ class PromoDownloadController {
       endif;
     endforeach;
     return $promo_id;
+  }
+
+  protected function get_calais_domain() {
+    if (!getenv('CALAIS_DOMAIN')) {
+      throw new \Exception('CALAIS_DOMAIN missing from .env file');
+    }
+    return getenv('CALAIS_DOMAIN');
   }
 
 }

@@ -27,7 +27,10 @@ class AdminController {
   }
 
   public function build_url($passport_id, $post_id) {
-    $base = "http://www.calaisapi.com/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count";
+    if (!getenv('CALAIS_DOMAIN')) {
+      throw new \Exception('CALAIS_DOMAIN missing from .env file');
+    }
+    $base = "http://" . getenv('CALAIS_DOMAIN') . "/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count";
     return $base;
   }
 
