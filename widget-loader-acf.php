@@ -26,7 +26,7 @@ $widget_config = array (
                 'id' => '',
             ),
             'post_type' => array (
-                0 => 'promo',
+              0 => 'promo'
             ),
             'taxonomy' => '',
             'allow_null' => 0,
@@ -39,5 +39,5 @@ $widget_config = array (
     'max' => '',
 );
 
-$widget_config["content-types"] = array('post'); // section, article
+$widget_config["content-types"] = array('post', 'partnership-post'); // section, article
 $widget_config["content-sizes"] = array('main'); // main, main-full-bleed, sidebar
