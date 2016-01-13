@@ -119,7 +119,7 @@ class PromoDownloadController {
     $promo_id = false;
     $widgets = get_field('article_widgets');
     foreach($widgets as $index => $widget):
-      if ($widget == 'promo_plugin'):
+      if ($widget['acf_fc_layout'] == 'promo_plugin'):
         $property = "article_widgets_".$index."_promo_post";
         $promo_id = $this->context->$property;
       endif;
