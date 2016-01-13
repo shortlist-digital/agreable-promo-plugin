@@ -117,7 +117,7 @@ class PromoDownloadController {
 
   public function get_promo_id() {
     $promo_id = false;
-    $widgets = $this->context->article_widgets;
+    $widgets = get_field('article_widgets');
     foreach($widgets as $index => $widget):
       if ($widget == 'promo_plugin'):
         $property = "article_widgets_".$index."_promo_post";
