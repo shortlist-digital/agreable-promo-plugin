@@ -4,7 +4,6 @@
 
 $enqueue->admin([
   'as'     => 'adminJS',
-  'src'    => Helper::assetUrl('passport-admin.js'),
+  'src'    => Helper::assetUrl('passport-admin.js') . '?calaisdomain=' . getenv('CALAIS_DOMAIN'),
   'filter' => [ 'postType' => 'promo' ]
 ], 'footer');
-

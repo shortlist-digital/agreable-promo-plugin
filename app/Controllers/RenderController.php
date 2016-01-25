@@ -22,7 +22,7 @@ class RenderController {
     $plugin_root = realpath(__DIR__ . '/../..');
     $js_string = file_get_contents($plugin_root . '/resources/assets/app.js');
     $webpack_port = null;
-    $environment = getenv('WP_ENV');
+    $override_environment = $environment = getenv('WP_ENV');
 
     if ($environment === 'development') {
       try {
@@ -30,18 +30,21 @@ class RenderController {
       } catch(Exception $e) {
         // If exception the developer hasn't run webpack so may not be
         // 'developing' this particular plugin, force 'production'
-        $environment = 'production';
+        $override_environment = 'production';
       }
     }
 
     // If we're on staging then make calls to calais staging.
-    if($environment === 'staging'){
+    if($environment === 'staging' || $environment === 'development'){
+      if (!getenv('CALAIS_DOMAIN')) {
+        throw new \Exception('CALAIS_DOMAIN missing from .env file');
+      }
       $pattern = '/(www\.)?(calaisapi\.com)/';
-      $js_string = preg_replace($pattern, 'staging.calaisapi.com', $js_string);
+      $js_string = preg_replace($pattern, getenv('CALAIS_DOMAIN'), $js_string);
     }
 
     echo view('@AgreablePromoPlugin/files.twig', [
-      'env' => $environment,
+      'env' => $override_environment,
       'common_css_path'   => Helper::asset('styles.css'),
       'js_string' =>  $js_string,
       'webpack_port' => $webpack_port,

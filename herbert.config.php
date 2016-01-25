@@ -56,7 +56,7 @@ return [
      * The routes to auto-load.
      */
     'routes' => [
-        // 'AgreablePromoPlugin' => __DIR__ . '/app/routes.php'
+        'AgreablePromoPlugin' => __DIR__ . '/app/routes.php'
     ],
 
     /**

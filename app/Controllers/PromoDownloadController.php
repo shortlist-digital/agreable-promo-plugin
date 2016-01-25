@@ -9,7 +9,7 @@ class PromoDownloadController {
     // Get the current context
     $this->context = new \TimberPost();
     // Check we're not in the admin or on a page
-    if (!is_admin() && ($this->context->post_type == "post")) {
+    if (!is_admin() && (in_array($this->context->post_type, array('post', 'features-post', 'partnership-post')))) {
       // Find the promo ID if there is one
       $promo_id = $this->get_promo_id();
       if ($promo_id) {
@@ -33,14 +33,14 @@ class PromoDownloadController {
   }
 
   public function get_url($format = 'csv') {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID."%7D/format/".$format;
     return $url_root.$passport_id.$search;
   }
 
   public function get_comp_url() {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $json_query_array = array(
       'PostId' => $this->promo_context->ID,
@@ -53,7 +53,7 @@ class PromoDownloadController {
   }
 
   public function get_optin_url($index) {
-    $url_root = "http://www.calaisapi.com/data-record/";
+    $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
     $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID.",%20%22ThirdPartyOptIn".($index+1)."Value%22:%20true%7D/";
     $format_query = "format/csv";
@@ -117,14 +117,21 @@ class PromoDownloadController {
 
   public function get_promo_id() {
     $promo_id = false;
-    $widgets = $this->context->article_widgets;
+    $widgets = get_field('article_widgets');
     foreach($widgets as $index => $widget):
-      if ($widget == 'promo_plugin'):
+      if ($widget['acf_fc_layout'] == 'promo_plugin'):
         $property = "article_widgets_".$index."_promo_post";
         $promo_id = $this->context->$property;
       endif;
     endforeach;
     return $promo_id;
+  }
+
+  protected function get_calais_domain() {
+    if (!getenv('CALAIS_DOMAIN')) {
+      throw new \Exception('CALAIS_DOMAIN missing from .env file');
+    }
+    return getenv('CALAIS_DOMAIN');
   }
 
 }

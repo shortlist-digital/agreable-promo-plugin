@@ -3,6 +3,8 @@ var $ = window.$ || window.jQuery
 var PassportSelect, PublishedWarnings, GetCounts
 
 PassportSelect = (function() {
+  var calaisDomain = ''
+
   function PassportSelect() {
     this.passports = []
     // Get the brand identifier from a hidden field / populated by the options panel
@@ -14,8 +16,11 @@ PassportSelect = (function() {
     this.$select = $('#acf-promo_passport').html('')
     this.$select.change(this.handleSelectChange.bind(this))
     this.currentPassport = this.getCurrentPassport()
-    this.getPassports()
-    console.log(this)
+
+    $.getJSON('/api/calais-domain', function(response) {
+      calaisDomain = response
+      this.getPassports()
+    }.bind(this))
   }
 
   PassportSelect.prototype.handleSelectChange = function () {
@@ -41,7 +46,8 @@ PassportSelect = (function() {
 
   PassportSelect.prototype.getPassports = function() {
     var timestamp = Math.floor(Date.now() / 1000)
-    var url = "http://calaisapi.com/passport/" + this.brandIdentifier + "?v=" + timestamp
+
+    var url = "http://" + calaisDomain + "/passport/" + this.brandIdentifier + "?v=" + timestamp
     $.ajax({
       dataType: "json",
       url: url,
