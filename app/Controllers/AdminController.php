@@ -37,30 +37,10 @@ class AdminController {
   public function add_count_column() {
     \Jigsaw::add_column('promo', 'Entries', function($pid){
       // This is a render callback
-      $promo_id = $pid;
-
-      $query_args = array(
-        'post_status' => 'publish',
-        'meta_query' => array(
-          array(
-            'key' => 'article_widgets_%_promo_post',
-            'value' => $promo_id
-          )
-        )
-      );
-      $query = new \WP_Query($query_args);
-      $posts = $query->get_posts();
-
-      if (count($posts) !== 1) {
-        echo '<em>Promo not assisgned to Post</em>';
-        return;
-      }
-
-      $promo = new \TimberPost($promo_id);
-      $post = new \TimberPost($posts[0]->ID);
-      if (null !== json_decode($promo->selected_passport)) {
-        $passport_id = json_decode($promo->selected_passport)->id;
-        $url = $this->build_url($passport_id, $post->id);
+      $data = new \TimberPost($pid);
+      if (null !== json_decode($data->selected_passport)) {
+        $passport_id = json_decode($data->selected_passport)->id;
+        $url = $this->build_url($passport_id, $data->ID);
         echo "<span class='count-column' data-url='$url'>Loading Count...</span>";
       } else {
         echo "N/A";
