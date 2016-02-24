@@ -97,7 +97,7 @@ class FormScreen extends Component {
       id: agreablePromoData.id,
       title: window.document.title,
       label: window.location.pathname,
-      errrorMessage: errObject.message
+      errorMessage: errObject.message
     })
 
     this.setState({
