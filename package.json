@@ -51,6 +51,7 @@
     "react-motion-ui-pack": "^0.4.2",
     "react-redux": "^2.1.2",
     "redux": "^3.0.0",
+    "redux-analytics": "^0.3.0",
     "timeago": "^0.2.0"
   }
 }

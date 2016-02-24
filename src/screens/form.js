@@ -44,6 +44,10 @@ class FormScreen extends Component {
       isValid = false
     }
 
+    if (fieldObject.required === false && (!fieldObject.value)) {
+      isValid = true
+    }
+
     return isValid
   }
 
