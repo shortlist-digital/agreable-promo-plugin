@@ -43,14 +43,30 @@ export function clearField(field) {
 export function nextScreen(screenName) {
   return {
     type: NEXT_SCREEN,
-    screenName
+    screenName,
+    meta: {
+      analytics: {
+        type: 'Next Screen',
+        payload: {
+          screen: screenName
+        }
+      }
+    }
   }
 }
 
 export function prevScreen(screenName) {
   return {
     type: PREV_SCREEN,
-    screenName
+    screenName,
+    meta: {
+      analytics: {
+        type: 'Previous Screen',
+        payload: {
+          screen: screenName
+        }
+      }
+    }
   }
 }
 

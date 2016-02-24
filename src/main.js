@@ -6,12 +6,15 @@ import DOMReady from 'detect-dom-ready'
 import React from 'react'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import analytics from 'redux-analytics'
 import App from './app'
 import promotionsApp from './reducers'
 import { updateField, clearField, ScreenNames } from './actions'
 import * as fieldDefinitions from './data-structure.js'
 import { standardScreenOrder, competitionScreenOrder} from './screen-order'
 import stateBuilder from './state-builder'
+
+let reduxAnalytics = analytics
 
 DOMReady(function() {
   // Information about the promotion is bootstrapped from the server
@@ -25,7 +28,8 @@ DOMReady(function() {
   // We can populate the store with some data we already know about the promotion
   store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
   store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
-  if(agreablePromoData.sortingoffice){
+
+  if (agreablePromoData.sortingoffice) {
     store.dispatch(updateField({name: 'sortingoffice', value: agreablePromoData.sortingoffice}))
   }
 
