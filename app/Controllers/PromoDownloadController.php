@@ -35,7 +35,7 @@ class PromoDownloadController {
   public function get_url($format = 'csv') {
     $url_root = "http://" . $this->get_calais_domain() . "/data-record/";
     $passport_id = json_decode($this->promo_context->selected_passport)->id;
-    $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID."%7D/format/".$format;
+    $search = "/criteria/%7B%22PostId%22:".$this->promo_context->ID."%7D/format/".$format."?bypass";
     return $url_root.$passport_id.$search;
   }
 
