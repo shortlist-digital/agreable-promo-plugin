@@ -75,6 +75,10 @@ class FormScreen extends Component {
   }
 
   _handleSubmitSuccess = () => {
+    analytics.track('Promo Widget Success', {
+      id: agreablePromoData.id,
+      postTitle: window.document.title
+    })
     this.props.nextScreen()
   }
 
@@ -83,6 +87,11 @@ class FormScreen extends Component {
       'Unique check failed': 'According to our records, you\'ve already entered this competition!',
       'Contact is suppressed. ERROR_CONTACT_SUPPRESSED': 'According to our records, you\'ve sent us an unsubscribe request in the past, we\'ve entered you into the competition, but you won\'t receive any emails :('
     }
+    analytics.track('Promo Widget Failure', {
+      id: agreablePromoData.id,
+      postTitle: window.document.title,
+      errrorMessage: errObject.message
+    })
     this.setState({
       formSubmitting: false,
       isModalOpen: true,
