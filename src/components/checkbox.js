@@ -15,7 +15,7 @@ class Checkbox extends Component {
     return (
       <div
         className='agreable-promo__checkbox-wrapper'
-        onClick={this.props.onUpdate.bind(this, {target:{name:this.props.name, value:this.props.value}})}
+        onClick={this.props.onUpdate.bind(this, { target:{ name:this.props.name, value:this.props.value } })}
       >
         <label className='agreable-promo__checkbox-label'>
           {this.props.label}

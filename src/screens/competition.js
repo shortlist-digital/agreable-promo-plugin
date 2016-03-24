@@ -10,8 +10,8 @@ class CompetitionScreen extends Component {
 
   _handleSelectAnswer = (answerIndex) => {
     const { answers } = this.competition
-    this.props.updateField({target: {name:'AnswerOption', value: answerIndex}})
-    this.props.updateField({target: {name:'AnswerCorrect', value: answers[answerIndex].answer_correct}})
+    this.props.updateField({ target: { name:'AnswerOption', value: answerIndex } })
+    this.props.updateField({ target: { name:'AnswerCorrect', value: answers[answerIndex].answer_correct } })
   }
 
   _renderAnswers() {
@@ -47,7 +47,7 @@ class CompetitionScreen extends Component {
   render() {
     const { question } = this.competition
     return <div>
-      <h1 style={{textAlign: 'center'}}>{question}</h1>
+      <h1 style={{ textAlign: 'center' }}>{question}</h1>
       {this._renderAnswers()}
       {this._renderContinue()}
     </div>

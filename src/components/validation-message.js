@@ -9,11 +9,11 @@ class ValidationMessage extends Component {
     var nbspEntity = String.fromCharCode(160)
     return (
       <span className='agreable-promo__validation-message'>
-        <div style={{minHeight: '18px'}}>
+        <div style={{ minHeight: '18px' }}>
           <Transition
             onlyChild={true}
-            enter={{opacity: 1}}
-            leave={{opacity: 0}}
+            enter={{ opacity: 1 }}
+            leave={{ opacity: 0 }}
           >
             { check &&
               <span>{check ? this.props.validationMessage : nbspEntity}</span>

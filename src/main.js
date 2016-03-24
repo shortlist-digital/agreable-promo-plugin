@@ -16,7 +16,7 @@ import stateBuilder from './state-builder'
 
 let reduxAnalytics = analytics
 
-DOMReady(function() {
+DOMReady(function () {
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
 
@@ -26,11 +26,11 @@ DOMReady(function() {
 
   // DEFAULTS
   // We can populate the store with some data we already know about the promotion
-  store.dispatch(updateField({name: 'Location', value: agreablePromoData.location}))
-  store.dispatch(updateField({name: 'PostId', value: agreablePromoData.id}))
+  store.dispatch(updateField({ name: 'Location', value: agreablePromoData.location }))
+  store.dispatch(updateField({ name: 'PostId', value: agreablePromoData.id }))
 
   if (agreablePromoData.sortingoffice) {
-    store.dispatch(updateField({name: 'sortingoffice', value: agreablePromoData.sortingoffice}))
+    store.dispatch(updateField({ name: 'sortingoffice', value: agreablePromoData.sortingoffice }))
   }
 
   // Setup optin keys

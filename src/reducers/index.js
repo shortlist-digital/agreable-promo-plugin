@@ -77,14 +77,14 @@ function screen(state = initialState.screen, action) {
 
   case NEXT_SCREEN:
     return Object.assign({}, state,
-      {screenIndex: state.screenIndex + 1},
-      {currentScreen: state.screenList[state.screenIndex + 1]}
+      { screenIndex: state.screenIndex + 1 },
+      { currentScreen: state.screenList[state.screenIndex + 1] }
     )
 
   case PREV_SCREEN:
     return Object.assign({}, state,
-      {screenIndex: state.screenIndex - 1},
-      {currentScreen: state.screenList[state.screenIndex - 1]}
+      { screenIndex: state.screenIndex - 1 },
+      { currentScreen: state.screenList[state.screenIndex - 1] }
     )
 
   default:
@@ -95,7 +95,7 @@ function screen(state = initialState.screen, action) {
 
 export default function promotionsApp(state = initialState, action) {
   return Object.assign({}, state,
-    {userData: userData(state.userData, action)},
-    {screen: screen(state.screen, action)}
+    { userData: userData(state.userData, action) },
+    { screen: screen(state.screen, action) }
   )
 }

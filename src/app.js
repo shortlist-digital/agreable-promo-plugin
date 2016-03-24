@@ -79,7 +79,7 @@ class App extends Component {
       return <ThankYouScreen />
 
     default:
-      return <h1 style={{textAlign:'center'}}>Something went dreadfully wrong</h1>
+      return <h1 style={{ textAlign:'center' }}>Something went dreadfully wrong</h1>
     }
   }
 
