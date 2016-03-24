@@ -6,5 +6,6 @@
   "disallowTrailingComma": true,
   "disallowQuotedKeysInObjects": false,
   "requireCamelCaseOrUpperCaseIdentifiers": "ignoreProperties",
+  "maximumLineLength": false,
   "maxErrors": 200
 }

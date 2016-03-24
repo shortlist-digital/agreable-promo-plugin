@@ -71,7 +71,29 @@ class FormScreen extends Component {
     }
 
     this.calaisClient.setDataRecord(dataRecord)
-    this.calaisClient.post().then(this._handleSubmitSuccess, this._handleSubmitFailure)
+    this.calaisClient.post().then(this._submitCheck, this._handleServerError)
+  }
+
+  _handleServerError = (errorResponse) => {
+    if (errorResponse) {
+      if (errorResponse.body) {
+        let message = errorResponse.body.message
+      }
+    }
+
+    this.setState({
+      formSubmitting: false,
+      isModalOpen: true,
+      modalMessage: message || 'Something went badly wrong'
+    })
+  }
+
+  _submitCheck = (response) => {
+    if (response.body.success) {
+      this._handleSubmitSuccess(response)
+    } else if (!response.body.success) {
+      this._handleSubmitFailure(response.body)
+    }
   }
 
   _handleSubmitSuccess = () => {
@@ -109,10 +131,10 @@ class FormScreen extends Component {
 
   _handleSubmit = () => {
     if (this._isStoreValid() && !this.state.formSubmitting) {
-      this.setState({formSubmitting: true})
+      this.setState({ formSubmitting: true })
       this._postToCalais()
     } else {
-      this.setState({formValidating: true})
+      this.setState({ formValidating: true })
     }
   }
 
@@ -204,10 +226,10 @@ class FormScreen extends Component {
         </button>
         <Modal
           isOpen={this.state.isModalOpen}
-          onRequestClose={this.setState.bind(this, {isModalOpen: false})}
+          onRequestClose={this.setState.bind(this, { isModalOpen: false })}
           style={modalStyles}
         >
-          <h2 style={{textAlign:'center'}}>Submission error:</h2>
+          <h2 style={{ textAlign:'center' }}>Submission error:</h2>
           <p>{this.state.modalMessage}</p>
         </Modal>
       </div>

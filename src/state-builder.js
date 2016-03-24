@@ -55,7 +55,7 @@ function stateBuilder(agreablePromoData) {
 
   const { CLOSED_SCREEN } = ScreenNames
 
-  const isActive = function() {
+  const isActive = function () {
     let { timings } = agreablePromoData
     var now = Math.floor(new Date().getTime() / 1000)
     return ((now > timings.start) && (now < timings.end))

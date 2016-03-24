@@ -45,15 +45,15 @@ class Terms extends Component {
           style={modalStyles}
         >
           <h2
-            style={{textAlign:'center'}}
+            style={{ textAlign:'center' }}
             className='agreable-promo__modal-title'
           >
             Terms & Conditions
           </h2>
-          <p dangerouslySetInnerHTML={{__html: entities.decodeHTML(this.props.text)}}></p>
+          <p dangerouslySetInnerHTML={{ __html: entities.decodeHTML(this.props.text) }}></p>
           <br/>
           <button
-            style={{maxWidth: '300px'}}
+            style={{ maxWidth: '300px' }}
             className='agreable-promo__button agreable-promo__button--close-modal'
             onClick={this._toggleTerms}
           >Close</button>

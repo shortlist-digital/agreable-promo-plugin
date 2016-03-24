@@ -24,7 +24,7 @@ class ClosedScreen extends Component {
       <div className='agreable-promo__not-open'>
         <div
           className='agreable-promo__time-icon'
-          dangerouslySetInnerHTML={{__html: clockFace}}>
+          dangerouslySetInnerHTML={{ __html: clockFace }}>
         </div>
         <h2
           className='agreable-promo__time-message'
