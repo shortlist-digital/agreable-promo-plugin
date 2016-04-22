@@ -7,12 +7,23 @@
     {
       "type": "git",
       "url": "https://github.com/getherbert/framework"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "jonsherrard/mesh",
+        "version": "1.0",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/jonsherrard/mesh/archive/master.zip"
+        }
+      }
     }
   ],
   "require": {
+    "jonsherrard/mesh": "*",
     "getherbert/framework": "~0.9",
     "facebook/webdriver": "~1.0",
-    "jarednova/mesh": "*",
     "behat/behat": "~2.5"
   },
   "config": {
