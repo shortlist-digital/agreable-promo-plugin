@@ -4,8 +4,8 @@
  * @wordpress-plugin
  * Plugin Name:       Agreable Promo Plugin
  * Plugin URI:        http://shortlistmedia.co.uk
- * Description:       Created custom promoes.
- * Version:           0.1.0
+ * Description:       Created custom promo forms
+ * Version:           2.0.0
  * Author:            Shortlist Media
  * Author URI:        http://shortlistmedia.co.uk
  * License:           MIT
