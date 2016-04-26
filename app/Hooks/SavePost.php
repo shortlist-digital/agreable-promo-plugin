@@ -18,7 +18,7 @@ class SavePost {
   /*
    * This hook targets a post.
    * Takes start and end time from promo and adds to post object. If
-   * promo doesn't exist in article_widgets we delete postmeta.
+   * promo doesn't exist in widgets we delete postmeta.
    */
   function post_sync_times_from_promo($post_id){
 
@@ -28,7 +28,7 @@ class SavePost {
       return;
     }
 
-    $widgets = get_field('article_widgets', $post_id);
+    $widgets = get_field('widgets', $post_id);
 
     $promo_id = null;
     foreach($widgets as $w){
@@ -72,14 +72,14 @@ class SavePost {
       'post_status' => 'publish',
       'meta_query' => array(
         array(
-          'key' => 'article_widgets_%_promo_post',
+          'key' => 'widgets_%_promo_post',
           'value' => $post->ID
         )
       )
     );
 
-    // To accomodate ACF meta_key structure for article_widgets
-    // (e.g. article_widgets_{index}_promo_post) we  need to manipulate
+    // To accomodate ACF meta_key structure for widgets
+    // (e.g. widgets_{index}_promo_post) we  need to manipulate
     // the SQL so that it is a LIKE comparison.
     \add_filter('posts_where', array($this, 'posts_where_widgets'));
 
@@ -95,7 +95,7 @@ class SavePost {
   }
 
   public function posts_where_widgets( $where ) {
-    $where = str_replace("meta_key = 'article_widgets_%", "meta_key LIKE 'article_widgets_%", $where);
+    $where = str_replace("meta_key = 'widgets_%", "meta_key LIKE 'widgets_%", $where);
     return $where;
   }
 

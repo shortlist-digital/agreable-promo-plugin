@@ -44,8 +44,8 @@ class FeatureContext extends BehatContext {
     self::$testPostPromo = new Mesh\Post($postTitle, 'post');
     self::$testPostPromo->set('short_headline', 'Test (system) - promo');
     self::$testPostPromo->set('sell', 'This is an automated test');
-    self::$testPostPromo->set('article_widgets_0_promo_post', $promo->id);
-    self::$testPostPromo->set('article_widgets', 'a:1:{i:0;s:12:"promo_plugin";}');
+    self::$testPostPromo->set('widgets_0_promo_post', $promo->id);
+    self::$testPostPromo->set('widgets', 'a:1:{i:0;s:12:"promo_plugin";}');
     self::$testPostPromo->set('post_status', 'publish');
   }
 
