@@ -38,8 +38,21 @@
       'has_archive'         => false,
       'exclude_from_search' => true,
       'publicly_queryable'  => true,
-      'capability_type'     => 'page',
-    );
+      'capability_type' => 'partnership',
+      'capabilities' => array(
+        'publish_pages' => 'publish_promos',
+        'edit_pages' => 'edit_promos',
+        'edit_others_pages' => 'edit_others_promos',
+        'delete_pages' => 'delete_promos',
+        'delete_private_pages' => 'delete_private_promos',
+        'delete_others_pages' => 'delete_others_promos',
+        'read_private_pages' => 'read_private_promos',
+        'edit_page' => 'edit_promo',
+        'delete_page' => 'delete_promo',
+        'read_page' => 'read_promo',
+      ),
+        'map_meta_cap' => true,
+      );
 
   \register_post_type('promo', $args);
 }
