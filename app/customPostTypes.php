@@ -38,7 +38,8 @@
       'has_archive'         => false,
       'exclude_from_search' => true,
       'publicly_queryable'  => true,
-      'capability_type'     => 'page',
+      'capability_type'     => array('promo','promos'),
+      'map_meta_cap'        => true
     );
 
   \register_post_type('promo', $args);
