@@ -39,5 +39,5 @@ $widget_config = array (
     'max' => '',
 );
 
-$widget_config["content-types"] = array('post', 'partnership-post'); // section, article
+$widget_config["content-types"] = array('post', 'partnership'); // section, article
 $widget_config["content-sizes"] = array('main'); // main, main-full-bleed, sidebar
