@@ -30,7 +30,7 @@ class AdminController {
     if (!getenv('CALAIS_DOMAIN')) {
       throw new \Exception('CALAIS_DOMAIN missing from .env file');
     }
-    $base = "http://" . getenv('CALAIS_DOMAIN') . "/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count?bypass";
+    $base = getenv('CALAIS_DOMAIN') . "/data-record/".$passport_id."/criteria/%7B%22PostId%22:".$post_id."%7D/count?bypass";
     return $base;
   }
 
