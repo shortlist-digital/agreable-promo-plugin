@@ -19,6 +19,11 @@ let reduxAnalytics = analytics
 DOMReady(function () {
   // Information about the promotion is bootstrapped from the server
   var agreablePromoData = window.agreablePromoData
+  console.log('hi')
+  console.log(agreablePromoData)
+  agreablePromoData.timings.end = (new Date(agreablePromoData.timings.end)).getTime() / 1000
+  agreablePromoData.timings.start = (new Date(agreablePromoData.timings.start)).getTime() / 1000
+  console.log(agreablePromoData)
 
   let initialState = stateBuilder(agreablePromoData)
 
