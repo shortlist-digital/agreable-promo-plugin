@@ -28,8 +28,8 @@
       "text" : {{promo.terms_and_conditions|escape|json_encode}}
     },
     "timings": {
-      "start": "{{promo.start_time}}",
-      "end": "{{promo.end_time}}"
+      "start": "{{promo.start_time|date('c')}}",
+      "end": "{{promo.end_time|date('c')}}"
     }
     {% if 'competition' in promo.get_field('data_to_capture') %}
     ,"competition": {
