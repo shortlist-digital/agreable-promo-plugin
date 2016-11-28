@@ -38,7 +38,20 @@
       'has_archive'         => false,
       'exclude_from_search' => true,
       'publicly_queryable'  => true,
-      'capability_type'     => 'page',
+      'capability_type' => 'promo',
+      'capabilities' => array(
+      'publish_posts' => 'publish_promos',
+      'edit_posts' => 'edit_promos',
+      'edit_others_posts' => 'edit_others_promos',
+      'delete_posts' => 'delete_promos',
+      'delete_private_posts' => 'delete_private_promos',
+      'delete_others_posts' => 'delete_others_promos',
+      'read_private_posts' => 'read_private_promos',
+      'edit_post' => 'edit_promo',
+      'delete_post' => 'delete_promo',
+      'read_post' => 'read_promo',
+    ),
+    'map_meta_cap' => true,
     );
 
   \register_post_type('promo', $args);
