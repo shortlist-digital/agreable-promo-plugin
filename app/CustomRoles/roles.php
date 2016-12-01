@@ -29,5 +29,5 @@ add_action('admin_init', function() {
     $role->add_cap('delete_private_promos');
     $role->add_cap('delete_published_promos');
   }
-get_role($roles[0])->remove_cap('edit_posts');
+  get_role($roles[0])->remove_cap('edit_posts');
 });
