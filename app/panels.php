@@ -5,9 +5,7 @@ use AgreablePromoPlugin\Helper;
   $ns = 'agreable_promo';
   $user = wp_get_current_user();
   $user_roles = $user->roles;
-  foreach ($user_roles as &$user_role) {
-    if ($user_role === 'promos_editor') {
-
+  if (in_array('promos_editor', $user_roles)) {
     /*
      * Although we're in the Herbert panel file, we're not using any built in
      * panel functionality because you have to write you're own HTML forms and
@@ -144,7 +142,6 @@ use AgreablePromoPlugin\Helper;
       'hide_on_screen' => '',
     ));
     endif;
-    }
   }
 });
 
