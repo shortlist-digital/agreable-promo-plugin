@@ -12,13 +12,12 @@ use AgreablePromoPlugin\Helper;
      * logic. We're using ACF instead but seems sensible to leave ACF logic in
      * here (??).
      */
-
     acf_add_options_sub_page(array(
       'page_title'  => 'Promo Settings',
       'menu_title'  => 'Promo Settings',
       'parent_slug' => 'edit.php?post_type=promo',
     ));
-
+  }
     // Constructed using (lowercased and hyphenated) 'menu_title' from above.
     $options_page_name = 'acf-options-promo-settings';
 
@@ -142,6 +141,4 @@ use AgreablePromoPlugin\Helper;
       'hide_on_screen' => '',
     ));
     endif;
-  }
 });
-
