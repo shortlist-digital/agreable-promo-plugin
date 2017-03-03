@@ -1,6 +1,8 @@
 Shortlist Media Wordpress Promo Plugin
 ===============
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/shortlist-digital/agreable-promo-plugin.svg)](https://greenkeeper.io/)
+
 Wordpress Plugin built  for Croissant stack using [Herbert](http://getherbert.com/) plugin framework.
 
 ---
